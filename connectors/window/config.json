@@ -1,0 +1,5 @@
+{
+  "_comment": "Daily collection-window clock. cutoff_local is when the daily digest runs and the window closes (20:30 IST).",
+  "local_utc_offset_minutes": 330,
+  "cutoff_local": "20:30"
+}

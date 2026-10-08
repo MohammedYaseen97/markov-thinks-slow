@@ -1,0 +1,349 @@
+{
+  "own_handle": "FaiyazTuckr",
+  "scrape_own_retweets": true,
+  "hours_lookback": 24,
+  "following_actor_id": "UkXi4XmrOvKL6qUaf",
+  "following_refresh_days": 3,
+  "following_last_checked": "",
+  "known_non_ai_handles": [],
+  "bio_ai_keywords": [
+    "AI",
+    "ML",
+    "machine learning",
+    "deep learning",
+    "LLM",
+    "neural",
+    "model",
+    "research",
+    "Anthropic",
+    "OpenAI",
+    "DeepMind",
+    "xAI",
+    "Google",
+    "NVIDIA",
+    "researcher",
+    "scientist",
+    "language model",
+    "GPU",
+    "compute",
+    "inference",
+    "training",
+    "robotics",
+    "autonomous",
+    "generative",
+    "diffusion",
+    "transformer",
+    "reinforcement learning",
+    "computer vision",
+    "NLP",
+    "artificial intelligence",
+    "AGI",
+    "foundation model",
+    "chip",
+    "semiconductor",
+    "silicon",
+    "TPU",
+    "CUDA",
+    "agent",
+    "benchmark",
+    "fine-tuning",
+    "alignment",
+    "safety",
+    "interpretability",
+    "quantization",
+    "distillation",
+    "MoE",
+    "multimodal",
+    "vision-language",
+    "Cursor",
+    "Grok",
+    "Claude",
+    "Gemini"
+  ],
+  "ai_handles": [
+    {
+      "handle": "OpenAI",
+      "name": "OpenAI",
+      "org": "OpenAI",
+      "timezone": "PT",
+      "focus": [
+        "LLMs",
+        "research",
+        "products"
+      ]
+    },
+    {
+      "handle": "AnthropicAI",
+      "name": "Anthropic",
+      "org": "Anthropic",
+      "timezone": "PT",
+      "focus": [
+        "Claude",
+        "safety",
+        "LLMs"
+      ]
+    },
+    {
+      "handle": "GoogleDeepMind",
+      "name": "Google DeepMind",
+      "org": "Google",
+      "timezone": "PT",
+      "focus": [
+        "research",
+        "RL",
+        "foundation models"
+      ]
+    },
+    {
+      "handle": "GoogleResearch",
+      "name": "Google Research",
+      "org": "Google",
+      "timezone": "PT",
+      "focus": [
+        "research",
+        "AI",
+        "algorithms"
+      ]
+    },
+    {
+      "handle": "MetaAI",
+      "name": "Meta AI",
+      "org": "Meta",
+      "timezone": "PT",
+      "focus": [
+        "open models",
+        "LLaMA",
+        "research"
+      ]
+    },
+    {
+      "handle": "nvidia",
+      "name": "NVIDIA",
+      "org": "NVIDIA",
+      "timezone": "PT",
+      "focus": [
+        "GPU",
+        "hardware",
+        "CUDA",
+        "inference"
+      ]
+    },
+    {
+      "handle": "MistralAI",
+      "name": "Mistral AI",
+      "org": "Mistral",
+      "timezone": "CET",
+      "focus": [
+        "open models",
+        "LLMs"
+      ]
+    },
+    {
+      "handle": "huggingface",
+      "name": "Hugging Face",
+      "org": "Hugging Face",
+      "timezone": "ET",
+      "focus": [
+        "open models",
+        "datasets",
+        "tooling"
+      ]
+    },
+    {
+      "handle": "karpathy",
+      "name": "Andrej Karpathy",
+      "org": "",
+      "timezone": "PT",
+      "focus": [
+        "LLMs",
+        "training",
+        "education"
+      ]
+    },
+    {
+      "handle": "ylecun",
+      "name": "Yann LeCun",
+      "org": "Meta",
+      "timezone": "ET",
+      "focus": [
+        "deep learning",
+        "research"
+      ]
+    },
+    {
+      "handle": "JeffDean",
+      "name": "Jeff Dean",
+      "org": "Google",
+      "timezone": "PT",
+      "focus": [
+        "systems",
+        "infrastructure",
+        "research"
+      ]
+    },
+    {
+      "handle": "drjimfan",
+      "name": "Jim Fan",
+      "org": "NVIDIA",
+      "timezone": "PT",
+      "focus": [
+        "robotics",
+        "agents",
+        "RL"
+      ]
+    },
+    {
+      "handle": "_akhaliq",
+      "name": "AK",
+      "org": "Hugging Face",
+      "timezone": "ET",
+      "focus": [
+        "papers",
+        "research surfacing"
+      ]
+    },
+    {
+      "handle": "lexfridman",
+      "name": "Lex Fridman",
+      "org": "",
+      "timezone": "ET",
+      "focus": [
+        "AI",
+        "interviews"
+      ]
+    },
+    {
+      "handle": "srush_nlp",
+      "name": "Sasha Rush",
+      "org": "",
+      "timezone": "ET",
+      "focus": [
+        "NLP",
+        "LLMs",
+        "research"
+      ]
+    },
+    {
+      "handle": "cursor_ai",
+      "name": "Cursor",
+      "org": "Cursor",
+      "timezone": "PT",
+      "focus": [
+        "coding agents",
+        "AI tooling"
+      ]
+    }
+  ],
+  "ai_keywords": [
+    "AI",
+    "LLM",
+    "model",
+    "training",
+    "inference",
+    "GPU",
+    "transformer",
+    "paper",
+    "research",
+    "Anthropic",
+    "OpenAI",
+    "xAI",
+    "DeepMind",
+    "Mistral",
+    "neural",
+    "benchmark",
+    "fine-tuning",
+    "RLHF",
+    "RL",
+    "agent",
+    "multimodal",
+    "context",
+    "attention",
+    "KV cache",
+    "quantization",
+    "distillation",
+    "Grok",
+    "Claude",
+    "GPT",
+    "Gemini",
+    "Llama",
+    "reasoning",
+    "o1",
+    "o3",
+    "compute",
+    "CUDA",
+    "kernel",
+    "chip",
+    "Blackwell",
+    "Hopper",
+    "H100",
+    "routing",
+    "MoE",
+    "mixture of experts",
+    "speculative",
+    "throughput",
+    "reinforcement learning",
+    "PPO",
+    "bandit",
+    "RL environment",
+    "world model",
+    "JEPA",
+    "Jev",
+    "decision model",
+    "abduction",
+    "cognitive",
+    "neuroscience",
+    "Kahneman",
+    "dual-process",
+    "harness",
+    "small language model",
+    "on-device",
+    "LoRA",
+    "pretraining",
+    "diffusion language model"
+  ],
+  "skip_domains": [
+    "twitter.com",
+    "x.com",
+    "t.co",
+    "instagram.com",
+    "youtube.com",
+    "youtu.be",
+    "tiktok.com"
+  ],
+  "article_fetch_timeout": 10,
+  "article_max_chars": 60000,
+  "x_cookies_path": "~/.config/markov-thinks-slow/x-cookies.json",
+  "browser_cookies": true,
+  "browser_cookie_timeout": 45,
+  "download_images": true,
+  "image_download_timeout": 8,
+  "bookmarks": {
+    "enabled": true,
+    "max_pages": 5,
+    "count_per_page": 100,
+    "only_new": true,
+    "fetch_linked_articles": true,
+    "graphql_query_id": "iblrFnKr6PZUR-dWpfXG6g",
+    "note": "Private X bookmarks as top-priority Media Zone signal. Id/features auto-discovered (discover_ids.py); graphql_query_id is a fallback only. Written to gitignored raw/twitter/bookmarks/."
+  },
+  "home_timeline": {
+    "enabled": true,
+    "max_pages": 20,
+    "count_per_page": 50,
+    "only_new": true,
+    "fetch_linked_articles": true,
+    "skip_promoted": true,
+    "graphql_query_id": "wp06oo3fRGU4P1sK8rECqQ",
+    "note": "The reader's X home feed for the social-media agent: the Following timeline (HomeLatestTimeline, chronological, everyone you follow) at catch-up depth plus for_you_pages of For You. PRIVATE: gitignored raw/twitter/feed/. GraphQL ids and feature flags are AUTO-DISCOVERED by connectors/twitter/discover_ids.py (cached in .state/graphql_ids.json, refreshed automatically on 400/404); graphql_query_id here is only a last-resort fallback. Auth: auth_token + ct0 session cookies.",
+    "max_pages_cap": 20,
+    "catchup_hours_cap": 24,
+    "for_you_pages": 1,
+    "note_depth": "One deep capture a day (20 pages, about a day and a half of this reader's feed) instead of a capture every 3 hours."
+  },
+  "priority_handles": [
+    "adithya_s_k",
+    "Kautukkundan",
+    "lossfunk",
+    "paraschopra"
+  ]
+}

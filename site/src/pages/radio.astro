@@ -1,0 +1,83 @@
+---
+import Base from '../layouts/Base.astro';
+import wiki from '../data/wiki.json';
+
+const episodes = wiki.podcasts ?? [];
+
+function fmtDate(iso) {
+  // 2026-05-23 → "May 23"
+  const [, m, d] = iso.split('-').map(Number);
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  return `${months[m - 1]} ${d}`;
+}
+---
+
+<Base title="Markov Thinks Slow Radio — markov-thinks-slow" active="radio">
+  <section class="hero">
+    <div class="hero-date">listen on your walk</div>
+    <h1>Markov Thinks Slow Radio</h1>
+    <p class="hero-tagline">
+      A daily ~45 minute podcast on AI research. Generated automatically from the day's digest plus
+      every wiki summary it cross-links plus the social-stream syntheses. Hosts identify 2-4 themes
+      from the day's material and walk through them as one connected story, not a paper-by-paper roundup.
+    </p>
+    {/* After publishing to Spotify, replace SPOTIFY_SHOW_URL with the open.spotify.com/show/<id> URL.
+        Until then leave it as-is; the button will 404 on click. */}
+    <div class="listen-row">
+      <a class="listen-btn listen-btn--spotify" href="#" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 168 168" fill="currentColor" aria-hidden="true">
+          <path d="M83.996.277C37.747.277.253 37.77.253 84.019c0 46.251 37.494 83.741 83.743 83.741 46.254 0 83.744-37.49 83.744-83.741 0-46.246-37.49-83.738-83.745-83.738zm38.404 120.78a5.217 5.217 0 01-7.18 1.73c-19.662-12.01-44.414-14.73-73.564-8.07a5.222 5.222 0 01-6.249-3.93 5.213 5.213 0 013.926-6.25c31.9-7.291 59.263-4.15 81.337 9.34 2.46 1.51 3.24 4.72 1.73 7.18zm10.25-22.805c-1.89 3.075-5.91 4.045-8.98 2.155-22.51-13.839-56.823-17.846-83.448-9.764-3.453 1.043-7.1-.903-8.148-4.35a6.538 6.538 0 014.354-8.143c30.413-9.228 68.222-4.758 94.072 11.127 3.07 1.89 4.04 5.91 2.15 8.976zm.88-23.744c-26.99-16.031-71.52-17.505-97.289-9.684-4.138 1.256-8.514-1.081-9.768-5.219a7.835 7.835 0 015.221-9.771c29.581-8.98 78.756-7.245 109.83 11.202a7.823 7.823 0 012.74 10.733c-2.2 3.722-7.02 4.949-10.73 2.739z"/>
+        </svg>
+        Listen on Spotify
+      </a>
+    </div>
+  </section>
+
+  <section class="atlas-section">
+    <div class="section-marker" style="color:#fbbf24">episodes</div>
+    <h2>{episodes.length} {episodes.length === 1 ? 'episode' : 'episodes'}</h2>
+    <p class="lead">
+      Newest first. Each episode generated the morning after the digest it covers, lagged by one
+      day so the full social-stream window is captured. Audio hosted on GitHub Releases. Also available
+      on Spotify (auto-synced from the RSS feed every few hours).
+    </p>
+
+    <div class="episode-list">
+      {episodes.map((ep) => (
+        <article class="episode-card">
+          <div class="episode-header">
+            <div class="episode-meta">
+              <span class="episode-num">#{ep.episodeNumber ?? '—'}</span>
+              <span class="episode-date">{fmtDate(ep.date)}, 2026</span>
+              {ep.runMin && <span class="episode-runtime">~{ep.runMin} min</span>}
+            </div>
+            <a class="episode-digest-link" href={ep.digestUrl}>Full digest →</a>
+          </div>
+
+          {ep.teaser && <p class="episode-teaser">{ep.teaser}</p>}
+
+          {ep.topics && ep.topics.length > 0 && (
+            <details class="episode-topics">
+              <summary>In this episode ({ep.topics.length})</summary>
+              <ul>
+                {ep.topics.map((t) => <li>{t}</li>)}
+              </ul>
+            </details>
+          )}
+
+          <audio controls preload="none" class="episode-player">
+            <source src={ep.audioUrl} type="audio/mp4" />
+            Your browser does not support audio playback.
+            <a href={ep.audioUrl}>Download MP4 audio</a>
+          </audio>
+        </article>
+      ))}
+    </div>
+
+    {episodes.length === 0 && (
+      <p class="lead" style="color: var(--fg-muted)">
+        No episodes yet. Episodes appear here once the daily cron generates them.
+      </p>
+    )}
+  </section>
+</Base>

@@ -1,0 +1,768 @@
+# markov-thinks-slow Wiki
+
+A self-maintaining AI knowledge base fed daily from papers, blogs, YouTube, HuggingFace, and Twitter.
+Pattern: https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f
+
+---
+
+## 🔒 Secrets policy (read this first — non-negotiable)
+
+**Any credential the user provides — API tokens, OAuth secrets, cookies, private keys — stays on this machine and never leaves it.** This is a hard rule with zero exceptions.
+
+Concretely:
+- **Never** write a token, API key, or secret into any file under version control. Not in `connectors/*/config.json`, not in `CLAUDE.md`, not in scripts, not in commit messages, not even temporarily.
+- Tokens are read from one of: (a) shell environment variables (`HF_TOKEN`, `APIFY_TOKEN`, etc.), (b) macOS Keychain (`security find-generic-password -s <name> -w`), or (c) gitignored config files under `~/.config/markov-thinks-slow/` or `connectors/*/credentials/` (chmod 600).
+- If the user pastes a token into chat, treat it as **compromised** — tell them to rotate it immediately and ask for the rotated value via a safer channel (env var, keychain, or a gitignored local file).
+- `.gitignore` must cover: `.env`, `.env.*`, `*.token`, `*-token`, `*token.txt`, `secrets/`, `*credentials*`, `*credential*.json`, `connectors/*/credentials/`, `~/.config/markov-thinks-slow/`. If a new secret pattern shows up, add it to `.gitignore` before writing the secret to disk.
+- Before every `git add` / `git commit`, scan the diff for things that look like tokens (`hf_`, `sk-`, `ghp_`, `xoxb-`, long base64 strings, etc.). If anything matches, stop and ask the user.
+- **No exfiltration via tools.** Don't fetch from URLs that embed a token in the query string when the page is public. Don't log tokens. Don't echo tokens to stdout / log files / `tee`.
+
+This applies to everything: cron scripts, GitHub Actions, the starter template, future agents. If you are unsure whether something is safe, default to "not safe" and ask the user.
+
+---
+
+## Reader Profile
+
+The reader is **Yaseen**, a senior ML engineer. A private reader note with extra context may be supplied in the run prompt or in `CLAUDE.local.md` (local only, never committed); follow it when present and never quote it in published pages. Two things define what the wiki is for:
+
+- **Mastery goal.** Research-level command of the NLP training stack and of reinforcement learning. RL is the reason the reader entered the field. Deep topics must explain *why* a method works and end with open problems worth working on.
+- **Passion project.** A mathematical model of human reasoning in which thinking and deciding are coupled and happen in concepts (and perhaps images), not tokens. The working idea pairs a fast System 1 decider (Jev-style decision models) with a slow System 2 that reasons over a world model, possibly trained with RL. Anything that bears on this project gets flagged explicitly as such.
+
+Day job: agent harness and model routing, plus inference optimization. Important for work, not the passion.
+
+Everything in the wiki, what gets a Deep Dive, how much explanation goes in, what open problems get flagged, is calibrated to this attention hierarchy:
+
+| Tier | Topics | Digest treatment |
+|------|--------|-----------------|
+| **1 — Core** | **Reinforcement learning** (PPO, actor-critic, bandits, offline and model-based RL; RL for LLMs: RLHF, verifiable rewards, GRPO; RL environments for LLM training: OpenEnv, Hugging Face, Prime Intellect). **Training and fine-tuning stack** (pretraining, fine-tuning and PEFT, post-training and alignment methods, data and curricula, optimizers, distributed training with JAX or DeepSpeed ZeRO). **Models and architectures** (new releases, transformer variants, non-autoregressive and diffusion language models, state-space models, mixture-of-experts, small specialised models such as Kinetic-4B). **Decision models and System 1 / System 2** (Jev and its open clones, RLCD and calibration training, decision heads on existing backbones, fast-decider plus slow-reasoner designs). **World models and machine reasoning** (world models, JEPA, reasoning in concept or image space instead of tokens, abduction and discovery in machines). **Cognition, concepts and decision-making** (the human and biological side: Kahneman's dual-process theory, abduction, concept learning, decision neuroscience, theories of the brain). | Long Deep Dives (4–6 paragraphs). Explain *why* the technique works, not just what. Add a **Research angle** note: open problems, follow-up directions, and where relevant how it bears on the reader's reasoning-model project. |
+| **2 — Work** | **Agent harness and model routing** (harness engineering, LLM and agent routing, orchestration). **Inference and GPU optimization** (quantization, distillation, speculative decoding, FlashAttention, PagedAttention, CUDA kernels, GPU training optimizations, on-device deployment). | Standard Deep Dives (2–4 paragraphs). Flag any intersection with Tier 1. |
+| **3 — Broad horizon** | **Lab and industry watch** (DeepMind, OpenAI, Anthropic, Hugging Face, NVIDIA, Thinking Machines Lab, Prime Intellect, Conscious Engines, Lossfunk). **Interpretability and safety**. **Vision, audio, video**. | Light Industry Pulse mention only. Promote interpretability to a full write-up when it touches how models represent concepts; promote vision/audio/video when it bears on world models or reasoning. |
+| **4 — Low interest** | Funding gossip, policy and regulation, chip supply chain, robotics hardware, 3D reconstruction, product-launch PR | One sentence or skip. |
+
+**When a paper spans tiers**, treat it at the highest applicable tier. **Global View** should actively surface cross-paper patterns in Tier 1 areas. **Looking Ahead** bullets should prioritize falsifiable predictions about Tier 1 open problems.
+
+**Priority accounts.** Posts from `connectors/twitter/config.json:priority_handles` (@adithya_s_k, RL environments at Hugging Face; @Kautukkundan, founder of Conscious Engines; @lossfunk; @paraschopra) are curated signal, treated like the reader's own reposts: always read, with their linked work, and always surfaced, whatever the engagement. The ranker tags them `PRIORITY-ACCOUNT`.
+
+**Opportunities flag.** Whenever any source mentions an open call for researchers or research engineers (a residency, fellowship, sabbatical or similar programme), put it at the very top of that day's digest, directly under the framing quote, as a one-line **Opportunity:** note with the deadline and link. State the call neutrally; never describe the reader's own plans in published pages.
+
+**Cognition sources are low volume by design.** Tier 1 cognition items come mainly from arXiv q-bio.NC (via Kurate), Trends in Cognitive Sciences and The Transmitter. Bare words like "reasoning", "decision" or "concept" are not enough to file an item there; it must be about human or biological cognition.
+
+---
+
+## Architecture
+
+```
+raw/        ← immutable source files (farmers write here, humans drop files here)
+wiki/       ← LLM-owned synthesis (you write everything here)
+  reinforcement-learning/   ← core RL algorithms, RL for LLMs, RL environments
+  training-finetuning/      ← pretraining, fine-tuning, post-training and alignment methods, optimizers, distributed training
+  models-architectures/     ← new models, transformer variants, non-autoregressive / diffusion LMs, SSM, MoE, small specialised models
+  decision-models/          ← Jev and clones, RLCD and calibration, System 1 / System 2 designs
+  world-models-reasoning/   ← world models, JEPA, concept-space reasoning, abduction in machines
+  cognition-decision/       ← dual-process theory, abduction, concept learning, decision neuroscience, theories of the brain
+  agent-harness-routing/    ← harness engineering, LLM and agent routing, orchestration
+  inference-optimization/   ← quantization, distillation, speculative decoding, attention kernels, CUDA, on-device
+  interpretability-safety/  ← interpretability, safety (light)
+  vision-audio-video/       ← multimodal, generative media (light)
+  ai-industry/              ← lab and industry watch, open calls and opportunities
+  social-stream/           ← Twitter/X slot syntheses + daily roll-ups (raw social ingest)
+  media-zone/              ← daily synthesis of Twitter+YouTube+Reddit, topic-clustered
+    YYYY-MM/
+      YYYY-MM-DD.md  ← one Media Zone per digest window; evening refreshes write a live draft of the next one, finalized at the 20:30 cutoff
+  daily-digest/
+    YYYY-MM/
+      YYYY-MM-DD.md  ← one newsletter per day
+  index.md  ← catalog of every wiki page with one-line summaries
+  log.md    ← append-only ingest + lint timeline
+```
+
+`raw/` is the source of truth. Never modify files there. `wiki/` is yours to write, update, and restructure freely.
+
+Images: when a source has architecture diagrams or figures that matter, download them to `raw/assets/` and reference them from summary pages. Read text first, then view referenced images for additional context.
+
+---
+
+## Sources
+
+Farmers pull from these daily:
+
+| Source | Type | Notes |
+|--------|------|-------|
+| HuggingFace Daily Papers | Web/RSS | hf.co/papers — daily ML paper digest, ranked by community upvotes (popularity signal) |
+| **Kurate.org leaderboards** | JSON API | `kurate.org/api/leaderboard?category=cs.AI` (this instance tracks cs.AI, cs.LG and q-bio.NC) — weekly arXiv rankings via 3-LLM tournaments (quality signal, complement to HF). Farmed via `connectors/kurate/farmer.py`. Tracks recurring authors as "rising" candidates for the Twitter handles list. |
+| **alphaxiv.org overviews** | On-demand HTTP | `connectors/alphaxiv/enrich.py <arxiv_id>` — fetches alphaxiv's AI-generated 1500-3000-word structured walkthrough of a paper. Used opportunistically when writing Tier 1 / Tier 2 Deep Dives to ground claims beyond the abstract. Returns empty if the paper has no overview yet (niche papers). 30-day file cache. |
+| YouTube channels | local-cli (yt-dlp) | AI creators curated by user |
+| **AI News** | RSS | TLDR AI (daily), The Decoder (in-depth), VentureBeat AI (industry), The Information (premium intel) |
+| **Research blogs** | RSS | Lilian Weng, Karpathy, Sebastian Raschka, Interconnects AI, SemiAnalysis, Import AI, etc. |
+| **Critical / opinion** | RSS | AI Snake Oil, Marcus on AI, Algorithmic Bridge |
+| Twitter / X | X GraphQL via your session | Read directly from X through the reader's logged-in session (`auth_token` + `ct0` cookies; Nitter was retired 2026-09-27, every public mirror is dead or bot-walled). Three streams: (1) the **Following** timeline (`HomeLatestTimeline`: chronological posts from every account you follow; one 6-page capture reaches back ~11 days, so each run sees the whole feed) plus a thin **For You** slice for out-of-network signal; (2) **your own reposts and quote-posts** from your profile (`UserTweets`), treated as curated signal; (3) **bookmarks**. GraphQL operation ids and feature flags are **auto-discovered** by `connectors/twitter/discover_ids.py` (headless browser with your session, plus a main-bundle scan) and cached in `.state/graphql_ids.json`; any 400/404 triggers rediscovery automatically, so X web-build changes no longer break capture. Linked articles are enriched (up to 10,000 chars), images downloaded to `raw/twitter/images/` (gitignored). If the session expires, every X call reports 401/403 and the collection window flags X as stale in the next digest. Accounts you want covered should be followed on X. |
+| AI Breakfast / Ben's Bites | — | Blocked by Cloudflare — not available via RSS |
+| **Gmail AI newsletters** | Gmail API (read-only) | `raw/gmail/YYYY-MM-DD-newsletters.md` (+ `.json`) — the reader's AI newsletters, **auto-pulled** by `connectors/gmail/farmer.py` several times a day (09:00 morning run + the 18:00/23:00 feed captures) on a rolling timestamp window since the last run, deduped by message id. **No starring needed.** Kept if the sender is on `connectors/gmail/config.json:allow_senders` (curated: Hugging Face daily papers, AI digests, research blogs, vendor updates), OR it is a newsletter (List-Unsubscribe/List-Id header) from a non-blocked domain whose subject+snippet hits ≥2 AI keywords (auto-discovers new subscriptions), OR you starred it. Finance/shopping/jobs domains are on `block_domains`. Routed to the **next unwritten digest's** file, so mail arriving after today's digest lands in tomorrow's. Grouped: paper digests / AI news digests / research blogs / starred / vendor updates. **Private: `raw/gmail/` is gitignored** (the reader's inbox, some paid newsletters); only the synthesis publishes. |
+| **Reddit AI subreddits** | JSON API | `raw/reddit/YYYY-MM-DD-r-<sub>.md` — curated high-signal AI subreddits (LocalLLaMA, MachineLearning [R]/[P], MLScaling, CUDA, LLMDevs, ControlProblem, HPC, reinforcementlearning), farmed via `connectors/reddit/farmer.py`. Community-curated practitioner signal: what actually runs on consumer GPUs, real deployment patterns, scaling-law observations. Per-sub score gates + flair whitelists suppress noise. |
+
+---
+
+## Collection windows: the daily clock (added 2026-09-26)
+
+Every source runs on one clock, so nothing is missed and nothing is counted twice.
+
+- **Digest D covers the 24 hours up to the 20:30 IST cutoff on day D.** In this instance the cutoff is **20:30 IST** (11:00 US-Eastern in summer, 10:00 in winter), so each digest covers roughly late morning to late morning US time, not one whole US day. A US day's story can be split across two digests; say so when continuing a story from the previous digest. The digest carries no coverage/window metadata line.
+- **Windows are defined by capture time, not by filename dates.** `connectors/window/build_window.py` keeps a ledger of when each raw file was first seen and a watermark per closed window. Digest D's inputs are exactly the files first captured between the previous digest's cutoff and D's cutoff, listed in `raw/_windows/D.md` (+ `.json`, gitignored). The digest reads that manifest, not "today's" files.
+- **Late items are never lost.** A farmer that failed, a Mac that slept, or HF adding papers late: the item is captured afterwards and lands in the next window, flagged *late*. Every file belongs to exactly one window; a closed window re-runs identically.
+- **Completeness check.** Before writing, the morning routine builds the manifest, retries any stale source once (Gmail, X, Reddit, YouTube), and rebuilds it. Sources still stale are named as gaps in the digest; their items arrive in the next window.
+- **Per-source fetching is window-aware.** HuggingFace is asked for the list of the US-Eastern day D-1 plus the day before (never the IST date, which returns a re-served older list). RSS uses the window-start timestamp as its floor. X and Gmail capture continuously (09:00-ish morning sweep, 18:00, 21:00, 23:00, 23:30) and are sliced by the window.
+- **After the digest is written the window closes** (`build_window.py --close`), advancing the watermark.
+- **Two podcasts a week, not daily (2026-09-30).** The digest and Media Zone still run every day. The podcast runs only twice, right after that morning's digest: **Wednesday midweek** (the Mon, Tue, Wed digests = US Sunday to Tuesday news) and **Sunday weekly wrap** (Thu to Sun digests = US Wednesday to Saturday as new material, with an explicit call-back to Wednesday's episode). Each digest lands in exactly one episode. A missed Wed/Sun episode is backfilled from the last 7 days; other days never generate one. Routing lives in `connectors/notebooklm/config.json:weekday_schedule` (`focus_prompt_midweek`, `focus_prompt_weekly`).
+- **The Media Zone evening refreshes are a live draft of the NEXT digest** (the open window), with a "Live draft" banner. The 20:30 run finalizes it from the closed window and removes the banner. Today's Media Zone page therefore always matches today's digest.
+
+---
+
+## Ingest
+
+**This instance (read first).**
+- Run every farmer with the project virtualenv: `.venv/bin/python connectors/<name>/farmer.py`. System `python3` has none of the dependencies.
+- **Enabled sources:** X/Twitter, YouTube, RSS, HuggingFace, Kurate (cs.AI, cs.LG, q-bio.NC), alphaxiv enrichment.
+- **Not enabled: Gmail and Reddit** (no credentials) **and LinkedIn** (switched off 2026-10-04, session rejected). Skip every Gmail, Reddit and LinkedIn step below and do not report them as gaps.
+- The "morning digest" run in this document is scheduled at **20:30 IST** here. Read "morning" as "the daily digest run".
+- Also run `.venv/bin/python connectors/rss/farmer.py`, `connectors/huggingface/farmer.py` and `connectors/youtube/farmer.py` in step 0-pre.
+
+When a new file lands in `raw/` (via farmer or manually dropped):
+
+**0-pre. Run all farmers first.** Before doing anything else, run the following in order:
+1. `python3 connectors/gmail/farmer.py` — auto-pulls AI newsletters (since the last run) into `raw/gmail/<next-digest-date>-newsletters.md`
+2. `python3 connectors/twitter/farmer.py` — pulls tweets and retweets into `raw/twitter/`
+3. `python3 connectors/kurate/farmer.py` — pulls Kurate.org weekly leaderboards into `raw/kurate/` (cs.AI + cs.LG, plus rising-author tracking)
+4. `python3 connectors/reddit/farmer.py` — pulls curated AI subreddits into `raw/reddit/` (8 subs, score-gated + flair-filtered, state-deduped)
+
+All four are mandatory. All are idempotent — running them twice is safe. If any fail, note the error and continue with the most recent available file from that source.
+
+**0. Consult the knowledge base first.** Before reading the new source, check what the wiki already knows about its topic area. Read the relevant concept pages (`wiki/<concept>/<concept-name>.md`) and scan the last 5–7 daily digests. This primes your context so you can write in light of prior knowledge, not in a vacuum. Concept pages are the most efficient entry point — they compress prior work into one page.
+
+**0b. Collect ALL raw sources — this is mandatory, not optional.** Before writing any digest, read ALL SIX raw source directories. This is a hard requirement — a digest written without checking all six is incomplete.
+
+**Step 1 — Identify the date range.** If no files exist for the exact digest date, use the most recent available files from each directory. Run `ls raw/gmail/ raw/rss/ raw/huggingface/ raw/twitter/ raw/kurate/ raw/reddit/` to see what's available.
+
+**Step 2 — Read Gmail newsletters (always).** Read `raw/gmail/YYYY-MM-DD-newsletters.md` for the digest date in full (fall back to the most recent `*-newsletters.md`, or legacy `*-starred.md`, if missing). It holds every AI newsletter received since the previous digest, auto-pulled without starring: Hugging Face daily-paper emails, AI Breakfast, AI Weekly, Ken Huang, SemiAnalysis, Pragmatic Engineer, Gary Marcus, Last Week in AI, research blogs, and anything the classifier auto-detected. Some items arrived after yesterday's digest ran, so skip what yesterday already covered. Missing this file means missing every newsletter-only source.
+
+**Step 3 — Read RSS feeds (always).** Read all `raw/rss/YYYY-MM-DD-*.md` files for the target date range. RSS carries The Decoder, TLDR AI, Interconnects AI, SemiAnalysis full posts, Simon Willison, Algorithmic Bridge, Marcus on AI, and others.
+
+**Step 4 — Read HuggingFace papers (always).** Read all `raw/huggingface/YYYY-MM-DD-*.md` files for the target date range.
+
+**Step 5 — Read Twitter/X (always).** Read the X files in the collection-window manifest: the slot files `raw/twitter/YYYY-MM-DD-<slot>.md` (section (a) is the reader's own reposts and quote-posts, read from their profile: treat every repost like starred email, curated signal; the linked article content is the primary source) and the ranked Following-feed captures `raw/twitter/feed/*-ranked.json` (posts from everyone the reader follows, engagement-ranked). The old per-handle AI feed (Nitter) is retired; followed accounts arrive through the Following timeline.
+
+**Step 6 — Read Kurate leaderboards (always).** Find `raw/kurate/YYYY-MM-DD-cs-ai.md` and `raw/kurate/YYYY-MM-DD-cs-lg.md` for the target date. These are weekly arXiv leaderboards ranked by 3-LLM tournaments — quality signal, not popularity. **Cross-source rule (mandatory):** any paper appearing in BOTH today's HuggingFace top AND the current week's Kurate top-20 is HIGH CONVICTION. Surface it as Tier 1 in Deep Dives regardless of topic, and label the entry "cross-source confirmed (HF + Kurate)". Papers that are top-5 on Kurate but missing from HF are "LLM-rated underrated" — flag in Looking Ahead with the ai_rating, kurate score, and a one-line reason to track. Use the inferred `tier=N` line in each Kurate entry to weight space allocation: Tier 1 entries earn Deep Dive coverage; Tier 4 skip. Also read `raw/kurate/YYYY-MM-DD-rising-authors.md` — if any authors crossed threshold, add a "Rising authors from Kurate" sub-section to Looking Ahead naming each author with one of their top papers, and suggest in prose whether to add them to `connectors/twitter/config.json:ai_handles` (you'll need to find the handle manually).
+
+**Step 7 — Read Reddit (always).** Read all `raw/reddit/YYYY-MM-DD-r-*.md` files for the target date (eight subreddits: LocalLLaMA, MachineLearning, MLScaling, CUDA, LLMDevs, ControlProblem, HPC, reinforcementlearning). Each post entry carries a `tier=N` line set from the subreddit's `tier_default`. **Treatment rules:**
+- **LocalLLaMA, MLScaling, CUDA, HPC (tier_default=1)** — practitioner reports on quantization, kernel work, KV cache hacks, scaling-law observations. Posts that confirm/contradict an HF or Kurate paper go in Global View with the prior paper named. Substantive technical posts (a new GGUF quant family, a kernel benchmark, a hardware deep dive) deserve a short Deep Dive or a generous Industry Pulse mention. Skip pure rig-show-off / "look at my 8x4090" posts.
+- **MachineLearning [R]/[P] flair (tier_default=2)** — these usually link to arXiv. If the paper isn't in HF or Kurate today, treat it as an additional research source and ingest it like one (summary page if Tier 1/2, Quick Hit otherwise).
+- **LLMDevs (tier_default=2)** — production deployment patterns. If a post describes a real shipped system (not a tutorial), it informs Industry Pulse or Global View.
+- **ControlProblem (tier_default=2)** — feeds responsible-ai topic. Often opinion, occasionally substantive. Apply the usual filter: is there a concrete claim or just commentary?
+- **reinforcementlearning (tier_default=2)** — RLHF/RLVR adjacent. Cross-references RL papers from HF.
+
+Reddit signal is community-curated practitioner ground truth — what actually runs on consumer hardware, what people actually deploy, what's hype vs real. It's the empirical complement to the paper-heavy HF/Kurate signal. Skip drama, "is it AGI" meta-discussion, and vendor PR even when score-gated through.
+
+Do not start writing the digest until all six sources have been read. If a source directory has no file for the target date, note it explicitly and use the most recent available file from that source.
+
+
+1. Read the source. For papers, read abstract + key sections; for videos, read the transcript; for blogs, read in full.
+2. **Write a summary page** in the appropriate `wiki/<concept>/` subdirectory. Filename: `<YYYY-MM-DD>-<slug>.md`. Include: one-paragraph TL;DR, key findings or claims, **explicit notes on how this relates to prior wiki pages** (confirms, contradicts, extends, or fills a gap), links to related wiki pages, link back to the raw source.
+3. **Update concept pages** — for every AI concept significantly discussed in the source, update or create `wiki/<concept>/<concept-name>.md`. Add what the source contributes: new evidence, a contradiction, a refinement. Note any shift from the prior state of knowledge the concept page recorded.
+4. **Write/update the daily digest** — write to `wiki/daily-digest/YYYY-MM/YYYY-MM-DD.md`. This is a newsletter, not a log. See the Daily Digest section below for the full format.
+5. **Update index.md** — add the new summary page with its one-line description.
+6. **Append to log.md** — format: `## [YYYY-MM-DD] ingest | <title> | <source-type>`
+7. **Push to remote** — after all sources for the day are ingested and the daily digest is in its final state, run `git push origin main`. Do this once at the end of the session, not after every individual ingest.
+
+Ingest one source at a time. A single source may touch 5–15 wiki pages. Always ingest all new raw files before the session ends.
+
+---
+
+## Page types
+
+**Source summaries** (`wiki/<concept>/<date>-<slug>.md`) — one page per paper, video, or post. TL;DR, key points, figures if relevant, link to raw.
+
+**Concept pages** (`wiki/<concept>/<concept-name>.md`) — one page per AI concept (e.g. "Mixture of Experts", "KV Cache", "Chain-of-Thought"). Synthesizes everything ingested so far. Updated every time a new source touches the concept.
+
+**Daily digest** (`wiki/daily-digest/YYYY-MM/YYYY-MM-DD.md`) — one file per day, structured as a newsletter. Written for the reader, not as a log. See the Daily Digest section below for the full format and writing rules.
+
+---
+
+## Knowledge Synthesis — Reading with Memory
+
+The wiki is a living knowledge base, not a collection of daily snapshots. The unique value of markov-thinks-slow over any individual paper or newsletter is **accumulated context**. Every summary page and digest must be written in light of what the wiki already knows — not just what arrived today.
+
+### What to look up before writing
+
+For every incoming source, before writing its summary or the day's digest:
+
+1. **Read the relevant concept pages** — `wiki/<concept>/<concept-name>.md`. This is the most efficient memory lookup: concept pages compress all prior work on a topic into one page. They tell you the prior state of knowledge, the open questions, and which papers established the current baseline.
+2. **Scan recent digests** — the last 5–7 daily digests in `wiki/daily-digest/YYYY-MM/`. Look specifically for "Looking Ahead" bullets or open questions from prior days that today's papers might address. The digest files also carry the narrative thread of how thinking in this area has evolved.
+3. **Read prior summary pages directly** when a prior paper is in the same narrow area (same method family, same benchmark, same problem). Read it before writing about today's paper, not after.
+
+This does not mean reading everything. Concept pages are the entry point. If a concept page flags a prior paper as directly relevant, then go read that summary. Otherwise, the concept page is sufficient context.
+
+### Signals to name explicitly in every digest and summary
+
+These are not optional observations. They are the primary reason this wiki exists. When any of the following are present, name them directly in the text — with paper names, dates, and the specific claim.
+
+**Confirmation — a pattern is building:**
+> "This is the second paper this month (after TIP on 04-16) showing that uniform gradient updates are wasteful. A pattern is forming: the field is converging on selective training."
+
+Never bury a confirmation as "this aligns with prior work." Name the prior paper, give the date, state the shared claim precisely.
+
+**Contradiction — a genuine tension exists:**
+> "AIMO 3 (04-17) argued prompt diversity is a dead end for inference-time scaling. VGF's transport-step approach is a different form of test-time compute — but it hasn't been tested on AIMO's benchmarks. Whether these are compatible claims or genuinely conflicting is unresolved."
+
+When two papers conflict, do not pick a winner. Name both, state the specific point of disagreement, and flag it as open.
+
+**Gap-filling — today's paper solves a prior open problem:**
+> "The 04-18 LongAct Research Angle asked whether saliency profiling could run online during training. VGF sidesteps this by never profiling — it uses gradient flow directly. Whether this fully resolves the LongAct question or just avoids it is worth tracking."
+
+Always trace the explicit thread: this paper addresses the open question that was raised on [date] in [paper/digest].
+
+**Looking Ahead resolution — a prediction comes true (or fails):**
+> "On 04-17, Looking Ahead predicted that a verifier-based approach could close the pass@20 gap that prompt diversity cannot. VGF is not a verifier — but its transport-budget mechanism is the first concrete alternative proposal. Partial resolution."
+
+When today's paper touches a prior prediction, name the prediction, the date it was made, and what today's paper changes about the prediction's status.
+
+**N-of-a-kind — a pattern has now been established:**
+> "This is the third paper this week routing knowledge transfer through a neutral representation layer: BLD (bytes), TESSY (hybrid token sequences), Switch-KD (shared text probability space). Three papers making the same architectural choice in one week is not coincidence — the community has converged on this frame."
+
+The threshold for declaring a pattern: ≥3 papers making the same core claim or architectural choice. When that threshold is crossed, name the pattern, list all three papers, and state what the pattern implies.
+
+### How to write when you have prior context
+
+Use the wiki's prior knowledge, but **carry the context for the reader** instead of assuming they remember every paper from the last 90 days. A reader returning to a digest a month later, or a new reader landing on it for the first time, should follow at 60-70% minimum.
+
+**The rule:** every named paper reference includes a one-clause gloss of its actual claim, the first time it appears in any given section. Not just a paper name and date. The gloss earns the right to use the name.
+
+Do not write:
+> "VGF is the clearest answer yet to a question that LongAct (04-18), PreRL (04-16), and TIP (04-16) all approached differently: where should training concentrate? Those papers worked at the gradient level, the token level, and the pre-train distribution level."
+
+That paragraph fails because a reader who hasn't memorized LongAct, PreRL, and TIP gets four names and no understanding.
+
+Write:
+> "VGF is the clearest answer yet to a question that three earlier papers approached differently. LongAct (04-18) showed that long-context training signal is concentrated in the first 5% of tokens, so the gradient is what matters. PreRL (04-16) argued the question is really about the pre-training data distribution, not the training loop. TIP (04-16) reframed it as a token-weighting problem: most teacher-generated tokens carry no signal and should be skipped. VGF works at a fourth layer, distribution-transport: it asks where probability mass should be moved, not which tokens to weight. It is the most mathematically principled frame of the four."
+
+The second version carries the context. Every paper reference includes the one specific claim that made it matter. A reader meeting LongAct for the first time gets the gist immediately. A reader returning a month later doesn't have to look anything up.
+
+**Apply this in:** TL;DR bullets, Deep Dive opening hooks, Global View, Looking Ahead, and any cross-day reference anywhere. Length is not the constraint; clarity is. Let the digest run longer if it has to.
+
+**The gloss should be specific, not generic.** A bad gloss is "LongAct (the paper about training signal concentration)." A good gloss is "LongAct (the paper that showed long-context gradient signal is concentrated in the first 5% of tokens)." Specific is short and lands the why.
+
+This applies to acronyms too. The first time MoE, RLVR, KV cache, FlashAttention, GRPO, or any other field-specific term appears in a given section, it gets a one-phrase gloss in plain English right next to it. Subsequent mentions in the same section can use the bare term.
+
+### What concept pages are for
+
+Concept pages are the primary memory of the wiki. After every ingest, update them with what the new source added, changed, or contradicted. The concept page is what future-you reads before writing about the next paper in that area — it should tell you the complete prior state of knowledge in one read.
+
+A concept page that has not been updated across ≥3 ingests in its area is a gap. Flag it during lint.
+
+---
+
+## Lint
+
+Run periodically (or on request):
+
+- Flag concept pages with claims contradicted by newer sources
+- Find orphan summary pages with no links to any concept page
+- Identify concepts mentioned in ≥3 sources but lacking their own page
+- Check index.md for missing or stale entries
+- Suggest sources or topics worth investigating next
+
+---
+
+## Daily Digest
+
+The daily digest is the most important output of the wiki. Yaseen reads it first every evening. It must be worth reading on its own — not a log, not a summary table, but a newsletter that makes them *want* to click through.
+
+### Deep Dive enrichment
+
+For each Tier 1 and Tier 2 Deep Dive, before writing prose run `python3 connectors/alphaxiv/enrich.py <arxiv_id>` and read the output if non-empty. The output is alphaxiv.org's AI-generated walkthrough of the paper (typically 1500-3000 words, structured into method / results / implications, with figure references). Use it to ground claims about what the paper actually does — much richer signal than the abstract alone.
+
+Three rules:
+1. **Don't copy alphaxiv's prose.** Write the Deep Dive in markov-thinks-slow's voice. Use the overview as input, not output.
+2. **If the helper returns empty, fall back to the abstract.** Niche papers often have no alphaxiv overview yet; that's fine.
+3. **Disagree with alphaxiv when it's wrong.** AlphaxIv overviews are AI-generated and can misframe a paper. If the abstract or RSS commentary contradicts the overview, trust the abstract.
+
+### Format: `wiki/daily-digest/YYYY-MM/YYYY-MM-DD.md`
+
+The digest is one story in six blocks: **Today's 5 for you** → TL;DR → Deep Dives → Industry Pulse → Global View → Looking Ahead. No "Also today" tail, no source-count footer.
+
+**Today's 5 for you (the triage layer).** The FIRST thing in the digest, above the TL;DR: a 30-second block that *chooses the reader's attention* across BOTH the digest and the day's Media Zone, so they don't have to triage everything themselves. ANCHOR the picks to the reader's Tier 1 attention set (their core topics): most of the 5 should be Tier 1 or a direct Tier 1 intersection. Pick exactly 5 items by: (1) Tier 1 fit (the reader's core topics — highest weight), (2) saved-theme momentum (what they've been bookmarking lately, per the private curation index), (3) cross-source confirmation, (4) actionability over commentary. Render as the `.today3` HTML block (`<div class="today3"><div class="today3-head">🎯 Today's 5 for you</div><ol><li><span class="verb read">Read</span><strong>Item.</strong> what it is + why it's for THIS reader + link.</li>…</ol></div>`); verb badges `read`/`skim`/`track`; CSS in `site/src/styles/global.css`. Opinionated — naming what to skip matters as much as what to read. Reused as the podcast's opening 60 seconds.
+
+```markdown
+# markov-thinks-slow | YYYY-MM-DD
+
+> One-sentence framing of today's sharpest tension, surprise, or theme.
+
+---
+
+## TL;DR
+
+**4-6 bullets. Each bullet ≤25 words. Plain language. No paragraphs.** This is
+the only top-level summary — make it actually scannable. Each bullet names
+ONE substantive thing from today: a paper's main claim, an industry move, or
+a one-line theme. Reader should consume the entire TL;DR in 30 seconds.
+
+Format each bullet with a **bold lead-in** (paper name, company, or theme),
+then the one-line claim in simple English:
+
+- **OPRD**: instead of matching teacher output tokens, match teacher hidden
+  states. Closes student-teacher gap on math benchmarks.
+- **Anthropic ships "When AI builds itself"**: Claude writes 90%+ of their
+  own code, engineers ship 8x more code per quarter.
+- **CLEAR**: ration inference compute across a batch of queries with one
+  shadow price. Up to 3x accuracy when compute is scarce.
+
+What NOT to do in TL;DR:
+- No prose paragraphs of any length. Bullets only.
+- No story arc weaving — that lives in Global View at the bottom of the digest.
+- No paper-to-paper comparisons threading across bullets — keep each bullet
+  self-contained.
+- No nested clauses, no semicolons, no em dashes.
+
+Do not say "Tier 1 paper" or "Tier 2 research" or any tier-code language. The
+tier hierarchy exists to calibrate writer depth allocation. It must not appear
+in reader-facing output. Describe the topic directly: "an efficiency paper on
+KV cache eviction" or "a paper on agent benchmarks."
+
+---
+
+## Deep Dives
+
+The day's substantive papers and posts, structured for skimming. 5-8 items
+typically. Skip changelogs and routine releases — they get one Industry Pulse
+bullet instead, or nothing.
+
+For each item:
+
+### [Title of paper or post]
+
+> [One-line hook stating the most counterintuitive or surprising thing.
+> Self-contained: the reader does not need to read further to get the point.]
+
+**Source:** [HuggingFace / SemiAnalysis / The Decoder / r/LocalLLaMA / etc.]
+**Links:** [Paper](URL) · [Wiki summary](../../<topic>/<slug>.md)
+
+**What is it about?**
+1-2 sentences in plain English. Explain what the work actually is at the level
+a smart non-specialist follows. If the title contains a domain term (KV cache,
+MoE, on-policy distillation, etc.), gloss it inline the first time it appears.
+
+**What problem does it solve?**
+1-2 sentences naming the prior pain point this addresses. "Until now, X. This
+paper changes that by Y."
+
+**What's the core novelty?**
+1-2 sentences naming the specific technical or methodological contribution.
+The one thing that makes the paper non-trivial. Avoid "a novel framework
+that..." — say the actual mechanism.
+
+**Key takeaways**
+- 2-4 short bullets. Each one a self-contained statement of an observed
+  result or claim. Numbers welcome ("3.8x speedup," "passes 62% on benchmark X
+  where prior best was 47%").
+- Each bullet stands alone — readable without surrounding context.
+
+**Gaps in the study**
+1-2 sentences on what is not yet shown. Scaling? Held-out domains? Ablations
+missing? Benchmark artifacts? Be specific, not vague ("they only tested at
+1.3B" beats "limited evaluation").
+
+**Industrial implication**
+1-2 sentences on what changes if this is right. Where does this show up in
+production stacks, in a quarter / six months / a year? Be opinionated; this is
+the section where stance is welcome.
+
+**Diagram (mandatory for any paper with architecture / pipeline / multi-component
+system).** NEVER use ASCII / text-art diagrams; they are banned.
+
+  *Default: a hand-drawn house-style diagram (updated 2026-09-27).* Every
+  diagram follows the Excalidraw look of the reference "What a harness actually
+  is" figure: handwriting font (Virgil), rough pastel boxes, coloured arrows, a
+  title and one-line subtitle above, a short caption inside each box, and a
+  one-line colour legend below. The site renders every ```mermaid block in this
+  hand-drawn look automatically (`look: 'handDrawn'`, Virgil font); you write
+  the structure and follow these rules:
+
+  - **Frame it.** Directly above the block: `<div class="dg-title">Claim-style title</div>`
+    and `<div class="dg-sub">One line saying what to notice.</div>`. Directly
+    below: `<div class="dg-legend">One line saying what the colours mean.</div>`.
+    The title states the point ("The model is the third box, not the whole
+    machine"), not a label ("Architecture").
+  - **Box = name + caption.** Label each node `"Name<br/><small>what it does, 3-6 words</small>"`.
+    Names 1-3 words. Max 7-8 boxes; if it needs more, it is two diagrams.
+  - **Colour by role (Excalidraw palette)**, and colour the important arrows
+    with `linkStyle` to match (green = exit path, amber = loop, red = error path):
+    - `classDef input fill:#d0ebff,stroke:#1971c2,color:#1b1b1b,stroke-width:2px` — inputs, context, data (blue)
+    - `classDef core fill:#e5dbff,stroke:#6741d9,color:#1b1b1b,stroke-width:2px` — the model / core mechanism (purple)
+    - `classDef loop fill:#fff3bf,stroke:#f08c00,color:#1b1b1b,stroke-width:2px` — decisions, gates, routers, loops (amber)
+    - `classDef exit fill:#d3f9d8,stroke:#2f9e44,color:#1b1b1b,stroke-width:2px` — setup, results, outputs, kept items (green)
+    - `classDef err fill:#ffe3e3,stroke:#e03131,color:#1b1b1b,stroke-width:2px` — failures, evicted/clipped items, costs (red)
+  - **Arrow labels: one line, 1-3 words** (`-->|if easy|`). No `<br/>` in arrow labels; the hand-drawn renderer clips them.
+  - **`flowchart LR` (landscape) by default**; `TB` only for genuine fan-out +
+    merge that compresses badly sideways.
+
+  Example:
+
+      <div class="dg-title">Easy queries never reach the big model</div>
+      <div class="dg-sub">The router is the only new box; everything else already existed.</div>
+
+      ```mermaid
+      flowchart LR
+        Q["Query<br/><small>incoming request</small>"] --> R["Router<br/><small>scores difficulty</small>"]
+        R -->|easy| S["Small LM<br/><small>cheap, fast</small>"]
+        R -->|hard| L["Frontier LM<br/><small>expensive, strong</small>"]
+        S --> O["Answer<br/><small>returned to user</small>"]
+        L --> O
+        classDef input fill:#d0ebff,stroke:#1971c2,color:#1b1b1b,stroke-width:2px
+        classDef loop fill:#fff3bf,stroke:#f08c00,color:#1b1b1b,stroke-width:2px
+        classDef core fill:#e5dbff,stroke:#6741d9,color:#1b1b1b,stroke-width:2px
+        classDef exit fill:#d3f9d8,stroke:#2f9e44,color:#1b1b1b,stroke-width:2px
+        class Q input
+        class R loop
+        class S,L core
+        class O exit
+      ```
+
+      <div class="dg-legend">Blue is input, amber is the routing decision, purple is a model, green is the result.</div>
+
+  *Optional extra:* if the paper has a genuinely useful figure, you may ALSO
+  embed it (`raw/assets/YYYY-MM-DD-<slug>-fig1.png`) below the house diagram.
+  The house diagram always comes first.
+
+  If the paper genuinely has no architecture (a benchmark, a survey, a pure
+  empirical study), the diagram block can be skipped entirely. The bar for
+  skipping is high.
+
+→ [Full summary](../../<topic>/<slug>.md)
+
+---
+
+## Industry Pulse
+
+What's happening beyond the lab. Company moves, product launches, funding
+rounds, regulation, policy. Sources: TLDR AI, The Decoder, VentureBeat AI,
+The Information, AI Breakfast, AI Weekly, Last Week in AI (podcast-summary
+newsletters carry dense business news — read the body and extract each distinct
+item), Pragmatic Engineer, SemiAnalysis and other semiconductor newsletters.
+
+This is an **important section, not a throwaway** — give it thorough coverage.
+**Typically 8-14 bullets**, more if the raw sources carry more real signal. Do
+NOT over-compress to 3-5 bullets. **One short sentence per bullet** (≤25 words).
+Lead with the most consequential. Skip pure PR.
+
+- **[Company/Product/Event]** — what happened, in one short sentence ([source](URL)).
+
+**Mandatory funding & startup sub-cluster.** Funding, startups, and M&A are a
+distinct signal worth tracking. Before finishing the section, scan every source
+for: funding rounds (name amount, lead investor, valuation, stage), IPO filings,
+acquisitions/M&A, new company launches, notable hires, and large compute deals.
+Group them under a bold `**Funding, valuations, and compute deals**` sub-heading,
+one bullet each. Never drop a funding round or valuation that appears in the raw
+sources — the dollar figure alone is high-signal.
+
+**Substantive blog essays get more than a bullet.** A standalone argumentative
+essay that makes a real technical or analytical claim earns a Deep Dive or a
+Global View thread on its actual argument, not a one-line mention.
+
+Inline flag any item that intersects research themes from today's Deep Dives.
+
+**IMPORTANT — read the full article bodies, not just headlines.** Before
+moving on to Global View below, re-open each Industry Pulse item's source
+article (already in `raw/gmail/` or `raw/rss/`) and read what they actually
+claim. The next section depends on this — Global View synthesizes WHERE
+industry is moving against WHERE research is moving, and that synthesis is
+only possible if you've actually digested the industry article bodies, not
+just their headlines.
+
+---
+
+## Global View
+
+The synthesis section — renamed from Global View. This is where
+the wiki earns its keep.
+
+**Two mandatory dimensions for every Global View thread:**
+
+1. **Globally-aware.** Pattern-match today against the WHOLE wiki, not just
+   today's papers. Use concept pages (`wiki/<topic>/<concept>.md`) and the
+   last 5-7 daily digests as context. Name the prior paper / date / claim
+   when you connect today to history.
+
+2. **Research × industry cross-synthesis.** Every thread must explicitly weave
+   research findings (today's Deep Dives + prior wiki) AND industry behavior
+   (today's Industry Pulse + recent funding/products from prior digests).
+   Trace where:
+   - Industry decisions prove or disprove a paper's prediction
+   - Products ship a research technique into production
+   - Funding rounds signal market belief in a research direction
+   - Research is outpacing industry adoption (a gap)
+   - Industry is moving where research hasn't caught up (the other gap)
+
+**Format**: 2-3 threads maximum. Each thread is a single prose paragraph,
+4 sentences maximum. Lead the paragraph with the claim, then the evidence.
+Every paper or article named on first mention gets a one-clause gloss of its
+actual claim (per writing rule #10).
+
+If today's batch is genuinely isolated from prior wiki state AND from any
+industry signal, omit this section entirely rather than fabricating threads.
+
+---
+
+## Looking Ahead
+
+Renamed from Looking Ahead. Forward-looking falsifiable predictions only.
+
+**Format**: 2-5 bullets max. Each bullet has three required parts:
+
+1. **The claim** — a specific prediction about what will happen
+2. **The timeframe** — 30 / 60 / 90 days
+3. **The signal** — what concretely to check for ("if X hits N forks on
+   HuggingFace by date Y," "if Anthropic ships a routing product by Q3,"
+   "if any frontier lab publishes Z by month-end")
+
+Example: *"If MiniMax M3's open-weight 1M-context model gets >50 production
+deployments tracked in the LocalLLaMA subreddit by 2026-07-01, the long-context-as-default
+thesis is validated and Claude/GPT pricing will need to adjust within 30 days."*
+
+Bullets are NOT a list of papers to track. They are testable claims.
+
+Prioritize predictions about the deep-interest areas (reinforcement learning, training, architectures,
+decision models, world models, cognition). **Omit the entire section** on days that produced no
+testable predictions — better silence than vague "interesting to watch" filler.
+```
+
+---
+
+### Writing rules
+
+**0. Every item must link to its source.**
+Every Deep Dive, every Industry Pulse bullet, every Quick Hit — include a hyperlink to the original paper, post, or article. No exceptions. Format: `([Source Name](URL))` inline, or `[Paper](URL)` in the Links line for Deep Dives. If the item came from a newsletter that covered a story (e.g. AI Breakfast covering an OpenAI announcement), link to the newsletter post — not a vague attribution. Never write "(Source Name)" without a URL. Never group items by source with a separator header — all items go directly into the section they belong in.
+
+**1. Write simply. Keep every technical term. Never use em dashes.**
+The digest is a lightweight daily read — for Yaseen, and potentially for a public audience too. Use short sentences. One idea per sentence. Active voice. No nested clauses. **Do not use em dashes (—) anywhere in the digest.** Replace them with a period, a comma, or rewrite the sentence so it flows naturally without a break. Em dashes create choppy, AI-sounding prose. Every sentence should read as natural flowing language. When a technical term appears for the first time in a section, give it a one-phrase gloss in plain English right next to it — for example: "KV cache (the memory store that saves previous attention computations so they don't get recomputed)". The term stays. The sentence around it should be easy to follow even for a smart reader outside the subfield. Think: clear, not dumbed down.
+
+Bad: *"The standard approach to on-policy distillation, whereby the student model generates rollouts under teacher supervision at the token level, has been shown to be massively wasteful in terms of learning signal density."*
+Good: *"Standard distillation trains on every token the teacher generates. TIP found that most of those tokens carry no real signal. You only need 10%."*
+
+**2. Link everything directly.**
+Every Deep Dive must include the direct URL to the paper (arxiv) or post in the **Links** line — not just the wiki summary. The reader should be one click from the source without ever leaving the digest.
+
+**3. Show the architecture. Visuals beat prose for system explanations. This is mandatory, not optional.**
+
+Every Deep Dive about a paper that has architecture, a routing flow, a training pipeline, a cache layout, or any multi-component system MUST include a diagram. The diagram comes BEFORE the prose explanation, not after. A reader who only looks at the diagram should understand the mechanism at a high level.
+
+Two acceptable diagram sources, in priority order:
+
+(a) **The house-style hand-drawn diagram is the default** (see (b)); a paper's own figure may be added below it. **Embed the paper's actual figure** as an extra when useful. If the source paper or blog has an architecture/system diagram, download it to `raw/assets/YYYY-MM-DD-<slug>-fig1.png` (or fig2, etc.) and embed it: `![Architecture](../../../raw/assets/YYYY-MM-DD-<slug>-fig1.png)`. For arxiv papers, the figures are usually accessible from the abstract page or the full PDF. Pull the most informative one (typically Figure 1 — the overview / system diagram).
+
+(b) Otherwise **draw the hand-drawn house-style diagram** (Mermaid, framed by title/subtitle/legend, Excalidraw palette) exactly as specified in the Deep Dive format above. Text-art box diagrams are banned.
+
+The diagram is the first thing the reader sees in the Deep Dive body. Then the 6-section prose (What is it about? / What problem...) explains the diagram.
+
+Apply the SAME rule to wiki summary pages. Every summary of a paper with a system / architecture / mechanism gets a diagram at the top of the page, right after the TL;DR paragraph. Pull from the paper's figure, or draw text-based when no figure exists. A summary page with only prose has failed its purpose for any paper where the mechanism matters.
+
+If you genuinely cannot find a figure AND the system is too simple to need a text diagram, skip — but the default should be "include a diagram." The bar for skipping is high: a paper about a benchmark with no architecture (e.g. a new eval dataset) doesn't need a diagram; almost everything else does.
+
+**4. Calibrate depth to the Reader Profile tier.**
+Tier 1 (reinforcement learning, training, architectures,
+decision models, world models, cognition): 4–6 paragraphs, deep on mechanism — not just "latency improved" but *how* (kernel fusion? smarter eviction? speculative decoding?). Always end with a **Research angle** note. Tier 2: 2–4 paragraphs, flag Tier 1 intersections. Tier 3: Quick Hit unless it touches routing or efficiency. Tier 4: one sentence or nothing.
+
+**5. Connect before you summarize.**
+TL;DR and Global View are the unique value of this digest. Any reader can get a summary from the abstract. They can't get synthesis elsewhere. Use text relationship maps when ≥2 papers compose into something bigger than either alone.
+
+**6. Be opinionated and specific.**
+"This is the third paper this month showing that benchmark accuracy doesn't predict deployment robustness — a measurement crisis is forming." That's worth reading. "This paper is interesting" is not. Name the tension, take the position.
+
+**7. Future implications must be falsifiable.**
+Looking Ahead bullets should name a specific claim and a timeframe — "if DSRL generalizes beyond math to open-ended reasoning, it could replace SFT→RLVR by Q3 2026." Not "this is important to watch." Prioritize Tier 1 predictions.
+
+**8. Skip the boring stuff without apology.**
+Datasette changelogs get a sentence. Hype posts get nothing. Tier 4 spatial/3D work gets one Industry Pulse line at most, often skipped. Length is not depth.
+
+**9. Write as a second brain, not a daily reporter.**
+The digest is not a fresh scan of today's papers. It is today's papers read by a system that has already read everything prior. Before writing, consult the relevant concept pages and recent digests. Then write every Deep Dive and the TL;DR as if you know what came before — because you do. When a paper confirms a prior finding, name the prior finding. When it contradicts one, name the contradiction. When it fills a gap that a prior paper opened, draw that thread explicitly. A digest that could have been written without reading any prior wiki pages has failed its core purpose. The reader should finish each digest feeling that the knowledge base got smarter overnight — not just bigger.
+
+**10. The reader does not remember every paper. Carry the context for them.**
+This is the most important rule. The wiki is the memory; the reader is not expected to be. Every time the digest references a prior paper, prior result, or prior concept by name, it must include a one-clause gloss of what that paper actually claimed, right there in the sentence. Not just "the Extrapolation Cliff paper from 05-14" — write "the Extrapolation Cliff paper from 05-14, which found a closed-form threshold above which on-policy distillation collapses." See the "How to write when you have prior context" section above for the worked example.
+
+This applies in: every part of the TL;DR block, every Deep Dive's hook line, Global View (where it matters most), Looking Ahead, and any cross-day reference in any section. Acronyms get the same treatment on first mention in a given section: "MoE (mixture-of-experts, where each token routes through a small subset of specialized sub-networks)" not just "MoE." Length is not the constraint, clarity is. A digest that runs longer because every reference carries its own context is doing the right thing. A digest that name-drops papers and trusts the reader's memory is doing the wrong thing.
+
+**Test your draft against this question:** could a smart tech-literate reader who has not been tracking AI research weekly follow at 60-70% on first read? If no, the digest needs more in-place context.
+
+**11a. Never expose the tier vocabulary in reader-facing output.**
+The Tier 1 / Tier 2 / Tier 3 / Tier 4 hierarchy exists to calibrate the writer's depth allocation. It does NOT appear in the digest's output text. Do not write "this Tier 1 paper" or "skip the Tier 4 stuff" or include a `**Tier:** N` line in Deep Dive headers. Instead describe the topic directly: "an efficiency paper" or "a paper on agent benchmarks" or "a routing paper." A reader picking up the digest cold does not know what the tiers are. They should never need to.
+
+**11b. Twitter retweets with substantive linked content get wiki summary pages.**
+The Twitter farmer captures up to 10K characters of article content for each link in each curated retweet (see Sources table). When that content is a paper or blog post not already covered by today's HuggingFace, RSS, or Kurate, write a wiki summary page for it in the appropriate topic folder. Use the same template as any other source. Twitter is not just a signal layer; it is also a source layer for substance that doesn't appear on HuggingFace.
+
+When an arxiv ID appears in BOTH a Twitter retweet AND today's HuggingFace top, label it "cross-source confirmed via social" in the Deep Dive header. That is a stronger signal than HuggingFace + Kurate alone (which is paper-quality cross-check; social is human-curator cross-check).
+
+
+**12. The digest is the complete squeeze: fold in the Media Zone (added 2026-09-27).**
+The digest is the one place the reader looks for everything that mattered in the window. After writing the Media Zone, go through it and lift every substantive item that is not already in the digest into the digest where it belongs: a paper or technical post becomes a Deep Dive (or a short item in the relevant Deep Dive), an industry/funding/product item becomes an Industry Pulse bullet, and a cross-source pattern goes into Global View. Keep the Media Zone as the social lens; the digest must never be missing substance that only the Media Zone has. Skip only pure chatter, hype and engagement bait.
+
+**13. Deep Dives: slightly simpler language (added 2026-09-27).**
+Deep Dives were reading denser than they need to. Keep every technical term and number, but: prefer short sentences (one idea each), explain the mechanism in plain words before naming it, drop stacked qualifiers and nested clauses, and cut jargon that a smart reader outside the subfield would have to look up twice. Target: a tech-literate reader follows each Deep Dive on the first read without re-reading a sentence. This is a small shift in tone, not a dumbing down.
+
+---
+
+## Media Zone
+
+The Media Zone is the daily synthesis of social and video signal — Twitter, YouTube AI/tech, and substantive Reddit threads — rendered as a curated digest, NOT a raw feed of cards. It is the second daily output the morning cron writes alongside the Daily Digest. Locked-in format as of 2026-06-03.
+
+### Social-media agent — multi-source, engagement-aware
+
+The Media Zone is a **social-media agent**: it reads the reader's actual *feeds* (not just bookmarks) and curates FOR them, offloading the scroll. Three feed sources, all PRIVATE (raw gitignored; only the synthesis publishes, linking public artifacts):
+
+- **X home Following feed** — captured by the Twitter farmer (`capture_home`: the chronological Following timeline plus a thin For You slice) into gitignored `raw/twitter/feed/`, with per-post engagement (likes/RTs/replies/quotes/views + author followers). `connectors/twitter/rank_feed.py` pre-scores it by **reach-normalized engagement** (eng/views, so a small account's high-rate post beats a big account's baseline-viral one) + velocity + topic-tier, with hard grift/off-topic penalties → `…-ranked.json` (candidates + long_tail). The ranking is EVIDENCE; the synthesis applies expert judgment on top. Needs `auth_token` + `ct0` in `~/.config/markov-thinks-slow/x-cookies.json`; `home_timeline.graphql_query_id` in the Twitter config rotates on new X web builds (refresh per the config `note` if HomeTimeline 404s).
+  - **Cadence:** to scan the feed comprehensively you can capture it several times a day (see the optional social-agent cadence in the `automate` skill). The Twitter farmer's `--feed-only` fast path grabs ONLY the home feed (bypassing the public/AI/bookmarks scrape + the slot guard) and writes a **uniquely-named** `{date}-{slot}-{HHMMSS}.json` so captures never clobber each other; `rank_feed.py` ranks EVERY today feed file. **The Media Zone synthesis must read ALL of today's `{date}-*-ranked.json` files and UNION their candidates, deduped by tweet_id** — each capture holds only its newly-seen posts (deduped via `.state/seen_home_timeline.json`), so the union is the whole day's feed with nothing lost.
+  - **Catch-up after a logoff:** if this runs on a laptop that sleeps, the OS scheduler fires only ONE coalesced run on wake for all missed times. So `fetch_home_timeline` is **gap-aware**: it stamps `.state/home_feed_last_capture.json` each run and scales the next run's scan depth to the hours elapsed (base pages at the normal cadence, more when the gap is larger), **hard-capped at `max_pages_cap` pages / `catchup_hours_cap` hours** so a multi-day outage never backfills unbounded — it captures the most recent day and logs the rest skipped. The other farmers are already gap-tolerant by construction (X public scrape hours-lookback, YouTube days-lookback, Reddit/bookmarks state-deduped).
+- **LinkedIn home feed** — `connectors/linkedin/farmer.py`, robust **Playwright** headless scrape (LinkedIn moved the feed to RSC server-actions; let the real client fetch, intercept responses, anchor on the stable `postSlugUrl`). MILD (one load + a few paced scrolls, once daily) to evade bot detection. Contributes **content/author/topic**, NOT engagement (LinkedIn loads counts per-post — hammering = detection risk). `li_at` is memory-only in a running Chrome, so the farmer combines a cached `li_at` + live `JSESSIONID` and self-heals. Gitignored `raw/linkedin/`. Cookie path in `connectors/linkedin/config.json`.
+- **YouTube subscriptions** — `connectors/youtube/farmer.py`, channel **RSS** (stable, no auth/yt-dlp), captures recent videos + views + rating. Gitignored `raw/youtube/`. Seed your channels in `connectors/youtube/channels.json`. FILTER to AI/tech by TITLE (most subs are non-AI).
+
+**X follows US timing.** The AI conversation on X is generated on a **US clock** — activity ramps from US Eastern morning and peaks US midday-to-evening. Treat the X **content day as the US day** and schedule capture to cover US-active hours (~8am–midnight ET), converting that window into your own local time (e.g. for IST/UTC+5:30 it lands roughly early-evening → next morning; shift ~1h with US daylight-saving). Put your frequent `cerebro-feed-capture` and `cerebro-mediazone-refresh` runs inside that window, and let the once-a-morning run wrap the full prior US day (its gap-aware catch-up recovers whatever the machine slept through). Frame the Media Zone's X section as "the US day's conversation" — it is expected that the freshest X signal lands in your evening/overnight and surfaces in the late refreshes and the next morning's digest.
+
+**Ranking = attention-tier fit × engagement-quality × expert judgment.** Engagement is EVIDENCE not verdict: normalize by author/reach, weight velocity, read *who* is engaging, treat high-replies-low-likes as *contested* not important, and kill hype/grift (raw engagement floats "repos that print money" and trading bait). Act like a seasoned researcher in your field reading their own feed: ignore 95%, surface the linked artifacts (papers/repos/talks), be skeptical.
+
+**Cross-source dedup (mandatory).** Cluster by underlying artifact (arxiv id / URL / video id / same claim). A paper on X + a YouTube video about it = ONE card; cross-source presence is a **conviction boost**, not duplication. Engagement shown as **qualitative cue** ("the day's most-shared", "quietly high-signal off a small account"), never raw numbers. Light-but-complete: pulse → ranked cards by topic → "Also crossed your feeds" one-line tail (nothing lost).
+
+Durable knowledge from feed items feeds the **unified topic wiki** (concept pages), same as bookmarks/digest — never a parallel social wiki.
+
+### Primary X source: the reader's SAVED / BOOKMARKED posts
+
+Source the Media Zone's X content first from the reader's **saved (bookmarked) posts on X**, treated as curated intent (like starred email), not just the public timeline of followed accounts. Read each saved post AND every link it references (paper/repo/blog/thread) and pull the actual claim from the reference, not just the tweet text.
+
+**Bookmarks are for knowledge and learning — read the content, don't just tag an angle.** The reader saves posts to *learn* from the paper, repo, or essay they point to. So: (1) read the actual saved content, not the tweet — the farmer enriches every bookmark with up to 10K chars from each linked URL; that body is the primary material. (2) Curate a knowledge feed, digest-like but compressed: explain what the work is, the problem it solves, the core idea, why it matters — tighter than a full Deep Dive but genuinely explanatory, so the reader learns the idea without opening the paper. (3) Any framing/optimization angle is a lens to name where it fits, never forced onto every item.
+
+**Guaranteed inclusion.** Every bookmark captured in a day's raw file MUST appear in that day's Media Zone, framed appropriately. Bookmarks are curated intent (like starred email): they do not compete for space with the general scrape and are never dropped for length. Cluster them if many, but include them all.
+
+**Durable knowledge structure — unify, don't silo.** The daily Media Zone file is the ephemeral social lens. The durable knowledge from saved articles goes into the SAME topic wiki as the digest, never a separate parallel wiki. Knowledge organizes by topic, not by source, so cross-source and cross-time synthesis stay possible. For every substantive saved article (Tier 1/2): (1) create or update the concept page in the appropriate existing topic folder (`wiki/<topic>/<concept>.md`), exactly as a digest source would, so bookmark-derived material and digest papers reinforce ONE concept page; (2) tag bookmark-derived contributions with generic provenance ("surfaced via saved reading") on public pages, citing the underlying paper/source, without enumerating the reader's exact saved list; (3) append the enumerated items to a private, gitignored curation index (`raw/twitter/bookmarks/CURATION-INDEX.md`) that tracks what was saved and the running theme tally. Do NOT create a `wiki/media-zone/<topic>/` parallel knowledge tree.
+
+Capability note: the Twitter farmer captures the reader's private **bookmarks timeline** directly via X's GraphQL `Bookmarks` operation (`fetch_bookmarks()` in `connectors/twitter/farmer.py`), gated on X session cookies at `~/.config/markov-thinks-slow/x-cookies.json` (gitignored, chmod 600, user-supplied — needs `auth_token` + `ct0`). Each run pulls only newly-saved posts (deduped in `.state/seen_bookmarks.json`), enriches every linked article, and — because bookmarks are private and your wiki repo may be public — writes them to the **gitignored** `raw/twitter/bookmarks/` folder (NOT the shared `raw/twitter/*.md|json`), so your private saves never enter git. Only the local Media Zone synthesis reads them. It fails safe: if cookies are missing/expired or X rotated the `bookmarks.graphql_query_id` (config), it logs the reason and returns empty — never pretending bookmarks were read. If a day's bookmarks folder is empty AND the log shows an auth/query-id failure, note that in the Media Zone rather than implying the reader saved nothing.
+
+### Originals first: reposts, quotes and X articles
+
+The farmer stores the substance, not the wrapper. Write from the substance.
+
+- **Reposts are stored as the original post.** A feed item with `reposted_by` set is the full original (text, links, images, engagement); the reposter is only context. Credit and link the original author. A repost by a priority account still counts as priority.
+- **Quotes carry the quoted post in-line.** The text ends with `[Quoting @handle: ...]` holding the quoted post in full, and its links, images and article are merged in. The quoted post is usually the main signal; the quoting post is commentary on top of it.
+- **X Articles are read in full.** An entry in `articles` whose content starts with `[X Article]` is the complete body of a native X long-form article, attached to the post, the quoted post or the original of a repost. Treat the article as the primary source and write it up like a blog post or paper. The post that shared it is secondary.
+- **Linked and parent posts.** Content starting with `[Linked X post by @handle]` is another X post this one links to, or, for a saved reply, the post it replies to.
+- **Coverage repeats across days.** The same original often resurfaces through new reposts. If the wiki already covered it, do not write it up again: at most note what the new commentary adds.
+
+### Framing lens
+
+Frame Media Zone items through two lenses, and name the one that applies. **Mastery:** what would a working researcher in RL or training take from this (the mechanism, the open problem, what is worth reproducing)? **The reasoning project:** does this bear on a System 1 decider, a concept-space System 2, world models, or how humans actually reason and decide? Apply a lens only where it genuinely fits; never force it. No fixed signature line.
+
+### Why this exists
+
+Without synthesis, the Media Zone collapses into a dumping ground of thumbnails and tweet cards. The reader scrolls, gets fatigued, and skips. With synthesis, the reader gets one paragraph naming what mattered on social today, then topic clusters that fuse a saved post, its linked reference, a video, and a Reddit thread into one coherent picture per topic.
+
+### Format: `wiki/media-zone/YYYY-MM/YYYY-MM-DD.md`
+
+The Media Zone synthesis is written by the morning cron in the same Claude call as the daily digest. It is a separate file so the Astro site can render it under its own tab.
+
+**Format rule — two treatments by source.** (A) **Saved posts / bookmarks (the knowledge backbone): digest-like but compressed.** For each saved article, read its enriched content and write a compressed Deep Dive — what the work is, the problem it solves, the core idea, why it matters — shorter than a full daily-digest Deep Dive but genuinely explanatory, so a reader learns the idea without opening the paper. (B) **Everything else (general scrape, YouTube, Reddit): compact-explanatory.** Each cluster is 3-5 compact bullets (~20-40 words) that briefly explain the item and name a framing angle where it fits. Thumbnails and link rows are centered via HTML wrappers so the page reads like a scrollable feed.
+
+**Visual card feed.** The Media Zone renders as a scrollable card feed, not a plain list. Render substantive items with a visual as HTML cards inside `<div class="mz-feed">…</div>` grids: `<div class="mz-card">` (add class `video` for videos) → `<a class="mz-card-thumb"><img referrerpolicy="no-referrer" loading="lazy"></a>` → `<div class="mz-card-body">` with `<span class="mz-card-badge">`, `<h4>` title, a 3-5 sentence high-level blurb `<p>` (what it is + why it matters, not a one-liner), and `<div class="mz-card-foot"><a>link</a></div>`. Card CSS lives in `site/src/styles/global.css`. Thumbnails come from the bookmark data: X articles carry a cover image (`article.cover_media.media_info.original_img_url`), native X videos carry a poster (`extended_entities.media[].media_url_https`); both hotlink from `pbs.twimg.com`. Add a mermaid diagram (landscape, colored classDef) for the dominant cluster's anchor concept.
+
+```markdown
+# Media Zone | YYYY-MM-DD
+
+> One-line framing of what mattered in social and video signal today.
+
+## Today's signal
+
+- Dominant story: [one-line claim naming the topic + best evidence]
+- Pattern: [cross-source convergence or divergence in one line]
+- Counter-signal: [practitioner pushback or skeptical thread, one line]
+- Quiet area: [what's missing today, one line]
+- 4-6 bullets total, ≤20 words each. Be opinionated, not neutral.
+
+## RL, training, architectures, decision models, world models, cognition
+
+### [Cluster name — what unifies the items]
+
+- Crisp bullet: the key claim of the cluster (≤15 words)
+- Crisp bullet: a specific number, quote, or detail
+- Crisp bullet: cross-source confirmation or pushback
+- (optional) Crisp bullet: a practical gotcha or open question
+- 3-5 bullets max per cluster.
+
+<div class="mz-thumbs">
+
+[![Title](https://i.ytimg.com/vi/<id>/hqdefault.jpg)](https://youtube.com/watch?v=<id>)
+
+</div>
+
+<div class="mz-links">
+
+[@handle1](https://x.com/...) · [@handle2](https://x.com/...) · [r/sub thread](https://reddit.com/...)
+
+</div>
+
+## Harness, routing, inference optimization
+(same format)
+
+## Multimodal / vision / audio
+(same format — often empty, omit the section if so)
+
+## Industry and business
+(same format — funding rounds, product launches, hiring, policy)
+
+## Practitioner ground truth
+(Reddit-heavy section — what r/LocalLLaMA, r/MachineLearning, r/CUDA users
+actually reported running. Omit if no substantive Reddit content today.)
+```
+
+### Section order (by attention tier)
+
+1. Today's signal (always)
+2. RL / training / architectures / decision models / world models / cognition (Tier 1 topics)
+3. Harness / routing / inference optimization (Tier 2)
+4. Multimodal / vision / audio (Tier 3, often skipped)
+5. Industry and business
+6. Practitioner ground truth (Reddit-heavy, often skipped)
+
+Omit any section that has nothing substantive that day. Empty sections are worse than no section.
+
+### Cluster rules
+
+- **Cross-source preferred.** A "cluster" is at least 2 items, ideally from different sources (tweet + video + Reddit). Solo items can go in a cluster if they're substantive; otherwise they belong in Industry & Business as a one-liner or are dropped.
+- **Bullets, never prose paragraphs.** 3-5 bullets per cluster, ≤15 words each. The reader should consume a cluster in 10-15 seconds of scroll, not read a paragraph.
+- **YouTube thumbnails wrapped in `<div class="mz-thumbs">`.** This centers them on the page. Use `[![alt](https://i.ytimg.com/vi/<id>/hqdefault.jpg)](https://youtube.com/watch?v=<id>)` inside the wrapper.
+- **Link rows wrapped in `<div class="mz-links">`.** Centers the link strip below the thumbnail. Use `·` separators.
+- **Tweet links go to x.com,** not nitter (convert nitter→x.com in the link).
+- **Reddit linked when it adds practitioner color** that the tweets/videos don't.
+- **Attention tier discipline.** The Tier 1 topics get the most clusters. Multimodal gets a single small cluster only if there's a real story. Cluster ordering inside a section: cross-source-confirmed clusters first, then by item count, then by recency.
+
+### What does NOT belong in Media Zone
+
+- **Pure papers.** Those go in the Daily Digest's Deep Dives. Media Zone clusters can MENTION the paper as the topic, but the synthesis is about how social + video talked about it, not the paper's contribution.
+- **Funding rounds with no social or video signal.** Those are pure Industry Pulse in the Daily Digest.
+- **Solo tweets with no cluster and no substance.** Drop them.
+- **Personal / off-topic tweets from AI handles.** "Office for the day" gets cut.
+
+### Voice & length
+
+- 3-5 short bullets per cluster (≤15 words each). Cognitively light. Reader scrolls, skims headers, only stops on clusters they care about.
+- Same clarity rule as the daily digest: every paper or technical term gets a one-clause gloss on first mention.
+- No em dashes (writing rule #1 applies).
+- Total read time target: **2-3 minutes** for the full Media Zone. If it takes longer, the bullets are too long.
+
+### Cadence
+
+- Written every day, including Sundays. The Daily Digest skip-day rules do NOT apply — social signal on a Sunday is its own pattern worth capturing.
+- If a day has genuinely no substantive social/video signal, the file is still written with just the "Today's signal" paragraph noting the silence.
+
+---
+
+## Conventions
+
+- Dates: `YYYY-MM-DD` everywhere
+- Filenames: lowercase, hyphens, no spaces
+- Internal links: relative markdown links (`../agentic-systems/tool-calling.md`)
+- Source attribution: every summary page links to its raw file
+- log.md entries start with `## [YYYY-MM-DD]` for easy grep

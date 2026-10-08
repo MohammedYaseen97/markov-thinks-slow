@@ -1,0 +1,29 @@
+# RSS feeds to follow. One URL per line. Lines starting with # are comments.
+# Run: python connectors/rss/farmer.py
+
+# Labs
+https://deepmind.google/blog/rss.xml
+https://openai.com/news/rss.xml
+https://huggingface.co/blog/feed.xml
+https://developer.nvidia.com/blog/feed
+https://thinkingmachines.ai/blog/index.xml
+https://bair.berkeley.edu/blog/feed.xml
+https://letters.lossfunk.com/feed
+
+# Research blogs
+https://lilianweng.github.io/index.xml
+https://karpathy.github.io/feed.xml
+https://magazine.sebastianraschka.com/feed
+https://www.interconnects.ai/feed
+https://importai.substack.com/feed
+https://simonwillison.net/atom/everything/
+https://newsletter.ruder.io/feed
+
+# AI news
+https://the-decoder.com/feed/
+https://tldr.tech/api/rss/ai
+https://lastweekin.ai/feed
+
+# Cognitive science and neuroscience
+https://www.cell.com/trends/cognitive-sciences/current.rss
+https://www.thetransmitter.org/feed/

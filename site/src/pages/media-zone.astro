@@ -1,0 +1,48 @@
+---
+import Base from '../layouts/Base.astro';
+import wiki from '../data/wiki.json';
+
+const syntheses = (wiki as any).mediaZoneSyntheses ?? [];
+const today = syntheses[0] ?? null;
+const past  = syntheses.slice(1, 8);  // up to 7 prior days
+
+function fmtFullDate(iso: string) {
+  if (!iso) return '';
+  const d = new Date(iso + 'T00:00:00Z');
+  return d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', timeZone: 'UTC' });
+}
+---
+
+<Base title="Media Zone — markov-thinks-slow" active="media-zone">
+  <section class="hero">
+    <div class="hero-date">{today ? fmtFullDate(today.date) : 'no synthesis yet'}</div>
+    <h1>Media Zone</h1>
+  </section>
+
+  {today ? (
+    <article class="mz-today digest-content" set:html={today.html} />
+  ) : (
+    <p class="lead" style="color: var(--fg-muted)">
+      No Media Zone synthesis yet. The morning cron writes one each day at
+      <code>wiki/media-zone/YYYY-MM/YYYY-MM-DD.md</code>.
+    </p>
+  )}
+
+  {past.length > 0 && (
+    <section class="mz-past">
+      <h2 class="mz-past-heading">Earlier this week</h2>
+      <div class="mz-past-list">
+        {past.map((s: any) => (
+          <details class="mz-past-day">
+            <summary class="mz-past-summary">
+              <span class="mz-past-date">{fmtFullDate(s.date)}</span>
+              {s.framing && <span class="mz-past-framing">{s.framing}</span>}
+              <span class="mz-past-arrow">▾</span>
+            </summary>
+            <div class="mz-past-content digest-content" set:html={s.html} />
+          </details>
+        ))}
+      </div>
+    </section>
+  )}
+</Base>
