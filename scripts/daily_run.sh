@@ -4,7 +4,19 @@
 REPO="$HOME/markov-thinks-slow"; cd "$REPO" || exit 1
 export PATH="$HOME/.local/bin:$PATH"
 D="${1:-$(TZ=Asia/Kolkata date +%Y-%m-%d)}"; YM="${D:0:7}"
-NBM=$(.venv/bin/python -c "import json,glob;print(sum(len((lambda d:d if isinstance(d,list) else d.get('bookmarks',[]))(json.load(open(f)))) for f in glob.glob('raw/twitter/bookmarks/$D-*.json')))")
+NBM=$(.venv/bin/python -c "
+import json,os
+n=0
+try:
+    w=json.load(open('raw/_windows/$D.json'))['files']
+    items=[f for v in w.values() for f in v] if isinstance(w,dict) else w
+    for f in items:
+        p=f if isinstance(f,str) else (f.get('path') or f.get('file') or '')
+        p=p[:-3]+'.json' if p.endswith('.md') else p
+        if '/bookmarks/' in p and p.endswith('.json') and os.path.exists(p):
+            d=json.load(open(p)); n+=len(d if isinstance(d,list) else d.get('bookmarks',[]))
+except Exception: pass
+print(n)")
 PROMPT=$(sed -e "s/__DATE__/$D/g" -e "s#__YM__#$YM#g" -e "s/__NBM__/$NBM/g" scripts/run_prompt.template.md)
 # Private reader note: local only, shapes selection, never quoted in output.
 [ -f CLAUDE.local.md ] && PROMPT="$PROMPT

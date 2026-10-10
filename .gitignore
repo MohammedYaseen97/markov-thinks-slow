@@ -61,3 +61,4 @@ connectors/twitter/.state/
 CLAUDE.local.md
 *.local.md
 /.state/
+.private-terms.local

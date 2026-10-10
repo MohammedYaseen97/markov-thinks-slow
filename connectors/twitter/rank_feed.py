@@ -399,14 +399,25 @@ def write_day_union(date, files, conv, affinity):
 
 
 def main():
-    args = [a for a in sys.argv[1:] if not a.startswith("--")]
+    argv = sys.argv[1:]
+    since = None
+    if "--since" in argv:                       # union every capture from this date up to <date>
+        i = argv.index("--since")
+        since = argv[i + 1] if i + 1 < len(argv) else None
+        del argv[i:i + 2]
+    args = [a for a in argv if not a.startswith("--")]
     date = args[0] if args else (datetime.now(timezone.utc) + timedelta(hours=5, minutes=30)).strftime("%Y-%m-%d")
     today = feed_files_for(date)
-    if not today:
-        print("No feed file found for", date, "in", FEED_DIR)
+    span = today
+    if since and since < date:
+        days = (datetime.strptime(date, "%Y-%m-%d") - datetime.strptime(since, "%Y-%m-%d")).days
+        span = feed_files_for(date, days_back=days)
+    if not span:
+        print("No feed file found for", since or date, "to", date, "in", FEED_DIR)
         return 1
     # Convergence is judged over the last 3 days of captures, not one file.
-    pool = [p for f in feed_files_for(date, days_back=2) for p in _load_posts(f)]
+    pool_days = max(2, (datetime.strptime(date, "%Y-%m-%d") - datetime.strptime(since, "%Y-%m-%d")).days) if since else 2
+    pool = [p for f in feed_files_for(date, days_back=pool_days) for p in _load_posts(f)]
     conv = build_convergence(pool)
     affinity = build_affinity()
     total = 0
@@ -415,7 +426,7 @@ def main():
             total += _rank_one(path, conv, affinity)
         except Exception as ex:
             print(f"  rank error on {path.name}: {ex}")
-    write_day_union(date, today, conv, affinity)
+    write_day_union(date, span, conv, affinity)   # one ranked list for everything since the last digest
     print(f"\nRanked {len(today)} feed file(s) for {date} | {total} candidates "
           f"| {len(affinity)} saved authors | {len(pool)} posts in the convergence pool.")
     return 0
