@@ -60,3 +60,4 @@ connectors/twitter/.state/
 # Private reader note
 CLAUDE.local.md
 *.local.md
+/.state/

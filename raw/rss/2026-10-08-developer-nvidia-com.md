@@ -11,9 +11,9 @@ entry_count: 1
 
 ---
 
-## 1. The Machines that Make the Machines
+## 1. Building Reliable Data Analytics Agents: Lessons from the KDD Cup
 
-**Published:** 2026-10-07 18:21 UTC  
-**Link:** [https://developer.nvidia.com/blog/the-machines-that-make-the-machines/](https://developer.nvidia.com/blog/the-machines-that-make-the-machines/)
+**Published:** 2026-10-08 18:30 UTC  
+**Link:** [https://developer.nvidia.com/blog/building-reliable-data-analytics-agents-lessons-from-the-kdd-cup/](https://developer.nvidia.com/blog/building-reliable-data-analytics-agents-lessons-from-the-kdd-cup/)
 
-How we taught robots to assemble GB300 tester trays and what it taught us about robot learning, mechanical intelligence, and good old-fashioned engineering The...
+The NVIDIA KGMON team placed second in the KDD Cup 2026 Data Agents competition with a system built around a simple idea of making an agent's harness smaller,...

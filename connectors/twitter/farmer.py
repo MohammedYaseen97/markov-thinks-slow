@@ -1450,7 +1450,8 @@ print(f"  {len(bookmarks_all)} bookmarks fetched | {len(bookmarks)} new (unseen)
 if bookmarks:
     combined_bm = list(seen_bm_ids) + [t["tweet_id"] for t in bookmarks_all if t.get("tweet_id")]
     seen_bm_ids = set(combined_bm[-2000:])
-    SEEN_BM_PATH.write_text(json.dumps(sorted(seen_bm_ids), indent=2))
+    # NOT saved here: the seen-list is written only after the bookmarks file is on
+    # disk (end of the run), so an interrupted run can never lose saved posts.
 
 # 3b. Home timeline (Following feed) for the social-media agent. Deduped by tweet
 #     id across runs so each run surfaces only newly-seen feed posts.
@@ -1473,7 +1474,7 @@ print(f"  {len(home_all)} feed posts fetched | {len(home_feed)} new (unseen)")
 if home_feed:
     combined_ht = list(seen_ht_ids) + [t["tweet_id"] for t in home_all if t.get("tweet_id")]
     seen_ht_ids = set(combined_ht[-4000:])
-    SEEN_HT_PATH.write_text(json.dumps(sorted(seen_ht_ids), indent=2))
+    pass   # seen-list is written after the feed file is on disk (end of the run)
 
 # 4. Fetch article content
 print("\nFetching article content...")
@@ -1682,6 +1683,8 @@ bm_json = {
 if bm_json_path:
     bm_json_path.write_text(json.dumps(bm_json, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"Wrote {bm_md_path} + sidecar ({len(bookmarks)} bookmarks, PRIVATE/gitignored)")
+# Bookmarks are on disk (or there were none new): now it is safe to mark them seen.
+SEEN_BM_PATH.write_text(json.dumps(sorted(seen_bm_ids), indent=2))
 
 # ── Home-feed sidecar (PRIVATE — gitignored) ────────────────────────────────────
 #
@@ -1762,4 +1765,5 @@ for t in home_feed:
                 fm.append(a["content"][:1200])
     fm += ["", "---", ""]
 feed_md_path.write_text("\n".join(fm), encoding="utf-8")
+SEEN_HT_PATH.write_text(json.dumps(sorted(seen_ht_ids), indent=2))   # feed is on disk: safe to mark seen
 print(f"Wrote {feed_md_path} + sidecar ({len(home_feed)} feed posts, PRIVATE/gitignored)")
