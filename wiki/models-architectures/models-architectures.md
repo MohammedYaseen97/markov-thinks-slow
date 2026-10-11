@@ -6,7 +6,7 @@ Scope: New model releases, transformer variants, non-autoregressive and diffusio
 
 ## Current state of knowledge
 
-*Last updated 2026-10-09. Two digests feed this page: [10-04](../daily-digest/2026-10/2026-10-04.md) and [10-09](../daily-digest/2026-10/2026-10-09.md).*
+*Last updated 2026-10-11. Three digests feed this page: [10-04](../daily-digest/2026-10/2026-10-04.md), [10-09](../daily-digest/2026-10/2026-10-09.md) and [10-11](../daily-digest/2026-10/2026-10-11.md). The 10-11 window added only light items (section 5).*
 
 ### 1. Looped models (well past a pattern)
 
@@ -37,6 +37,15 @@ ALoDLM's gate decides whether more thought is worth it, and it is trained jointl
 ### 4. Releases noted
 
 JetBrains Mellum2.1 (a 12B mixture-of-experts coding model, crediting scaled RL post-training), Claude Haiku 5.5 and the GPT-6 rollout in ChatGPT are recorded in the 10-09 Industry Pulse.
+
+### 5. Light additions from the 10-11 window (posts and titles only)
+
+Nothing on architectures was read in depth in the [10-11 digest](../daily-digest/2026-10/2026-10-11.md). Noted for follow-up:
+
+- **Diffusion language models, post-training and decoding.** DiPOD ("Diffusion Policy Optimization without Drifting Apart") claims stable post-training for diffusion language models, with Sudoku rising from 22% to 97% from a one-line change. Mosaic is a constrained-decoding framework for diffusion language models aimed at function calling. Both are posts only. They bear on section 2: a diffusion model that matches its autoregressive base still needs RL post-training and structured output to be usable in agents.
+- **Loops.** HuggingFace lists "Scaling to Tens of Thousands of Test-Time Iterations with Loop-Native Attention Residuals" (arXiv 2610.11570) and "One Block, Multiple Depths: Recurrent Vision Transformers with Depth-Programmed Experts" (arXiv 2610.12448). Titles only.
+- **State-space models.** Cerberus applies a bidirectional Mamba (Hydra) to long-sequence genomic prediction at higher nucleotide resolution. Post only.
+- **A caution.** One post warns that engram or n-gram memory can markedly amplify overfitting when data repeats.
 
 ## Open questions
 

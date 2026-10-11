@@ -3564,5 +3564,453 @@
     ],
     "first_seen": "2026-W41",
     "last_seen": "2026-W41"
+  },
+  "Minhao Fan": {
+    "appearances": [
+      {
+        "week": "2026-W41",
+        "category": "cs.AI",
+        "rank": 1,
+        "arxiv_id": "2610.11231v1",
+        "title": "Harness Compilation: Which Decisions Should a Small Vision-Language Model Keep?",
+        "ai_rating": 6.0
+      }
+    ],
+    "first_seen": "2026-W41",
+    "last_seen": "2026-W41"
+  },
+  "Yinyi Liu": {
+    "appearances": [
+      {
+        "week": "2026-W41",
+        "category": "cs.AI",
+        "rank": 1,
+        "arxiv_id": "2610.11231v1",
+        "title": "Harness Compilation: Which Decisions Should a Small Vision-Language Model Keep?",
+        "ai_rating": 6.0
+      }
+    ],
+    "first_seen": "2026-W41",
+    "last_seen": "2026-W41"
+  },
+  "Jiayu Zhao": {
+    "appearances": [
+      {
+        "week": "2026-W41",
+        "category": "cs.AI",
+        "rank": 1,
+        "arxiv_id": "2610.11231v1",
+        "title": "Harness Compilation: Which Decisions Should a Small Vision-Language Model Keep?",
+        "ai_rating": 6.0
+      }
+    ],
+    "first_seen": "2026-W41",
+    "last_seen": "2026-W41"
+  },
+  "Zihan Teng": {
+    "appearances": [
+      {
+        "week": "2026-W41",
+        "category": "cs.AI",
+        "rank": 1,
+        "arxiv_id": "2610.11231v1",
+        "title": "Harness Compilation: Which Decisions Should a Small Vision-Language Model Keep?",
+        "ai_rating": 6.0
+      }
+    ],
+    "first_seen": "2026-W41",
+    "last_seen": "2026-W41"
+  },
+  "Song Chen": {
+    "appearances": [
+      {
+        "week": "2026-W41",
+        "category": "cs.AI",
+        "rank": 1,
+        "arxiv_id": "2610.11231v1",
+        "title": "Harness Compilation: Which Decisions Should a Small Vision-Language Model Keep?",
+        "ai_rating": 6.0
+      }
+    ],
+    "first_seen": "2026-W41",
+    "last_seen": "2026-W41"
+  },
+  "Weichen Liu": {
+    "appearances": [
+      {
+        "week": "2026-W41",
+        "category": "cs.AI",
+        "rank": 1,
+        "arxiv_id": "2610.11231v1",
+        "title": "Harness Compilation: Which Decisions Should a Small Vision-Language Model Keep?",
+        "ai_rating": 6.0
+      }
+    ],
+    "first_seen": "2026-W41",
+    "last_seen": "2026-W41"
+  },
+  "Zehuan Chen": {
+    "appearances": [
+      {
+        "week": "2026-W41",
+        "category": "cs.AI",
+        "rank": 8,
+        "arxiv_id": "2610.11294v1",
+        "title": "ORDO: Operation-level Round-aware Dynamic Ordering for MIP Presolve",
+        "ai_rating": 5.0
+      }
+    ],
+    "first_seen": "2026-W41",
+    "last_seen": "2026-W41"
+  },
+  "Chunhe Song": {
+    "appearances": [
+      {
+        "week": "2026-W41",
+        "category": "cs.AI",
+        "rank": 8,
+        "arxiv_id": "2610.11294v1",
+        "title": "ORDO: Operation-level Round-aware Dynamic Ordering for MIP Presolve",
+        "ai_rating": 5.0
+      }
+    ],
+    "first_seen": "2026-W41",
+    "last_seen": "2026-W41"
+  },
+  "Christopher M. Stewart": {
+    "appearances": [
+      {
+        "week": "2026-W41",
+        "category": "cs.AI",
+        "rank": 9,
+        "arxiv_id": "2610.12409v1",
+        "title": "Searching for \"Harmful Refusal\": A Psychometric Audit of an AI Safety Benchmark",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W41",
+    "last_seen": "2026-W41"
+  },
+  "Preston Botter": {
+    "appearances": [
+      {
+        "week": "2026-W41",
+        "category": "cs.AI",
+        "rank": 9,
+        "arxiv_id": "2610.12409v1",
+        "title": "Searching for \"Harmful Refusal\": A Psychometric Audit of an AI Safety Benchmark",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W41",
+    "last_seen": "2026-W41"
+  },
+  "Natalie Sarabosing": {
+    "appearances": [
+      {
+        "week": "2026-W41",
+        "category": "cs.AI",
+        "rank": 9,
+        "arxiv_id": "2610.12409v1",
+        "title": "Searching for \"Harmful Refusal\": A Psychometric Audit of an AI Safety Benchmark",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W41",
+    "last_seen": "2026-W41"
+  },
+  "Muye Zhang": {
+    "appearances": [
+      {
+        "week": "2026-W41",
+        "category": "cs.AI",
+        "rank": 9,
+        "arxiv_id": "2610.12409v1",
+        "title": "Searching for \"Harmful Refusal\": A Psychometric Audit of an AI Safety Benchmark",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W41",
+    "last_seen": "2026-W41"
+  },
+  "Rachel Phinnemore": {
+    "appearances": [
+      {
+        "week": "2026-W41",
+        "category": "cs.AI",
+        "rank": 9,
+        "arxiv_id": "2610.12409v1",
+        "title": "Searching for \"Harmful Refusal\": A Psychometric Audit of an AI Safety Benchmark",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W41",
+    "last_seen": "2026-W41"
+  },
+  "Shalini Ghosh": {
+    "appearances": [
+      {
+        "week": "2026-W41",
+        "category": "cs.AI",
+        "rank": 9,
+        "arxiv_id": "2610.12409v1",
+        "title": "Searching for \"Harmful Refusal\": A Psychometric Audit of an AI Safety Benchmark",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W41",
+    "last_seen": "2026-W41"
+  },
+  "Wenpeng Zhang": {
+    "appearances": [
+      {
+        "week": "2026-W41",
+        "category": "cs.AI",
+        "rank": 10,
+        "arxiv_id": "2610.06578v1",
+        "title": "DGA-Muon: Decoupled Geometry-Aligned Adaptive Scaling for Muon",
+        "ai_rating": 5.0
+      }
+    ],
+    "first_seen": "2026-W41",
+    "last_seen": "2026-W41"
+  },
+  "Runsheng Yu": {
+    "appearances": [
+      {
+        "week": "2026-W41",
+        "category": "cs.AI",
+        "rank": 10,
+        "arxiv_id": "2610.06578v1",
+        "title": "DGA-Muon: Decoupled Geometry-Aligned Adaptive Scaling for Muon",
+        "ai_rating": 5.0
+      }
+    ],
+    "first_seen": "2026-W41",
+    "last_seen": "2026-W41"
+  },
+  "Ryan Swift": {
+    "appearances": [
+      {
+        "week": "2026-W41",
+        "category": "cs.LG",
+        "rank": 7,
+        "arxiv_id": "2610.10854v1",
+        "title": "KDFP: A first-principles approach to knowledge distillation in large language models",
+        "ai_rating": 3.5
+      }
+    ],
+    "first_seen": "2026-W41",
+    "last_seen": "2026-W41"
+  },
+  "Konstantinos Psounis": {
+    "appearances": [
+      {
+        "week": "2026-W41",
+        "category": "cs.LG",
+        "rank": 7,
+        "arxiv_id": "2610.10854v1",
+        "title": "KDFP: A first-principles approach to knowledge distillation in large language models",
+        "ai_rating": 3.5
+      }
+    ],
+    "first_seen": "2026-W41",
+    "last_seen": "2026-W41"
+  },
+  "Yi Guo": {
+    "appearances": [
+      {
+        "week": "2026-W41",
+        "category": "q-bio.NC",
+        "rank": 5,
+        "arxiv_id": "2610.11923v1",
+        "title": "Neural Decoding as Cognitive Inference",
+        "ai_rating": 6.5
+      }
+    ],
+    "first_seen": "2026-W41",
+    "last_seen": "2026-W41"
+  },
+  "Changhong Jing": {
+    "appearances": [
+      {
+        "week": "2026-W41",
+        "category": "q-bio.NC",
+        "rank": 5,
+        "arxiv_id": "2610.11923v1",
+        "title": "Neural Decoding as Cognitive Inference",
+        "ai_rating": 6.5
+      }
+    ],
+    "first_seen": "2026-W41",
+    "last_seen": "2026-W41"
+  },
+  "Yong Hu": {
+    "appearances": [
+      {
+        "week": "2026-W41",
+        "category": "q-bio.NC",
+        "rank": 5,
+        "arxiv_id": "2610.11923v1",
+        "title": "Neural Decoding as Cognitive Inference",
+        "ai_rating": 6.5
+      }
+    ],
+    "first_seen": "2026-W41",
+    "last_seen": "2026-W41"
+  },
+  "Yan Liu": {
+    "appearances": [
+      {
+        "week": "2026-W41",
+        "category": "q-bio.NC",
+        "rank": 5,
+        "arxiv_id": "2610.11923v1",
+        "title": "Neural Decoding as Cognitive Inference",
+        "ai_rating": 6.5
+      }
+    ],
+    "first_seen": "2026-W41",
+    "last_seen": "2026-W41"
+  },
+  "Michael K. P. Ng": {
+    "appearances": [
+      {
+        "week": "2026-W41",
+        "category": "q-bio.NC",
+        "rank": 5,
+        "arxiv_id": "2610.11923v1",
+        "title": "Neural Decoding as Cognitive Inference",
+        "ai_rating": 6.5
+      }
+    ],
+    "first_seen": "2026-W41",
+    "last_seen": "2026-W41"
+  },
+  "Shanshan Wang": {
+    "appearances": [
+      {
+        "week": "2026-W41",
+        "category": "q-bio.NC",
+        "rank": 5,
+        "arxiv_id": "2610.11923v1",
+        "title": "Neural Decoding as Cognitive Inference",
+        "ai_rating": 6.5
+      }
+    ],
+    "first_seen": "2026-W41",
+    "last_seen": "2026-W41"
+  },
+  "Ananth Vedururu Srinivas": {
+    "appearances": [
+      {
+        "week": "2026-W41",
+        "category": "q-bio.NC",
+        "rank": 9,
+        "arxiv_id": "2610.10977v1",
+        "title": "Mean Field Theory Based on the Spike Time Response Curve for Synchronization Within and Between Two Alternating Populations of Neural Oscillators with Delays",
+        "ai_rating": 4.5
+      }
+    ],
+    "first_seen": "2026-W41",
+    "last_seen": "2026-W41"
+  },
+  "Carmen C. Canavier": {
+    "appearances": [
+      {
+        "week": "2026-W41",
+        "category": "q-bio.NC",
+        "rank": 9,
+        "arxiv_id": "2610.10977v1",
+        "title": "Mean Field Theory Based on the Spike Time Response Curve for Synchronization Within and Between Two Alternating Populations of Neural Oscillators with Delays",
+        "ai_rating": 4.5
+      }
+    ],
+    "first_seen": "2026-W41",
+    "last_seen": "2026-W41"
+  },
+  "Ilya Auslender": {
+    "appearances": [
+      {
+        "week": "2026-W41",
+        "category": "q-bio.NC",
+        "rank": 10,
+        "arxiv_id": "2610.08392v1",
+        "title": "A Time-Resolved Framework for Quantifying Neuronal Network State Transitions",
+        "ai_rating": 3.5
+      }
+    ],
+    "first_seen": "2026-W41",
+    "last_seen": "2026-W41"
+  },
+  "Yasaman Heydari": {
+    "appearances": [
+      {
+        "week": "2026-W41",
+        "category": "q-bio.NC",
+        "rank": 10,
+        "arxiv_id": "2610.08392v1",
+        "title": "A Time-Resolved Framework for Quantifying Neuronal Network State Transitions",
+        "ai_rating": 3.5
+      }
+    ],
+    "first_seen": "2026-W41",
+    "last_seen": "2026-W41"
+  },
+  "Asiye Malkoç": {
+    "appearances": [
+      {
+        "week": "2026-W41",
+        "category": "q-bio.NC",
+        "rank": 10,
+        "arxiv_id": "2610.08392v1",
+        "title": "A Time-Resolved Framework for Quantifying Neuronal Network State Transitions",
+        "ai_rating": 3.5
+      }
+    ],
+    "first_seen": "2026-W41",
+    "last_seen": "2026-W41"
+  },
+  "Clara Zaccaria": {
+    "appearances": [
+      {
+        "week": "2026-W41",
+        "category": "q-bio.NC",
+        "rank": 10,
+        "arxiv_id": "2610.08392v1",
+        "title": "A Time-Resolved Framework for Quantifying Neuronal Network State Transitions",
+        "ai_rating": 3.5
+      }
+    ],
+    "first_seen": "2026-W41",
+    "last_seen": "2026-W41"
+  },
+  "Yuri Bozzi": {
+    "appearances": [
+      {
+        "week": "2026-W41",
+        "category": "q-bio.NC",
+        "rank": 10,
+        "arxiv_id": "2610.08392v1",
+        "title": "A Time-Resolved Framework for Quantifying Neuronal Network State Transitions",
+        "ai_rating": 3.5
+      }
+    ],
+    "first_seen": "2026-W41",
+    "last_seen": "2026-W41"
+  },
+  "Lorenzo Pavesi": {
+    "appearances": [
+      {
+        "week": "2026-W41",
+        "category": "q-bio.NC",
+        "rank": 10,
+        "arxiv_id": "2610.08392v1",
+        "title": "A Time-Resolved Framework for Quantifying Neuronal Network State Transitions",
+        "ai_rating": 3.5
+      }
+    ],
+    "first_seen": "2026-W41",
+    "last_seen": "2026-W41"
   }
 }
