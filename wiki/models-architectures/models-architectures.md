@@ -6,7 +6,7 @@ Scope: New model releases, transformer variants, non-autoregressive and diffusio
 
 ## Current state of knowledge
 
-*Last updated 2026-10-11. Three digests feed this page: [10-04](../daily-digest/2026-10/2026-10-04.md), [10-09](../daily-digest/2026-10/2026-10-09.md) and [10-11](../daily-digest/2026-10/2026-10-11.md). The 10-11 window added only light items (section 5).*
+*Last updated 2026-11-01. Four digests feed this page: [10-04](../daily-digest/2026-10/2026-10-04.md), [10-09](../daily-digest/2026-10/2026-10-09.md), [10-11](../daily-digest/2026-10/2026-10-11.md) and [11-01](../daily-digest/2026-11/2026-11-01.md). The 11-01 window is the first to test architecture claims at equal serving cost (section 6), which tempers section 1.*
 
 ### 1. Looped models (well past a pattern)
 
@@ -47,6 +47,22 @@ Nothing on architectures was read in depth in the [10-11 digest](../daily-digest
 - **State-space models.** Cerberus applies a bidirectional Mamba (Hydra) to long-sequence genomic prediction at higher nucleotide resolution. Post only.
 - **A caution.** One post warns that engram or n-gram memory can markedly amplify overfitting when data repeats.
 
+### 6. Architecture has about 2% of loss left (11-01)
+
+**[The 1,129-run architecture ablation](2026-11-01-architecture-ablations-since-gpt3.md)** judges every change at equal serving cost (vLLM, coding-agent workload, FP8) and extrapolates with a scaling law to 1T tokens. Fine-grained MoE (an active parameter worth 4 to 5 dense ones) and linear-attention hybrids (2 to 7 times cheaper to serve) are the real wins; GQA, MQA, MLA and sliding windows win only through KV-cache savings; norms, MLPs and positions give 1 to 2% at best. The final stack is predicted 9.4% better than GPT-3 and 1.0% better than a 2026 KDA hybrid. Gains at trained sizes are 1.5 to 3 times larger than at serving size, and for the modern hybrid only about 2% of predicted loss is parameter-limited (about 11% for the 2021 reference). Muon is worth about one round of stacking. **Shift from the prior state:** small-model architecture wins, including loops, must now be discounted heavily; the remaining levers are data, optimizer, serving efficiency and the training objective.
+
+### 7. Loops under resource constraints (11-01)
+
+**[How to Loop Your Transformer](2026-11-01-how-to-loop-your-transformer.md)** (Meta, up to 1B, 32 loops): loop the full model when parameters bind, a middle block when training FLOPs bind; gains saturate or reverse with more loops; loop-specific LoRA adapters help more as loops grow; Parallel Loop Transformers need the current-token embedding preserved and separately normalized. Meta's looped-MoE law (first noted 10-04 as about 2x parameter efficiency) resurfaced with its cost: 1.8 times the inference compute and a lower 14-benchmark mean (46.9% against 50.2%) for a 5-loop MoE matching a larger one on reasoning. **Shift:** section 1's pattern stands, but the evidence now says loops are a parameter-saving trade paid at decode time, not free reasoning. Saved in the same window: GRAM (stochastic recursive reasoning keeping several hypotheses), Quotient Recurrent Reasoner, and Recurrent Looped Transformer results on 256-bit parity.
+
+### 8. Generation without tokens first (11-01)
+
+**[Next-Concept Modeling](2026-11-01-next-concept-modeling.md)** (Stanford and Together AI) generates a multiscale residual VQ-VAE code stack coarse to fine, each level in parallel: 21 times faster than the strongest diffusion LM on LM1B with better generative perplexity, 31 times on XSum at equal ROUGE-L, better on Sudoku, up to 725M parameters with per-task tokenizers. With [Soft-MTP](../training-finetuning/2026-11-01-soft-multi-token-prediction.md) (cleaner multi-token objective) and the [Platonic Representation theorem](../world-models-reasoning/2026-11-01-platonic-representation-theorem-jepa.md) (good views beat next-token prediction 42 times on sample efficiency), this is the third result in one window that moves gains to the objective or unit of prediction rather than the block design. A forming pattern.
+
+### 9. Releases noted (11-01)
+
+Carbon-X (14.8B, Qwen3-14B base with a 6-mer DNA vocabulary; see the [training page](../training-finetuning/training-finetuning.md)), NVIDIA Nemotron 3.5 Super VL (120B total, 12B active, open weights and recipes), Mistral Large 4 (1T total, 52B active, open weights), RWKV-7 G1L (pure RNN). ReplaySSM (caching an SSM's inputs rather than its state) is reported running in production for GLM-5.3-Flash and Kimi-K3 serving.
+
 ## Open questions
 
 - Can a learned per-token halting gate be trained in an autoregressive looped model above 1B parameters? The 10-09 digest predicts a release within 90 days.
@@ -54,8 +70,15 @@ Nothing on architectures was read in depth in the [10-11 digest](../daily-digest
 - ALoDLM's latents reset between denoising steps. Can latent state persist across steps?
 - Do ALoDLM's results hold on agentic and long-context workloads? None are reported on the project page.
 - "Think Before You Paint: Recursive Latent Reasoning for Diffusion Models" sits in Kurate's top 5 and is unread. It is worth reading beside ALoDLM.
+- Does the "about 2% left for architecture" estimate hold for objectives other than next-token prediction, and under long-context metrics such as RULER?
+- Does Next-Concept Modeling keep a large speedup over diffusion above 1B parameters and with a shared tokenizer? (11-01 prediction, 90 days.)
+- Do NCM's coarse codes carry transferable semantics, and can RL reward them before expansion?
 
 ## Key sources
 
 - [2026-10-09 · ALoDLM: adaptively looped diffusion language models](2026-10-09-alodlm-adaptively-looped-diffusion-lm.md)
+- [2026-11-01 · I tried every LLM architecture change since 2020](2026-11-01-architecture-ablations-since-gpt3.md)
+- [2026-11-01 · How to loop your transformer, and scaling laws for looped MoE](2026-11-01-how-to-loop-your-transformer.md)
+- [2026-11-01 · Next-Concept Modeling](2026-11-01-next-concept-modeling.md)
+- Covered in the 11-01 Media Zone without a summary page: GRAM, Quotient Recurrent Reasoner, FlashMask-3, ReplaySSM.
 - Covered in digests without a summary page: Towards Looped Models Done Right, Part II and Loop Scaling Laws ([10-04](../daily-digest/2026-10/2026-10-04.md)); shared-memory looped pretraining, LiFT, Recurrent Looped Transformer and DLoop ([10-09](../daily-digest/2026-10/2026-10-09.md)).

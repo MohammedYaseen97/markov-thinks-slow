@@ -8,7 +8,7 @@ A harness is the program between the world and the model. It decides what each m
 
 ## Current state of knowledge
 
-*Last updated 2026-10-11. Three digests feed this page: [10-04](../daily-digest/2026-10/2026-10-04.md), [10-09](../daily-digest/2026-10/2026-10-09.md) and [10-11](../daily-digest/2026-10/2026-10-11.md).*
+*Last updated 2026-11-01. Four digests feed this page: [10-04](../daily-digest/2026-10/2026-10-04.md), [10-09](../daily-digest/2026-10/2026-10-09.md), [10-11](../daily-digest/2026-10/2026-10-11.md) and [11-01](../daily-digest/2026-11/2026-11-01.md).*
 
 ### 1. The harness is a training variable (established pattern, six results)
 
@@ -65,6 +65,18 @@ LangChain moved model choice into the harness for Open SWE and reports a 64% dro
 
 Agent Plasticity (Meta, summary read) defines plasticity as held-out gain per dollar of learning, with weights frozen, fresh context each episode, and inherited notes, skills and tools. The model with the best final score is often not the most efficient learner. Slow learners often ignore artifacts they already wrote.
 
+### 13. Self-improving harnesses overfit like weights (11-01)
+
+**[Harness², RRSI, RSIHub and FlashRSI](2026-11-01-harness-self-improvement-and-interfaces.md)**. Harness² (Google) edits eight harness components per task without a verifier by probing old against new harness behaviour, and carries lessons about editing, not the edited harness, to the next task: up to 11.5 points on WorkBuddy-Bench and 11.8 on LAB with frozen models. RRSI (Google) shows evolved harnesses memorize their evolve set and regularizes the search (annealed edit budget, leakage critic, noise floor, cost rule, pruning): up to 4.3 points on five out-of-distribution benchmarks with 30% fewer policy tokens. RSIHub and FlashRSI put 12 or more methods on shared infrastructure: gains are largest for weak scaffolds (13.5 points on Terminal Bench 2 for MiniSWE, 2.2 with Codex), rankings change across benchmarks, and some gains reverse on held-out splits. **Shift from the prior state:** section 1's pattern ("the harness is a training variable") now has the matching caution, that harness evolution needs held-out splits and regularization like any learner.
+
+### 14. The interface alone changes behaviour (11-01)
+
+"Matched Capabilities, Different Behaviors" (on both HuggingFace and Kurate's cs.AI board) renders MCP and a CLI from one semantic action contract through one runtime. Across six models and three environments, paired trajectories diverge structurally in 94.3% of 2,004 episodes, and early divergence persists. DART repairs only interface-specific realization: up to 9.0 points better in all six settings and up to 27.1k fewer MCP tokens per task. This isolates one cause of the 10-04 finding that the same model scores very differently across harnesses.
+
+### 15. Industry: harness tuning in production (11-01)
+
+NVIDIA and Siemens EDA refined a chip-design agent's skills and MCP tool descriptions from NeMo Gym verifier diagnostics: about 55% to 95% composite verification, turns from 155 to 53. Liquid released harness-specific LoRA adapters for LFM2.5-24B (up to 40% fewer tool calls in Pi). Harrison Chase argues the field has converged on one architecture (an LLM in a loop with tools in a sandbox) and that new context-engineering problems arise inside it. Decision models now gate tool calls (JevAct) and route retrieval (DecisionRAG); see the [decision models page](../decision-models/decision-models.md). Agent memory results (memory tax, Routed Continual Learning, ReHarness, TreeFlex) and cache engineering (agent-controlled KV-cache drop and reposition) are in the 11-01 Media Zone.
+
 ## Open questions
 
 - What share of a jointly tuned system's gain comes from data, from training settings and from the harness, measured from one starting point with repeats?
@@ -76,6 +88,8 @@ Agent Plasticity (Meta, summary read) defines plasticity as held-out gain per do
 - Can the commit graph of a swarm be used for credit assignment and as a training signal for workers?
 - Does a swarm of cheap models with a few strong verifiers match a swarm of frontier models?
 - Do the component-study findings hold for multi-agent harnesses, where context is divided and not managed?
+- At equal compute, does multi-harness RL (train weights across harnesses) or harness evolution (fixed weights) give more held-out gain?
+- What regularizer makes harness evolution transfer out of distribution, beyond RRSI's budget and leakage critic?
 
 ## Key sources
 
@@ -83,5 +97,7 @@ Agent Plasticity (Meta, summary read) defines plasticity as held-out gain per do
 - [2026-10-09 · RSIGym](2026-10-09-rsigym.md)
 - [2026-10-09 · Recursive Game Creator](2026-10-09-recursive-game-creator.md)
 - [2026-10-11 · GitSwarm: decentralized compounding inference (with Prime Agent's Rust rewrite and the harness component study)](2026-10-11-gitswarm-compounding-inference.md)
+- [2026-11-01 · Self-improving harnesses, and why the interface matters](2026-11-01-harness-self-improvement-and-interfaces.md)
+- Covered in the 11-01 Media Zone without a summary page: verification placement in coding harnesses, DUET, the memory results, cache engineering, LongHarness.
 - Covered in the 10-11 digest without a summary page: HarnessSQL, MASS, Agent Plasticity, the LangChain harness router, TokenRouter and LLM-as-a-Verifier V3.
 - Covered in digests without a summary page: the multi-harness RL guide, AutoCompact, CMU harness learning and ScholarEvolve ([10-04](../daily-digest/2026-10/2026-10-04.md)); "What Does a Harness Buy?", VERA, DeLM, "On the Nature of the Swarm" and OverclaimBench ([10-09](../daily-digest/2026-10/2026-10-09.md)).

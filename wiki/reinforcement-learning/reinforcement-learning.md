@@ -6,7 +6,7 @@ Scope: Core RL algorithms, RL for LLMs, and RL environments for LLM training.
 
 ## Current state of knowledge
 
-*Last updated 2026-10-11. Three digests feed this page: [10-04](../daily-digest/2026-10/2026-10-04.md), [10-09](../daily-digest/2026-10/2026-10-09.md) and [10-11](../daily-digest/2026-10/2026-10-11.md).*
+*Last updated 2026-11-01. Four digests feed this page: [10-04](../daily-digest/2026-10/2026-10-04.md), [10-09](../daily-digest/2026-10/2026-10-09.md), [10-11](../daily-digest/2026-10/2026-10-11.md) and [11-01](../daily-digest/2026-11/2026-11-01.md).*
 
 ### 1. RL environments are now shared infrastructure
 
@@ -64,6 +64,30 @@ On the memory side, TRL v1.15's fused LM head ([summary](../training-finetuning/
 
 Ian Osband's "Planning to Learn" post reports that on ImageNet the exact policy gradient, with no sampling noise, reaches 4% accuracy against 62% for cross-entropy, and that a "horizon loss" beats both. Only the post and one figure were read. If it holds, part of what is blamed on variance is the objective's geometry.
 
+### 12. Mismatch is mostly bias, and bias can be subtracted (11-01)
+
+**[Score centering](2026-11-01-score-centering.md)** (Together AI) is the primary paper behind the line in section 7. Under sampler and trainer mismatch the policy-gradient score is not zero-mean, so the update drifts even with uninformative rewards and the drift compounds. Subtracting the sampler-weighted mean score at each prefix (from the sampler's top-k probabilities) restores the zero mean. On Qwen3-30B-A3B with an INT8-weight, INT4-KV sampler, DAPO, GSPO, PPO and TOPR collapse and score centering keeps climbing. River reproduced it on top of CISPO with four steps of staleness: 61.1% held-out against 0%. The appendix grids eight importance-sampling corrections (TIS, CISPO, IcePop, PPO, DAPO, GSPO, TOPR, DPPO). **Shift from the prior state:** the 10-11 page treated clipping and centering as two items on one menu; they now look like fixes for two different problems (variance from rare large ratios, bias from systematic disagreement). Open: under staleness centering estimates the reward-score covariance under the old policy, not the current one.
+
+### 13. "Unlearnable" prompts are often unsampled (11-01)
+
+**[Collinear's unlearnability study](2026-11-01-rlvr-unlearnability-and-exploration-distillation.md)** measured every MATH prompt with 256 rollouts after 100 GRPO steps on Qwen-2.5-0.5B. 35% of hard prompts stay stuck, reproducibly across seeds, but difficulty predicts outcome with AUC 0.60 at 8 rollouts and 0.83 at 256, about 20% of never-solved prompts are learned anyway, and base-unsolved prompts that hit 2 of 8 correct in a group early were learned 83% of the time. The mechanism is GRPO's zero advantage for uniform groups. **ExpDis** (Columbia) manufactures correct rollouts with disposable novelty-seeking explorers distilled into a bonus-free student, beating DAPO at equal wall-clock. Together they connect to the 10-04 Sharpening Tax finding (tuned models lose large-K coverage) and to section 7's "admission" choice: pass-rate filters are an admission bias. A saved "task factory" diagram aims RL data generation at a 25 to 50% solve band for the same reason.
+
+### 14. Critics return (11-01, abstracts and posts)
+
+Step-level credit is coming back two ways: stable learned critics for PPO (EasyPPO, Best Practice Critic Optimization, AC2 with action chunking) and LVRL, which uses a frozen LLM in context as the value function and beats GRPO and PPO by up to 13.6 points on AppWorld. Base Labs asked the cost question directly: is compute better spent on a value function or on more rollouts? No head-to-head at equal compute exists yet.
+
+### 15. Systems: tree packing (11-01)
+
+TRL's AsyncGRPO now stores forked multi-turn rollouts as a prefix tree and runs each shared token once, reaching the same reward with 26 times less trainer compute on the MiMo environments at about 1% cost when nothing is shared. Like ThunderSyncRL (section 8), it changes throughput, not the estimator. The 10-11 prediction of a streaming-backward mode in an open trainer is still unmet.
+
+### 16. Environments: multi-agent, partial information, open governance (11-01)
+
+**[AirOpsEnv](2026-11-01-airopsenv-simulation-rl-environments.md)** extends the FineEnvs simulation series from a port to an airline: three desks (operations, crew, customer) with separate tools coordinate through real storm days at JFK and Boston. The reward is a gap to a hindsight-best plan, not a proven optimum, and 24 of 168 v3 runs beat it, so it will saturate under training. PortSimEnv v2 to v5 make the port week unfold in time with agents that answer back. Hugging Face is handing OpenEnv to the Agentic AI Foundation under the Linux Foundation. Still no audit tag on any public collection.
+
+### 17. Subjective rewards leak the judge (11-01)
+
+**[RL for design taste](2026-11-01-rl-for-design-taste.md)** trains Qwen3.8-27B on MiMo webdev environments with GPT-6 Sol or Claude Sonnet 5.5 as judge. Both runs inflate page length (about 41k to over 140k characters) before a delivery penalty corrects it, both mode-collapse to their judge's style, and both judges prefer the Sonnet-trained model head to head. This is the subjective counterpart of section 2: verifiable rewards leak the solution, judge rewards leak the judge.
+
 ## Open questions
 
 - How much of the reward in a training run is attributable to information the task did not intend to provide? No measure exists.
@@ -76,7 +100,11 @@ Ian Osband's "Planning to Learn" post reports that on ImageNet the exact policy 
 - Does gradient streaming extend to multi-epoch PPO-style clipping, or to a learned critic?
 - What intermediate, kernel-grounded signal makes binary proof rewards trainable?
 - Can a cheap "search for the answer" agent serve as an automatic leak test for every task before training?
-- Audited-environment prediction (due 2027-01-07): partial movement on 10-11, no audit tag yet.
+- Audited-environment prediction (due 2027-01-07): partial movement on 10-11, no audit tag yet; nothing new on 11-01.
+- Can the old-policy versus current-policy covariance gap in score centering be bounded as a function of lag, so staleness can be chosen adaptively?
+- Do stuck GRPO prompts unstick if a few verified correct rollouts are injected into their groups? (11-01 prediction, 90 days.)
+- At equal compute, is a learned critic or more rollouts the better use of budget for long-horizon agentic RL?
+- How should a reward measured against a hindsight-best plan be extended once policies beat the reference?
 
 ## Key sources
 
@@ -86,5 +114,10 @@ Ian Osband's "Planning to Learn" post reports that on ImageNet the exact policy 
 - [2026-10-11 · ThunderSyncRL](2026-10-11-thundersyncrl.md)
 - [2026-10-11 · How not to build coding environments](2026-10-11-how-not-to-build-coding-environments.md)
 - [2026-10-11 · OpenAI's math release as 369 Lean proof environments](2026-10-11-openai-math-lean-rl-environments.md)
+- [2026-11-01 · Score centering stabilizes off-policy RL](2026-11-01-score-centering.md)
+- [2026-11-01 · Unlearnability in RLVR, and Exploration-Distillation](2026-11-01-rlvr-unlearnability-and-exploration-distillation.md)
+- [2026-11-01 · Simulation RL environments, part 2: AirOpsEnv](2026-11-01-airopsenv-simulation-rl-environments.md)
+- [2026-11-01 · Reinforcement learning for design taste](2026-11-01-rl-for-design-taste.md)
+- Covered in the 11-01 digest and Media Zone without a summary page: LVRL, EasyPPO and BPCO, tree packing in TRL, RLRT and Semi-OPD, Hybrid Reasoning Agents.
 - Covered in the 10-11 digest without a summary page: Proximal's post-training stack, Draft-OPD with disaggregated rollouts, "Planning to Learn", and Anthropic's behaviour report.
 - Covered in digests without a summary page: the multi-harness RL guide, Sharpening Tax and AC2 ([10-04](../daily-digest/2026-10/2026-10-04.md)); the Hub environment tag, OpenEnv Arena and TermGrade ([10-09](../daily-digest/2026-10/2026-10-09.md)).

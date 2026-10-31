@@ -8,7 +8,7 @@ A decision model takes a state and typed questions and returns a choice with a p
 
 ## Current state of knowledge
 
-*Last updated 2026-10-11. Three digests feed this page: [10-04](../daily-digest/2026-10/2026-10-04.md), [10-09](../daily-digest/2026-10/2026-10-09.md) and [10-11](../daily-digest/2026-10/2026-10-11.md).*
+*Last updated 2026-11-01. Four digests feed this page: [10-04](../daily-digest/2026-10/2026-10-04.md), [10-09](../daily-digest/2026-10/2026-10-09.md), [10-11](../daily-digest/2026-10/2026-10-11.md) and [11-01](../daily-digest/2026-11/2026-11-01.md).*
 
 ### 1. From one vendor's API to an open stack
 
@@ -68,6 +68,18 @@ vLLM Semantic Router shipped open decision models from 0.6B to 27B and a small-f
 
 ConfSFT fine-tunes a reasoning model to predict its own confidence at intermediate points, with no loss on length or stopping, and thinking tokens fall by up to 25% at matched accuracy. "Thinking Hard, Not Smart" finds that models given one token budget across an exam spend it greedily by question order and ignore point values. A learned "is more thought worth it" signal is feasible. Value-aware allocation is not there yet.
 
+### 13. How an open decider is built (11-01, explainer read in full)
+
+Perplexity Decider v1.2, per an X Article endorsed by one of its builders: take a strong decoder (Qwen3.8-27B), make its full-attention layers non-causal (linear-attention layers stay causal), drop the LM head, insert one mask token per question and read it with a 255-way linear head masked to the question's options, train on hundreds of thousands of harmonized classification tasks with synthetic data and option shuffling and paraphrase, then calibrate post hoc by tuning the softmax temperature (T = 1.32). The 9B Flash variant is distilled with a KL loss. This is a fifth head design next to section 2's three and Vega's dynamics, and the simplest calibration story: one scalar, fitted after training.
+
+### 14. Deciders move into control loops (11-01)
+
+**[Three placements](2026-11-01-decision-models-enter-the-loop.md)** in one window. **RightNow System Zero** decides on streaming input (text, JSON, robot state, PDFs, images, voice, video) and updates per-option probabilities as evidence arrives, about 30 ms per text decision; its self-measured Decision Index score is 63.20 against 65 for the top open deciders. **JevAct** (IBM) gates an agent's tool calls with compiled code checks plus decider questions: Opus 4.6 on τ²-bench Telecom 39.5% to 80.7%, but the gain vanishes with a different user simulator and 42 of 101 bad calls break no compiled question. **DecisionRAG** (Cornell and ASAPP) navigates a document tree, scoring all branches in one shared context: +13.8 R@1 on MultiDoc2Dial and +17.4 Hit@1 on Natural Questions over dense retrieval plus an 8B reranker. Practitioner evidence: a weekly first-pass relevance filter over hundreds of thousands of entities, an SRE diagnosis pipeline with no LLM agent (80 of 105, 76.2%), and Hamel Husain's advice to tune thresholds per use case rather than keep 0.5. **Shift:** section 7 ("deciding to act") had only position papers; JevAct is the first measured gate, and it is trained on policy labels, not outcomes, so the success-head open question stands.
+
+### 15. Evidence accumulation is the next question (11-01)
+
+RightNow's claim that its model "holds back until the evidence is there, then commits" is the drift-diffusion question from decision neuroscience (accumulate noisy evidence to a bound), asked of a machine decider. No streaming decider has published a speed-accuracy or stopping-time curve. See the [cognition page](../cognition-decision/cognition-decision.md).
+
 ## Open questions
 
 - A success head trained on outcomes and validated separately from the choice distribution. The 10-04 prediction (an open release by 2027-01-02) is still open.
@@ -78,10 +90,15 @@ ConfSFT fine-tunes a reasoning model to predict its own confidence at intermedia
 - Is a self-distilled decider (Tacit) better calibrated than a head trained on labels, and when does it escalate?
 - Which public board will add likelihood or calibration error beside accuracy? The 10-11 digest predicts one within 60 days.
 - Unread and directly relevant: "SanSi: A Looped Typed Decision Model for System 1.5 Thinking" (arXiv 2610.07730) and "System Switch" (arXiv 2610.09683).
+- Will a streaming decision model publish accuracy or calibration as a function of input received? (11-01 prediction, 60 days.)
+- Can an action gate like JevAct be trained with RL on whether the action eventually succeeded, instead of on policy labels?
+- Is post-hoc temperature scaling enough for decider calibration, or do training-time methods (RLCD, Brier terms, dynamics) beat it on held-out distributions?
 
 ## Key sources
 
 - [2026-10-09 · Open d1 and "Train your own decision model"](2026-10-09-open-d1-and-train-your-own-decision-model.md)
 - [2026-10-11 · Vega: a decision model that rolls a ball down a hill](2026-10-11-vega-physics-decision-model.md)
+- [2026-11-01 · Decision models enter the loop: RightNow, JevAct, DecisionRAG](2026-11-01-decision-models-enter-the-loop.md)
+- Covered in the 11-01 Media Zone without a summary page: decision models for evals (Hamel Husain), Jev-driven SRE diagnosis, Quail's trie classification, Constrained Decoding Models, Decision 3.0 on Core ML.
 - Covered in the 10-11 digest without a summary page: Clef-omni, AnyJev and Tacit, Decision 2.0 and 3.0, ConfSFT, and the TypeSafe round.
 - Covered in digests without a summary page: the Gero-4B build log and "Is Jev secretly a value function?" ([10-04](../daily-digest/2026-10/2026-10-04.md)).

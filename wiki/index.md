@@ -6,13 +6,14 @@ Catalog of all pages in this wiki. Updated automatically on every ingest.
 
 ## Concept pages
 
-- [Reinforcement learning](reinforcement-learning/reinforcement-learning.md): RL environments as shared infrastructure, reward-design failures and their defences, the bias, variance and throughput of RL recipes, and gradient streaming.
-- [Training and fine-tuning](training-finetuning/training-finetuning.md): the shrinking premium on on-policy training, tuned SFT baselines, weight merging, and the fused LM head.
-- [Models and architectures](models-architectures/models-architectures.md): looped models, adaptive depth per token, and diffusion language models catching their autoregressive base.
-- [Decision models and System 1 / System 2](decision-models/decision-models.md): the open decision-model stack, four head designs including decision by dynamics, and calibration that is now reported but still about labels.
-- [World models and machine reasoning](world-models-reasoning/world-models-reasoning.md): hierarchical and joint world-action JEPAs, sources of abstraction, and world models written as rules and code.
-- [Agent harness and model routing](agent-harness-routing/agent-harness-routing.md): the harness as a training variable, whether harness choice matters, swarms with persistent memory, and routing inside the harness.
-- [Cognition, concepts and decision-making](cognition-decision/cognition-decision.md): still thin. One theoretical neuroscience result on chaos in random recurrent networks.
+- [Reinforcement learning](reinforcement-learning/reinforcement-learning.md): RL environments as shared infrastructure, reward-design failures and their defences, the bias, variance and throughput of RL recipes, gradient streaming, score centering for sampler mismatch, why RLVR prompts get stuck, and judge rewards that leak the judge's taste.
+- [Training and fine-tuning](training-finetuning/training-finetuning.md): the shrinking premium on on-policy training, tuned SFT baselines, weight merging, the fused LM head, mid-training a new modality (Carbon-X), and cleaner auxiliary gradients (Soft-MTP).
+- [Models and architectures](models-architectures/models-architectures.md): looped models, adaptive depth per token, and diffusion language models catching their autoregressive base, the equal-serving-cost architecture ablation (about 2% of loss left), loops under resource constraints, and coarse-to-fine generation.
+- [Decision models and System 1 / System 2](decision-models/decision-models.md): the open decision-model stack, four head designs including decision by dynamics, and calibration that is now reported but still about labels, how an open decider is built, and deciders placed on streams, tool calls and retrieval.
+- [World models and machine reasoning](world-models-reasoning/world-models-reasoning.md): hierarchical and joint world-action JEPAs, sources of abstraction, and world models written as rules and code, and a theorem that good views make separately trained JEPAs share one representation.
+- [Agent harness and model routing](agent-harness-routing/agent-harness-routing.md): the harness as a training variable, whether harness choice matters, swarms with persistent memory, routing inside the harness, self-improving harnesses that overfit, and interface effects (MCP versus CLI).
+- [Cognition, concepts and decision-making](cognition-decision/cognition-decision.md): still thin. One theoretical neuroscience result on chaos in random recurrent networks, plus a note on evidence accumulation in streaming deciders.
+- [Inference optimization](inference-optimization/inference-optimization.md): started 11-01. Speculative decoding that hides the drafter's cost, architecture choices as serving choices, and quantized samplers in RL.
 
 ## Reinforcement learning
 
@@ -22,26 +23,37 @@ Catalog of all pages in this wiki. Updated automatically on every ingest.
 - [2026-10-11 · ThunderSyncRL](reinforcement-learning/2026-10-11-thundersyncrl.md): compute each trajectory's gradient when its reward arrives. The update is identical to synchronous GRPO and training is up to 1.9 times faster.
 - [2026-10-11 · How not to build coding environments](reinforcement-learning/2026-10-11-how-not-to-build-coding-environments.md): one vulnerability task, three perfect scores by finding the published fix, a true score of zero, and a six-step checklist.
 - [2026-10-11 · OpenAI's math release as 369 Lean proof environments](reinforcement-learning/2026-10-11-openai-math-lean-rl-environments.md): kernel-checked binary rewards on research-level theorems, hard to game and extremely sparse.
+- [2026-11-01 · Score centering stabilizes off-policy RL](reinforcement-learning/2026-11-01-score-centering.md): sampler and trainer mismatch makes the policy gradient drift; subtracting the sampler's mean score fixes it where importance-sampling corrections collapse.
+- [2026-11-01 · Unlearnability in RLVR, and Exploration-Distillation](reinforcement-learning/2026-11-01-rlvr-unlearnability-and-exploration-distillation.md): measured with 256 rollouts, stuck prompts are often ones that never got a mixed-reward group; disposable explorers can manufacture correct rollouts.
+- [2026-11-01 · Simulation RL environments, part 2: AirOpsEnv](reinforcement-learning/2026-11-01-airopsenv-simulation-rl-environments.md): three agent desks with separate tools run JFK and Boston through real storm days, rewarded against a hindsight-best plan.
+- [2026-11-01 · Reinforcement learning for design taste](reinforcement-learning/2026-11-01-rl-for-design-taste.md): two judges, two tastes, length hacking, and both judges preferring the Sonnet-trained model.
 
 ## Training and fine-tuning
 
 - [2026-10-09 · Multi-teacher on-policy distillation versus SFT](training-finetuning/2026-10-09-multi-teacher-opd-vs-sft.md): four ways to merge expert models reach nearly identical accuracy, and the on-policy one costs 14.8 to 23.1 times the GPU-hours.
 - [2026-10-11 · TRL v1.15: the fused LM head](training-finetuning/2026-10-11-trl-fused-lm-head.md): a Triton kernel goes from hidden states to per-token log-probs without building logits, for 4 to 6.9 times longer sequences on the same GPU.
+- [2026-11-01 · Carbon-X: mid-training a 14B model to read DNA](training-finetuning/2026-11-01-carbon-x-dna-midtraining.md): a 6-mer DNA vocabulary, 302B tokens of mid-training, SFT and async GRPO; near GPT-6.1 Sol on DNA tasks at about 1/1,800 the cost.
+- [2026-11-01 · Multi-token prediction done right (Soft-MTP)](training-finetuning/2026-11-01-soft-multi-token-prediction.md): the MTP gradient is a KL self-distillation term plus noise; a one-line straight-through change keeps only the KL term.
 
 ## Models and architectures
 
 - [2026-10-09 · ALoDLM: adaptively looped diffusion language models](models-architectures/2026-10-09-alodlm-adaptively-looped-diffusion-lm.md): a diffusion language model with a learned exit gate that gives hard tokens more latent passes and beats its autoregressive base on average.
+- [2026-11-01 · I tried every LLM architecture change since 2020](models-architectures/2026-11-01-architecture-ablations-since-gpt3.md): 1,129 runs at equal serving cost; MoE and linear attention are the wins, and only about 2% of loss is left for architecture.
+- [2026-11-01 · How to loop your transformer, and scaling laws for looped MoE](models-architectures/2026-11-01-how-to-loop-your-transformer.md): loop the full model when parameters bind, a middle block when FLOPs bind, and pay at decode time.
+- [2026-11-01 · Next-Concept Modeling](models-architectures/2026-11-01-next-concept-modeling.md): generate a coarse code stack level by level, 10 to 31 times faster than diffusion LMs at matched size.
 
 ## Decision models
 
 - [2026-10-09 · Open d1 and "Train your own decision model"](decision-models/2026-10-09-open-d1-and-train-your-own-decision-model.md): Liquid's open decider weights and Unsloth's recipe for converting an LLM into a decision model, with calibration still about labels and not outcomes.
 - [2026-10-11 · Vega: a decision model that rolls a ball down a hill](decision-models/2026-10-11-vega-physics-decision-model.md): a frozen reader plus a small physics engine. Less accurate than Jev and better calibrated, with confidence read from how the particle settles.
+- [2026-11-01 · Decision models enter the loop: RightNow, JevAct, DecisionRAG](decision-models/2026-11-01-decision-models-enter-the-loop.md): deciders on streaming input, on agent tool calls and on retrieval paths, plus how an open decider is built.
 
 ## World models and machine reasoning
 
 - [2026-10-09 · H-JEPA: hierarchical world models for visual planning](world-models-reasoning/2026-10-09-h-jepa-hierarchical-world-models.md): stacked latent world models plan top-down, and higher levels learn to keep slow state and drop fast detail.
 - [2026-10-11 · Memento 3: model-based recursive self-improvement through reflective rulebooks](world-models-reasoning/2026-10-11-memento-3-code-as-world-model.md): a frozen LLM keeps its world model as a rulebook plus compiled code and revises both from prediction errors. Clears all 25 public ARC-AGI-3 games.
 - [2026-10-11 · LeWAM: end-to-end world and action modeling with JEPAs](world-models-reasoning/2026-10-11-lewam-joint-world-action-jepa.md): one JEPA predicts the next latent and proposes actions, so planning searches where good actions are expected and runs 32.3 times faster.
+- [2026-11-01 · Proving and improving the Platonic Representation Hypothesis with JEPAs](world-models-reasoning/2026-11-01-platonic-representation-theorem-jepa.md): good views make separately trained JEPAs learn one representation up to a rotation; a 109M text JEPA out-aligns 72B LLMs.
 
 ## Agent harness and model routing
 
@@ -49,8 +61,13 @@ Catalog of all pages in this wiki. Updated automatically on every ingest.
 - [2026-10-09 · RSIGym](agent-harness-routing/2026-10-09-rsigym.md): a service-based environment where a research agent tunes data, training settings and harness under one budget. Harness-only edits gave a clear gain and data-only edits barely moved the score.
 - [2026-10-09 · Recursive Game Creator](agent-harness-routing/2026-10-09-recursive-game-creator.md): a game-generation harness whose Player writes code to play the game, so play experience can be assessed on every iteration.
 - [2026-10-11 · GitSwarm: decentralized compounding inference](agent-harness-routing/2026-10-11-gitswarm-compounding-inference.md): hundreds of agents share one Git repository with no planner, and score keeps rising with workers. Includes Prime Agent's Rust rewrite and a component study of coding harnesses.
+- [2026-11-01 · Self-improving harnesses, and why the interface matters](agent-harness-routing/2026-11-01-harness-self-improvement-and-interfaces.md): Harness², RRSI, RSIHub and FlashRSI evolve harnesses with frozen weights and find overfitting; MCP versus CLI with identical capabilities diverges in 94.3% of episodes.
+
+## Inference optimization
+
+- [2026-11-01 · JetSpec++: foresight parallel drafting with self refinements](inference-optimization/2026-11-01-jetspec-plus-plus.md): draft the next block on a second GPU while the current one is verified; 7.45 times autoregressive decoding on Qwen3-8B, lossless.
 
 ## Daily digests and Media Zone
 
-- [Digest 2026-10-04](daily-digest/2026-10/2026-10-04.md) · [Digest 2026-10-09](daily-digest/2026-10/2026-10-09.md) · [Digest 2026-10-11](daily-digest/2026-10/2026-10-11.md)
-- [Media Zone 2026-10-09](media-zone/2026-10/2026-10-09.md) · [Media Zone 2026-10-11](media-zone/2026-10/2026-10-11.md)
+- [Digest 2026-10-04](daily-digest/2026-10/2026-10-04.md) · [Digest 2026-10-09](daily-digest/2026-10/2026-10-09.md) · [Digest 2026-10-11](daily-digest/2026-10/2026-10-11.md) · [Digest 2026-11-01](daily-digest/2026-11/2026-11-01.md)
+- [Media Zone 2026-10-09](media-zone/2026-10/2026-10-09.md) · [Media Zone 2026-10-11](media-zone/2026-10/2026-10-11.md) · [Media Zone 2026-11-01](media-zone/2026-11/2026-11-01.md)

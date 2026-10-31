@@ -6,7 +6,7 @@ Scope: Pretraining, fine-tuning, post-training and alignment methods, data, opti
 
 ## Current state of knowledge
 
-*Last updated 2026-10-11. Three digests feed this page: [10-04](../daily-digest/2026-10/2026-10-04.md), [10-09](../daily-digest/2026-10/2026-10-09.md) and [10-11](../daily-digest/2026-10/2026-10-11.md).*
+*Last updated 2026-11-01. Four digests feed this page: [10-04](../daily-digest/2026-10/2026-10-04.md), [10-09](../daily-digest/2026-10/2026-10-09.md), [10-11](../daily-digest/2026-10/2026-10-11.md) and [11-01](../daily-digest/2026-11/2026-11-01.md).*
 
 ### 1. "On-policy" is losing credit as such (pattern, three papers)
 
@@ -54,6 +54,28 @@ In [RSIGym](../agent-harness-routing/2026-10-09-rsigym.md), research agents tuni
 - **Before They Can Solve** (NVIDIA, summary read): rank base checkpoints for agentic post-training by whether they can produce the "decisive edit" given the prefix of a solved trajectory. Three such screens agree closely with post-trained SWE-bench Verified pass@1 across ten model pairs, where end-to-end base evaluation fails because base models cannot emit tool calls.
 - **Subliminal learning, part two** (post and figure only): a backdoor reportedly transfers from teacher to student through fine-tuning on number sequences. A caution for any distillation pipeline.
 
+### 10. Mid-training is where a new capability enters (11-01)
+
+**[Carbon-X](2026-11-01-carbon-x-dna-midtraining.md)** (Hugging Face) is the first fully published four-stage recipe in the wiki: train only new DNA embeddings for about 10B tokens with the body frozen, mid-train on 302B tokens (55% DNA, 20% English, 15% biology text, 10% instructions), SFT on 20 subsets without distillation, then two rounds of asynchronous GRPO with code-checked rewards. It averages 66.7% on five DNA benchmarks against 67.5% for GPT-6.1 Sol. The mid-training learning rate was "the dominant knob": low keeps English and leaves DNA at chance, high learns DNA and forgets English. **Shift:** sections 1 to 3 debate post-training objectives that converge to similar accuracy; Carbon-X is a case where the step change comes before post-training starts. A HuggingFace paper in the same window, "Your LR Schedule May Not Be Principled" (abstract only), argues the effective learning-rate trajectory is the right design object and proposes an inverse-square-root schedule (AIR) that beats cosine in 128B-token MoE pretraining.
+
+### 11. Auxiliary losses: keep the learnable part of the gradient (11-01)
+
+**[Soft-MTP](2026-11-01-soft-multi-token-prediction.md)** shows the multi-token-prediction cross-entropy gradient splits exactly into a KL self-distillation term (match the model's own next-token prediction) and a noisy residual (the next-token model's error against one-hot targets). A one-line straight-through change keeps only the KL term with no extra memory and works with fused kernels. From 167M to 1.2B it improves perplexity, speculative decoding and zero-shot accuracy. Same structure as score centering on the [RL page](../reinforcement-learning/reinforcement-learning.md): drop the zero-information part of a gradient instead of reweighting it.
+
+### 12. Distillation, continued (11-01, abstracts and posts)
+
+- **Semi-OPD** (17 teacher-student pairs): distilling on offline rollouts from the initial student beats on-policy distillation in 14 of 17 pairs, up to 13.6 points and up to 11.4 times faster; on-policy helps only when teacher and student overlap heavily. Fourth item for section 1's pattern.
+- **Mixture versus geometric mean** (post): with several teachers, SFT's forward KL learns their arithmetic mixture while on-policy distillation's reverse KL learns their normalized geometric mean, which explains why OPD breaks under teacher mismatch.
+- **RLRT**: self-distillation with a solution-seeing teacher removes the student's hesitation tokens; RLRT upweights tokens where the student goes against the teacher on correct rollouts.
+- **WISD** (abstract): distil against a deliberately weakened copy (quantized or pruned) instead of a stronger teacher; pruning lifts Qwen3.5-4B on HMMT 2025 from 57.7% to 70.5%.
+- **Training Foundation Models with a Single Algorithm** (abstract): RL objectives as maximum likelihood on model-generated targets, so all stages become one likelihood method and the remaining choice is the data mixture over time.
+
+### 13. Optimization dynamics and post-training as a service (11-01)
+
+- Stanford CS 312's edge-of-stability explainer: a 35M transformer under full-batch gradient descent settles at sharpness about 30% above the classical 2/η limit and keeps improving.
+- The [architecture ablation](../models-architectures/2026-11-01-architecture-ablations-since-gpt3.md) found swapping AdamW for Muon worth about a full round of architecture stacking.
+- River now compiles user-written PyTorch losses for its post-training API; Ultramarine 1 Flash claims frontier-class knowledge work post-trained by five people for about $300k.
+
 ## Open questions
 
 - A compute-matched comparison on tasks with zero base pass rate, where the student cannot stumble on the answer and state coverage should finally matter.
@@ -64,10 +86,16 @@ In [RSIGym](../agent-harness-routing/2026-10-09-rsigym.md), research agents tuni
 - Does constraining SFT to an on-policy update direction (OPSFT) recover on-policy generalization at SFT cost? No numbers seen yet.
 - Do the fused-head memory gains hold with real generation, flash-attention and multi-GPU, which the release did not measure?
 - Does a decisive-step screen predict post-training outcomes outside coding?
+- In mid-training a new modality, do per-group learning rates (higher on new embeddings, lower on the body) remove the forgetting trade-off Carbon-X reports?
+- Does Soft-MTP's gain grow beyond 1.2B as the paper argues, and with more than three heads?
+- How much of Carbon-X's result comes from each stage? No ablation was published in what was read.
 
 ## Key sources
 
 - [2026-10-09 · Multi-teacher on-policy distillation versus SFT](2026-10-09-multi-teacher-opd-vs-sft.md)
 - [2026-10-11 · TRL v1.15: the fused LM head](2026-10-11-trl-fused-lm-head.md)
+- [2026-11-01 · Carbon-X: mid-training a 14B model to read DNA](2026-11-01-carbon-x-dna-midtraining.md)
+- [2026-11-01 · Multi-token prediction done right (Soft-MTP)](2026-11-01-soft-multi-token-prediction.md)
+- Covered in the 11-01 digest without a summary page: WISD, Training Foundation Models with a Single Algorithm, the AIR learning-rate schedule, Semi-OPD, RLRT, the edge-of-stability explainer.
 - Covered in the 10-11 digest without a summary page: OPSFT, Latent-MOPD, Datology Curation Studio, Before They Can Solve, and the second subliminal-learning paper.
 - Covered in digests without a summary page: Finetuning with Sampling and the on-policy versus off-policy distillation study ([10-04](../daily-digest/2026-10/2026-10-04.md)); the MOPD2 explainer thread ([10-09](../daily-digest/2026-10/2026-10-09.md)).

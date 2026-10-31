@@ -6,7 +6,7 @@ Scope: Human and biological side: dual-process theory, abduction, concept learni
 
 ## Current state of knowledge
 
-*Last updated 2026-10-11. This page is still thin. Sources on human and biological cognition have been low in volume for three digests, and nothing has yet been read in depth. The single entry below comes from the [10-11 digest](../daily-digest/2026-10/2026-10-11.md).*
+*Last updated 2026-11-01 (light additions, section 3). This page is still thin. Sources on human and biological cognition have been low in volume for three digests, and nothing has yet been read in depth. The single entry below comes from the [10-11 digest](../daily-digest/2026-10/2026-10-11.md).*
 
 ### 1. Theories of the brain: chaos in random recurrent networks is extensive (10-11, post and abstract read)
 
@@ -18,6 +18,13 @@ Why it is filed here: it is a result about a model of cortical dynamics, not abo
 
 - A decision as the settling of a dynamical system, with confidence read from how it settled, is on the [decision models page](../decision-models/decision-models.md) (Vega, 10-11). The resemblance to evidence-accumulation accounts of human choice is our reading, not the author's claim.
 - Hypothesis revision from prediction error, in explicit rules, is on the [world models page](../world-models-reasoning/world-models-reasoning.md) (Memento 3, 10-11).
+- A machine decider that "holds back until the evidence is there, then commits" on streaming input (RightNow System Zero, 11-01) is an engineering version of evidence accumulation to a bound, as in drift-diffusion models of human choice. No speed-accuracy data was published. See the [decision models page](../decision-models/decision-models.md).
+
+### 3. The 11-01 window: still thin (posts and titles only)
+
+- François Chollet's one-line reminder that dopamine responds most strongly to reward prediction error, not to guaranteed reward (post, no source). This is the standard temporal-difference reading of dopamine and the bridge from this page to the RL page.
+- "Large Language Models as a Cognitive Virus" (Tufts and the Santa Fe Institute) models AI dependence as social contagion with a tipping point. Post only.
+- Kurate's q-bio.NC board lists "Local learning is all you need: brain-aligned predictive coding networks" (ai_rating 6.5) and "Intrinsic Goals for Autonomous Agents: Hierarchical Exploration Captures Future Volitional Action in Drosophila". Titles only, scores still at the default.
 
 ## Open questions
 

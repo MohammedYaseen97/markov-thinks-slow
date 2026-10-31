@@ -8,7 +8,7 @@ A world model predicts what actions will do, so a planner can test futures befor
 
 ## Current state of knowledge
 
-*Last updated 2026-10-11. Two digests feed this page: [10-09](../daily-digest/2026-10/2026-10-09.md) and [10-11](../daily-digest/2026-10/2026-10-11.md).*
+*Last updated 2026-11-01. Three digests feed this page: [10-09](../daily-digest/2026-10/2026-10-09.md), [10-11](../daily-digest/2026-10/2026-10-11.md) and [11-01](../daily-digest/2026-11/2026-11-01.md).*
 
 ### 1. Abstraction can come from the prediction horizon
 
@@ -56,6 +56,16 @@ MC-PhysBench times how long video world models stay physically valid on simple s
 - **RoboJEPA** (project page read this window): imagination error follows a second-order power law in compute, extrapolates beyond the fitted scale, and correlates strongly with planning success, at up to 8B parameters across 12 embodiments, with zero-shot planning toward a goal image on a real arm.
 - Kurate lists "Preserving Unstable Modes Through Inverse Dynamics in JEPA World Models" (arXiv 2610.07540). Title only.
 
+### 10. A theorem for shared representations (11-01)
+
+**[The Platonic Representation Theorem](2026-11-01-platonic-representation-theorem-jepa.md)** (Balestriero and LeCun) proves that JEPAs trained separately on any modalities learn the same representation up to one rotation when their positive pairs are good views (two observations of one scene), with bounded misalignment for bad views (parts or corruptions of one observation). Next-token prediction is a bad-view JEPA, which is why LLMs align with vision only through scale. Good views need 42 times fewer samples for the same alignment; a 109M text JEPA aligns with DINOv2 and CLIP better than every LLM tested up to 72B; one rotation yields a captioner with no paired training (CIDEr .838 on COCO). **Shift from the prior state:** earlier sections treated JEPAs as planning machinery (H-JEPA, LeWAM); this gives a reason the latent itself should be shared across modalities, and a measurable test (alignment up to rotation) for a concept space. A saved companion paper finds DINOv3 organizes rendered words by meaning from images alone.
+
+### 11. World models choosing experiments, and RL over research steps (11-01, abstracts)
+
+- **RSI-Anything** (built on JEPA-Anything from 10-09) predicts the outcome of candidate actions, spends real feedback only on promising ones, and updates the world model when predictions miss: code-repair success 26.3% to 31.2%; reaction optimization 96.15% mean best yield against 82.16% for Bayesian optimization on 40 experiments. This addresses the open question below about picking the experiment that best separates hypotheses, by prediction rather than sampling.
+- **DiscoveryRSI** treats a hypothesis as a claim plus investigation plan, decision criteria and alternatives, assigns credit to research steps by blinded TrueSkill, and fine-tunes only on the steps that helped. Falsifiability rises from 4.00 to 6.20 while importance and novelty dip slightly: the model learns to test better, not to ask bolder questions.
+- **Hybrid Reasoning Agents** (Stanford): RL learns when to think in latent vectors and when to emit text for a tool call; 10.4% better with 35.5 to 54.7% fewer tokens. The first item in the wiki where a policy learns when to leave latent space.
+
 ## Open questions
 
 - Hierarchy depth and strides are set by hand. Learning when to add a level is unsolved.
@@ -67,11 +77,16 @@ MC-PhysBench times how long video world models stay physically valid on simple s
 - How should an agent pick the experiment that best separates surviving hypotheses? Memento 3's population only samples.
 - What decides when planning is worth its cost over direct execution? LeWAM measures the planning gain per task but has no such decider.
 - Does Memento 3 hold on private ARC-AGI-3 games?
+- What counts as a good view for abstract concepts with no single scene (a proof, a plan, a policy)?
+- Does the rotation theorem extend to predictors over time, so that two agents' world models are one rotation apart?
+- Can a text encoder trained with good views match a much larger LLM on language-only tasks? (11-01 prediction, 90 days.)
 
 ## Key sources
 
 - [2026-10-09 · H-JEPA: end-to-end learning of hierarchical world models for visual planning](2026-10-09-h-jepa-hierarchical-world-models.md)
 - [2026-10-11 · Memento 3: model-based recursive self-improvement through reflective rulebooks](2026-10-11-memento-3-code-as-world-model.md)
 - [2026-10-11 · LeWAM: end-to-end world and action modeling with JEPAs](2026-10-11-lewam-joint-world-action-jepa.md)
+- [2026-11-01 · Proving and improving the Platonic Representation Hypothesis with JEPAs](2026-11-01-platonic-representation-theorem-jepa.md)
+- Covered in the 11-01 digest and Media Zone without a summary page: RSI-Anything, DiscoveryRSI, Hybrid Reasoning Agents, the DINOv3 word-meaning paper.
 - Covered in the 10-11 digest without a summary page: SplitJEPA, the RoboJEPA project page, Agent Plasticity and Odyssey-3.
 - Covered in the [10-09 digest](../daily-digest/2026-10/2026-10-09.md) without a summary page: RoboJEPA, JEPA-Anything and MC-PhysBench.

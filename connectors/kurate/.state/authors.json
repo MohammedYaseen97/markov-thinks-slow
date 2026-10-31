@@ -4012,5 +4012,1645 @@
     ],
     "first_seen": "2026-W41",
     "last_seen": "2026-W41"
+  },
+  "Tianle Chen": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.AI",
+        "rank": 1,
+        "arxiv_id": "2610.35398v1",
+        "title": "Belief-Conditioned Multi-Agent Actor Critic for Decentralized LLM Collaboration",
+        "ai_rating": 4.0
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Shuo Liu": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.AI",
+        "rank": 1,
+        "arxiv_id": "2610.35398v1",
+        "title": "Belief-Conditioned Multi-Agent Actor Critic for Decentralized LLM Collaboration",
+        "ai_rating": 4.0
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Christopher Amato": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.AI",
+        "rank": 1,
+        "arxiv_id": "2610.35398v1",
+        "title": "Belief-Conditioned Multi-Agent Actor Critic for Decentralized LLM Collaboration",
+        "ai_rating": 4.0
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Ananth Kalyanasundaram": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.AI",
+        "rank": 2,
+        "arxiv_id": "2610.37375v1",
+        "title": "Agent-Conditioned Routing: Diverse Reasoning Paths Within One Frozen Model",
+        "ai_rating": 4.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Ankush Kadu": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.AI",
+        "rank": 2,
+        "arxiv_id": "2610.37375v1",
+        "title": "Agent-Conditioned Routing: Diverse Reasoning Paths Within One Frozen Model",
+        "ai_rating": 4.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Athira Gopal": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.AI",
+        "rank": 2,
+        "arxiv_id": "2610.37375v1",
+        "title": "Agent-Conditioned Routing: Diverse Reasoning Paths Within One Frozen Model",
+        "ai_rating": 4.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Aswanth Krishnan": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.AI",
+        "rank": 2,
+        "arxiv_id": "2610.37375v1",
+        "title": "Agent-Conditioned Routing: Diverse Reasoning Paths Within One Frozen Model",
+        "ai_rating": 4.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Iwan Williams": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.AI",
+        "rank": 3,
+        "arxiv_id": "2610.36962v1",
+        "title": "Do bots feel bad? Assessing empirical evidence for functional valence in LLMs",
+        "ai_rating": 6.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Jeff Shrager": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.AI",
+        "rank": 4,
+        "arxiv_id": "2610.36341v1",
+        "title": "Executable Archaeology of Programs That Model Programming: Reanimating the Heuristic Compiler (1961) and KBEmacs (1984)",
+        "ai_rating": 5.0
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Kent M. Pitman": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.AI",
+        "rank": 4,
+        "arxiv_id": "2610.36341v1",
+        "title": "Executable Archaeology of Programs That Model Programming: Reanimating the Heuristic Compiler (1961) and KBEmacs (1984)",
+        "ai_rating": 5.0
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Mia Golec": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.AI",
+        "rank": 4,
+        "arxiv_id": "2610.36341v1",
+        "title": "Executable Archaeology of Programs That Model Programming: Reanimating the Heuristic Compiler (1961) and KBEmacs (1984)",
+        "ai_rating": 5.0
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Haoxiang Zhao": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.AI",
+        "rank": 5,
+        "arxiv_id": "2610.35125v1",
+        "title": "When Fusion Order Matters: Insights on Progressive Multimodal Representation Learning for Cross-modal Retrieval",
+        "ai_rating": 4.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Bin Wang": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.AI",
+        "rank": 5,
+        "arxiv_id": "2610.35125v1",
+        "title": "When Fusion Order Matters: Insights on Progressive Multimodal Representation Learning for Cross-modal Retrieval",
+        "ai_rating": 4.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Yaofei Wang": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.AI",
+        "rank": 5,
+        "arxiv_id": "2610.35125v1",
+        "title": "When Fusion Order Matters: Insights on Progressive Multimodal Representation Learning for Cross-modal Retrieval",
+        "ai_rating": 4.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Xiao Lan": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.AI",
+        "rank": 5,
+        "arxiv_id": "2610.35125v1",
+        "title": "When Fusion Order Matters: Insights on Progressive Multimodal Representation Learning for Cross-modal Retrieval",
+        "ai_rating": 4.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Yunfeng Diao": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.AI",
+        "rank": 5,
+        "arxiv_id": "2610.35125v1",
+        "title": "When Fusion Order Matters: Insights on Progressive Multimodal Representation Learning for Cross-modal Retrieval",
+        "ai_rating": 4.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Xu Wang": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.AI",
+        "rank": 5,
+        "arxiv_id": "2610.35125v1",
+        "title": "When Fusion Order Matters: Insights on Progressive Multimodal Representation Learning for Cross-modal Retrieval",
+        "ai_rating": 4.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Zongyuan Sun": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.AI",
+        "rank": 6,
+        "arxiv_id": "2610.35598v1",
+        "title": "Evolve on Graph: Self-Evolving Knowledge Graph Reasoning without Question Annotations",
+        "ai_rating": 6.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Shuai Zhao": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.AI",
+        "rank": 6,
+        "arxiv_id": "2610.35598v1",
+        "title": "Evolve on Graph: Self-Evolving Knowledge Graph Reasoning without Question Annotations",
+        "ai_rating": 6.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Ke Shu": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.AI",
+        "rank": 6,
+        "arxiv_id": "2610.35598v1",
+        "title": "Evolve on Graph: Self-Evolving Knowledge Graph Reasoning without Question Annotations",
+        "ai_rating": 6.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Ziyue Zhu": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.AI",
+        "rank": 6,
+        "arxiv_id": "2610.35598v1",
+        "title": "Evolve on Graph: Self-Evolving Knowledge Graph Reasoning without Question Annotations",
+        "ai_rating": 6.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Shangyang Wu": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.AI",
+        "rank": 6,
+        "arxiv_id": "2610.35598v1",
+        "title": "Evolve on Graph: Self-Evolving Knowledge Graph Reasoning without Question Annotations",
+        "ai_rating": 6.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Yuanlin Lin": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.AI",
+        "rank": 6,
+        "arxiv_id": "2610.35598v1",
+        "title": "Evolve on Graph: Self-Evolving Knowledge Graph Reasoning without Question Annotations",
+        "ai_rating": 6.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Albert Bou": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.AI",
+        "rank": 7,
+        "arxiv_id": "2610.38851v1",
+        "title": "Learning to Reason from Reference Samples Alone: Reinforced Adversarial Learning for Modern LLM Post-Training",
+        "ai_rating": 6.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Javier Valdes-Aleman": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.AI",
+        "rank": 7,
+        "arxiv_id": "2610.38851v1",
+        "title": "Learning to Reason from Reference Samples Alone: Reinforced Adversarial Learning for Modern LLM Post-Training",
+        "ai_rating": 6.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Jon M. Laurent": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.AI",
+        "rank": 7,
+        "arxiv_id": "2610.38851v1",
+        "title": "Learning to Reason from Reference Samples Alone: Reinforced Adversarial Learning for Modern LLM Post-Training",
+        "ai_rating": 6.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Samuel G. Rodriques": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.AI",
+        "rank": 7,
+        "arxiv_id": "2610.38851v1",
+        "title": "Learning to Reason from Reference Samples Alone: Reinforced Adversarial Learning for Modern LLM Post-Training",
+        "ai_rating": 6.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Andrew D. White": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.AI",
+        "rank": 7,
+        "arxiv_id": "2610.38851v1",
+        "title": "Learning to Reason from Reference Samples Alone: Reinforced Adversarial Learning for Modern LLM Post-Training",
+        "ai_rating": 6.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Michaela Hinks": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.AI",
+        "rank": 7,
+        "arxiv_id": "2610.38851v1",
+        "title": "Learning to Reason from Reference Samples Alone: Reinforced Adversarial Learning for Modern LLM Post-Training",
+        "ai_rating": 6.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Amir H. Rezaeian": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.AI",
+        "rank": 8,
+        "arxiv_id": "2610.40444v1",
+        "title": "Prefix Executability: Evaluating Tool-Using Agents Beyond Final Success",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Weiyi Sun": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.AI",
+        "rank": 8,
+        "arxiv_id": "2610.40444v1",
+        "title": "Prefix Executability: Evaluating Tool-Using Agents Beyond Final Success",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Yassine Benajiba": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.AI",
+        "rank": 8,
+        "arxiv_id": "2610.40444v1",
+        "title": "Prefix Executability: Evaluating Tool-Using Agents Beyond Final Success",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Dan Roth": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.AI",
+        "rank": 8,
+        "arxiv_id": "2610.40444v1",
+        "title": "Prefix Executability: Evaluating Tool-Using Agents Beyond Final Success",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Hicham El Akhal": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.AI",
+        "rank": 9,
+        "arxiv_id": "2610.35984v1",
+        "title": "Enhancing Deep Learning Model Performance through Data Generation Strategies: Classification of Olive Tree Diseases",
+        "ai_rating": 2.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Abderrahim Waga": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.AI",
+        "rank": 9,
+        "arxiv_id": "2610.35984v1",
+        "title": "Enhancing Deep Learning Model Performance through Data Generation Strategies: Classification of Olive Tree Diseases",
+        "ai_rating": 2.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Aissa Ben Yahya": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.AI",
+        "rank": 9,
+        "arxiv_id": "2610.35984v1",
+        "title": "Enhancing Deep Learning Model Performance through Data Generation Strategies: Classification of Olive Tree Diseases",
+        "ai_rating": 2.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Abdelbaki El Belrhiti El Alaoui": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.AI",
+        "rank": 9,
+        "arxiv_id": "2610.35984v1",
+        "title": "Enhancing Deep Learning Model Performance through Data Generation Strategies: Classification of Olive Tree Diseases",
+        "ai_rating": 2.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Pier Mattia Basciano": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.AI",
+        "rank": 10,
+        "arxiv_id": "2610.35403v1",
+        "title": "NeSySpec: Neuro-Symbolic Technical Intelligence for Auditing Engineering Specifications with an Application to Aircraft",
+        "ai_rating": 5.0
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Gianvito Antenori": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.AI",
+        "rank": 10,
+        "arxiv_id": "2610.35403v1",
+        "title": "NeSySpec: Neuro-Symbolic Technical Intelligence for Auditing Engineering Specifications with an Application to Aircraft",
+        "ai_rating": 5.0
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Cristiano Andolfi": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.AI",
+        "rank": 10,
+        "arxiv_id": "2610.35403v1",
+        "title": "NeSySpec: Neuro-Symbolic Technical Intelligence for Auditing Engineering Specifications with an Application to Aircraft",
+        "ai_rating": 5.0
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Giovanni Farina": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.AI",
+        "rank": 10,
+        "arxiv_id": "2610.35403v1",
+        "title": "NeSySpec: Neuro-Symbolic Technical Intelligence for Auditing Engineering Specifications with an Application to Aircraft",
+        "ai_rating": 5.0
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Salvatore Monteleone": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.AI",
+        "rank": 10,
+        "arxiv_id": "2610.35403v1",
+        "title": "NeSySpec: Neuro-Symbolic Technical Intelligence for Auditing Engineering Specifications with an Application to Aircraft",
+        "ai_rating": 5.0
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Remy Ogasawara": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.LG",
+        "rank": 1,
+        "arxiv_id": "2610.37517v2",
+        "title": "Orthogonal and Parametrized Multi-Attribute Steering of LLMs",
+        "ai_rating": 5.0
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Cullen Anderson": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.LG",
+        "rank": 1,
+        "arxiv_id": "2610.37517v2",
+        "title": "Orthogonal and Parametrized Multi-Attribute Steering of LLMs",
+        "ai_rating": 5.0
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Narmeen Fatimah Oozeer": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.LG",
+        "rank": 1,
+        "arxiv_id": "2610.37517v2",
+        "title": "Orthogonal and Parametrized Multi-Attribute Steering of LLMs",
+        "ai_rating": 5.0
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Foad Namjoo": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.LG",
+        "rank": 1,
+        "arxiv_id": "2610.37517v2",
+        "title": "Orthogonal and Parametrized Multi-Attribute Steering of LLMs",
+        "ai_rating": 5.0
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Amir Abdullah": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.LG",
+        "rank": 1,
+        "arxiv_id": "2610.37517v2",
+        "title": "Orthogonal and Parametrized Multi-Attribute Steering of LLMs",
+        "ai_rating": 5.0
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Jens Kristian Refsgaard Schou": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.LG",
+        "rank": 1,
+        "arxiv_id": "2610.37517v2",
+        "title": "Orthogonal and Parametrized Multi-Attribute Steering of LLMs",
+        "ai_rating": 5.0
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Shaohuai Feng": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.LG",
+        "rank": 2,
+        "arxiv_id": "2610.34843v1",
+        "title": "When Respondents Are Scarce: LLM-Derived Semantic Priors for Bayesian Confirmatory Factor Analysis",
+        "ai_rating": 4.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Mohd Wira Mohd Shafiei": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.LG",
+        "rank": 2,
+        "arxiv_id": "2610.34843v1",
+        "title": "When Respondents Are Scarce: LLM-Derived Semantic Priors for Bayesian Confirmatory Factor Analysis",
+        "ai_rating": 4.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Mohd Sukri Shafie": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.LG",
+        "rank": 2,
+        "arxiv_id": "2610.34843v1",
+        "title": "When Respondents Are Scarce: LLM-Derived Semantic Priors for Bayesian Confirmatory Factor Analysis",
+        "ai_rating": 4.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Siyang Tian": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.LG",
+        "rank": 2,
+        "arxiv_id": "2610.34843v1",
+        "title": "When Respondents Are Scarce: LLM-Derived Semantic Priors for Bayesian Confirmatory Factor Analysis",
+        "ai_rating": 4.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Pavankumar Koratikere": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.LG",
+        "rank": 3,
+        "arxiv_id": "2610.36442v1",
+        "title": "High-Fidelity Aerostructural Dataset of Transonic Wings in Cruise Conditions",
+        "ai_rating": 6.0
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Abhijnan Dikshit": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.LG",
+        "rank": 3,
+        "arxiv_id": "2610.36442v1",
+        "title": "High-Fidelity Aerostructural Dataset of Transonic Wings in Cruise Conditions",
+        "ai_rating": 6.0
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Leifur Leifsson": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.LG",
+        "rank": 3,
+        "arxiv_id": "2610.36442v1",
+        "title": "High-Fidelity Aerostructural Dataset of Transonic Wings in Cruise Conditions",
+        "ai_rating": 6.0
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Haoyu Zhu": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.LG",
+        "rank": 4,
+        "arxiv_id": "2610.38197v1",
+        "title": "Convex-SKM-Net: Low-Latency Block Halfspace Corrections for Neural Convex Constraint Satisfaction",
+        "ai_rating": 6.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Xiaochen Zhang": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.LG",
+        "rank": 4,
+        "arxiv_id": "2610.38197v1",
+        "title": "Convex-SKM-Net: Low-Latency Block Halfspace Corrections for Neural Convex Constraint Satisfaction",
+        "ai_rating": 6.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Qingchun Hou": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.LG",
+        "rank": 4,
+        "arxiv_id": "2610.38197v1",
+        "title": "Convex-SKM-Net: Low-Latency Block Halfspace Corrections for Neural Convex Constraint Satisfaction",
+        "ai_rating": 6.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Alicem Koyun": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.LG",
+        "rank": 5,
+        "arxiv_id": "2610.36517v1",
+        "title": "PRISM: Pathology Reliability In Scarce-label Medicine. A Tile-level Benchmark of Pathology Foundation Models",
+        "ai_rating": 5.0
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Anda Tang": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.LG",
+        "rank": 6,
+        "arxiv_id": "2610.35130v1",
+        "title": "TUON: A Tensor-Aware Optimizer Utilizing Tensor-SVD and Polarization for Large Language Model Pretraining",
+        "ai_rating": 5.0
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Xuanlin Yang": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.LG",
+        "rank": 6,
+        "arxiv_id": "2610.35130v1",
+        "title": "TUON: A Tensor-Aware Optimizer Utilizing Tensor-SVD and Polarization for Large Language Model Pretraining",
+        "ai_rating": 5.0
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Junjie Wang": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.LG",
+        "rank": 6,
+        "arxiv_id": "2610.35130v1",
+        "title": "TUON: A Tensor-Aware Optimizer Utilizing Tensor-SVD and Polarization for Large Language Model Pretraining",
+        "ai_rating": 5.0
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Zhouchen Lin": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.LG",
+        "rank": 6,
+        "arxiv_id": "2610.35130v1",
+        "title": "TUON: A Tensor-Aware Optimizer Utilizing Tensor-SVD and Polarization for Large Language Model Pretraining",
+        "ai_rating": 5.0
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Chenghao Gu": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.LG",
+        "rank": 7,
+        "arxiv_id": "2610.40160v1",
+        "title": "FARE: Factor-Aware Retrieval with Error-Guided Fusion for Retail Forecasting",
+        "ai_rating": 6.0
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Zhuokang Shen": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.LG",
+        "rank": 7,
+        "arxiv_id": "2610.40160v1",
+        "title": "FARE: Factor-Aware Retrieval with Error-Guided Fusion for Retail Forecasting",
+        "ai_rating": 6.0
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Shenghao Wu": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.LG",
+        "rank": 7,
+        "arxiv_id": "2610.40160v1",
+        "title": "FARE: Factor-Aware Retrieval with Error-Guided Fusion for Retail Forecasting",
+        "ai_rating": 6.0
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Tingxuan Zhu": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.LG",
+        "rank": 7,
+        "arxiv_id": "2610.40160v1",
+        "title": "FARE: Factor-Aware Retrieval with Error-Guided Fusion for Retail Forecasting",
+        "ai_rating": 6.0
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Weiyi Luo": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.LG",
+        "rank": 7,
+        "arxiv_id": "2610.40160v1",
+        "title": "FARE: Factor-Aware Retrieval with Error-Guided Fusion for Retail Forecasting",
+        "ai_rating": 6.0
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Haifeng Tang": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.LG",
+        "rank": 7,
+        "arxiv_id": "2610.40160v1",
+        "title": "FARE: Factor-Aware Retrieval with Error-Guided Fusion for Retail Forecasting",
+        "ai_rating": 6.0
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Sirui Chen": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.LG",
+        "rank": 8,
+        "arxiv_id": "2610.36477v2",
+        "title": "Proposing Better Rollouts for On-Policy Distillation",
+        "ai_rating": 6.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Yunzhe Qi": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.LG",
+        "rank": 8,
+        "arxiv_id": "2610.36477v2",
+        "title": "Proposing Better Rollouts for On-Policy Distillation",
+        "ai_rating": 6.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Haobo Xu": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.LG",
+        "rank": 8,
+        "arxiv_id": "2610.36477v2",
+        "title": "Proposing Better Rollouts for On-Policy Distillation",
+        "ai_rating": 6.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Jiaru Zou": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.LG",
+        "rank": 8,
+        "arxiv_id": "2610.36477v2",
+        "title": "Proposing Better Rollouts for On-Policy Distillation",
+        "ai_rating": 6.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Mengting Ai": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.LG",
+        "rank": 8,
+        "arxiv_id": "2610.36477v2",
+        "title": "Proposing Better Rollouts for On-Policy Distillation",
+        "ai_rating": 6.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Zihao Li": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.LG",
+        "rank": 8,
+        "arxiv_id": "2610.36477v2",
+        "title": "Proposing Better Rollouts for On-Policy Distillation",
+        "ai_rating": 6.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Faeze Moradi Kalarde": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.LG",
+        "rank": 9,
+        "arxiv_id": "2610.37429v1",
+        "title": "Bayes-Adaptive MDPs for Rollout Allocation to Enhance GRPO Training",
+        "ai_rating": 4.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Armin Toroghi": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.LG",
+        "rank": 9,
+        "arxiv_id": "2610.37429v1",
+        "title": "Bayes-Adaptive MDPs for Rollout Allocation to Enhance GRPO Training",
+        "ai_rating": 4.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Nam Ho Koh": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.LG",
+        "rank": 9,
+        "arxiv_id": "2610.37429v1",
+        "title": "Bayes-Adaptive MDPs for Rollout Allocation to Enhance GRPO Training",
+        "ai_rating": 4.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Doo Hwan Hwang": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.LG",
+        "rank": 9,
+        "arxiv_id": "2610.37429v1",
+        "title": "Bayes-Adaptive MDPs for Rollout Allocation to Enhance GRPO Training",
+        "ai_rating": 4.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Seungjin Kim": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.LG",
+        "rank": 9,
+        "arxiv_id": "2610.37429v1",
+        "title": "Bayes-Adaptive MDPs for Rollout Allocation to Enhance GRPO Training",
+        "ai_rating": 4.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Kee-Eung Kim": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.LG",
+        "rank": 9,
+        "arxiv_id": "2610.37429v1",
+        "title": "Bayes-Adaptive MDPs for Rollout Allocation to Enhance GRPO Training",
+        "ai_rating": 4.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Joseph Natter": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.LG",
+        "rank": 10,
+        "arxiv_id": "2610.37598v1",
+        "title": "GAS-PFN: Graph-Aware Spatiotemporal Prior-Data Fitted Networks for Zero-Shot Traffic Forecasting",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Long Vu": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.LG",
+        "rank": 10,
+        "arxiv_id": "2610.37598v1",
+        "title": "GAS-PFN: Graph-Aware Spatiotemporal Prior-Data Fitted Networks for Zero-Shot Traffic Forecasting",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Yifan Zhang": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.LG",
+        "rank": 10,
+        "arxiv_id": "2610.37598v1",
+        "title": "GAS-PFN: Graph-Aware Spatiotemporal Prior-Data Fitted Networks for Zero-Shot Traffic Forecasting",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Bobin Deng": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.LG",
+        "rank": 10,
+        "arxiv_id": "2610.37598v1",
+        "title": "GAS-PFN: Graph-Aware Spatiotemporal Prior-Data Fitted Networks for Zero-Shot Traffic Forecasting",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Kun Suo": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.LG",
+        "rank": 10,
+        "arxiv_id": "2610.37598v1",
+        "title": "GAS-PFN: Graph-Aware Spatiotemporal Prior-Data Fitted Networks for Zero-Shot Traffic Forecasting",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Rui Wu": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "cs.LG",
+        "rank": 10,
+        "arxiv_id": "2610.37598v1",
+        "title": "GAS-PFN: Graph-Aware Spatiotemporal Prior-Data Fitted Networks for Zero-Shot Traffic Forecasting",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Emma Reyner-Fuentes": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "q-bio.NC",
+        "rank": 1,
+        "arxiv_id": "2610.37587v1",
+        "title": "Every route counts, but some count more: a max-plus view of the C. elegans brain",
+        "ai_rating": 5.0
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Sebastian Rudolph": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "q-bio.NC",
+        "rank": 1,
+        "arxiv_id": "2610.37587v1",
+        "title": "Every route counts, but some count more: a max-plus view of the C. elegans brain",
+        "ai_rating": 5.0
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Carmen Peláez-Moreno": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "q-bio.NC",
+        "rank": 1,
+        "arxiv_id": "2610.37587v1",
+        "title": "Every route counts, but some count more: a max-plus view of the C. elegans brain",
+        "ai_rating": 5.0
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Francisco J. Valverde-Albacete": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "q-bio.NC",
+        "rank": 1,
+        "arxiv_id": "2610.37587v1",
+        "title": "Every route counts, but some count more: a max-plus view of the C. elegans brain",
+        "ai_rating": 5.0
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Maria F. Alcala-Durand": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "q-bio.NC",
+        "rank": 2,
+        "arxiv_id": "2610.34524v1",
+        "title": "Analysis of Biomarkers from Visual Explorations in Individuals Suspected to Be in the Prodromal Phase of Parkinson's Disease",
+        "ai_rating": 4.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "J. Camilo Puerta-Acevedo": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "q-bio.NC",
+        "rank": 2,
+        "arxiv_id": "2610.34524v1",
+        "title": "Analysis of Biomarkers from Visual Explorations in Individuals Suspected to Be in the Prodromal Phase of Parkinson's Disease",
+        "ai_rating": 4.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Valle Pérez del Olmo": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "q-bio.NC",
+        "rank": 2,
+        "arxiv_id": "2610.34524v1",
+        "title": "Analysis of Biomarkers from Visual Explorations in Individuals Suspected to Be in the Prodromal Phase of Parkinson's Disease",
+        "ai_rating": 4.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Elisa Luque-Buzo": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "q-bio.NC",
+        "rank": 2,
+        "arxiv_id": "2610.34524v1",
+        "title": "Analysis of Biomarkers from Visual Explorations in Individuals Suspected to Be in the Prodromal Phase of Parkinson's Disease",
+        "ai_rating": 4.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Julián D. Arias-Londoño": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "q-bio.NC",
+        "rank": 2,
+        "arxiv_id": "2610.34524v1",
+        "title": "Analysis of Biomarkers from Visual Explorations in Individuals Suspected to Be in the Prodromal Phase of Parkinson's Disease",
+        "ai_rating": 4.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Francisco J. Grandas-Pérez": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "q-bio.NC",
+        "rank": 2,
+        "arxiv_id": "2610.34524v1",
+        "title": "Analysis of Biomarkers from Visual Explorations in Individuals Suspected to Be in the Prodromal Phase of Parkinson's Disease",
+        "ai_rating": 4.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Jean Laurens": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "q-bio.NC",
+        "rank": 3,
+        "arxiv_id": "2610.34106v1",
+        "title": "New developments in the geometry and topology of 3D head-direction coding",
+        "ai_rating": 4.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Martin R Nelson": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "q-bio.NC",
+        "rank": 4,
+        "arxiv_id": "2610.36920v1",
+        "title": "Exploring Neural Dynamics with Time Delays: A Numerical and Bifurcation Analysis Approach",
+        "ai_rating": 5.0
+      },
+      {
+        "week": "2026-W44",
+        "category": "q-bio.NC",
+        "rank": 7,
+        "arxiv_id": "2610.35638v1",
+        "title": "Phase response approach to networked neural activity models with delays",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Jonathan J Crofts": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "q-bio.NC",
+        "rank": 4,
+        "arxiv_id": "2610.36920v1",
+        "title": "Exploring Neural Dynamics with Time Delays: A Numerical and Bifurcation Analysis Approach",
+        "ai_rating": 5.0
+      },
+      {
+        "week": "2026-W44",
+        "category": "q-bio.NC",
+        "rank": 7,
+        "arxiv_id": "2610.35638v1",
+        "title": "Phase response approach to networked neural activity models with delays",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Dirk Gütlin": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "q-bio.NC",
+        "rank": 5,
+        "arxiv_id": "2610.37327v1",
+        "title": "Local learning is all you need: brain-aligned predictive coding networks",
+        "ai_rating": 6.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Ryszard Auksztulewicz": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "q-bio.NC",
+        "rank": 5,
+        "arxiv_id": "2610.37327v1",
+        "title": "Local learning is all you need: brain-aligned predictive coding networks",
+        "ai_rating": 6.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Adrien Doerig": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "q-bio.NC",
+        "rank": 5,
+        "arxiv_id": "2610.37327v1",
+        "title": "Local learning is all you need: brain-aligned predictive coding networks",
+        "ai_rating": 6.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "John J. Vastola": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "q-bio.NC",
+        "rank": 6,
+        "arxiv_id": "2610.35856v1",
+        "title": "On the stability of learning",
+        "ai_rating": 5.0
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Declan Kutscher": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "q-bio.NC",
+        "rank": 8,
+        "arxiv_id": "2610.34638v1",
+        "title": "Intrinsic Goals for Autonomous Agents: Hierarchical Exploration Captures Future Volitional Action in Drosophila",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Reece Keller": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "q-bio.NC",
+        "rank": 8,
+        "arxiv_id": "2610.34638v1",
+        "title": "Intrinsic Goals for Autonomous Agents: Hierarchical Exploration Captures Future Volitional Action in Drosophila",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Alyn Kirsch": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "q-bio.NC",
+        "rank": 8,
+        "arxiv_id": "2610.34638v1",
+        "title": "Intrinsic Goals for Autonomous Agents: Hierarchical Exploration Captures Future Volitional Action in Drosophila",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Felix Pei": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "q-bio.NC",
+        "rank": 8,
+        "arxiv_id": "2610.34638v1",
+        "title": "Intrinsic Goals for Autonomous Agents: Hierarchical Exploration Captures Future Volitional Action in Drosophila",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Aran Nayebi": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "q-bio.NC",
+        "rank": 8,
+        "arxiv_id": "2610.34638v1",
+        "title": "Intrinsic Goals for Autonomous Agents: Hierarchical Exploration Captures Future Volitional Action in Drosophila",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Leonardo E. S. Tavares": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "q-bio.NC",
+        "rank": 9,
+        "arxiv_id": "2610.38564v1",
+        "title": "Recognition of auditory objects from continuous and ultra-sparse spike streams in neuromorphic devices",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Kevin D. Sargent": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "q-bio.NC",
+        "rank": 9,
+        "arxiv_id": "2610.38564v1",
+        "title": "Recognition of auditory objects from continuous and ultra-sparse spike streams in neuromorphic devices",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Jon T. Sakata": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "q-bio.NC",
+        "rank": 9,
+        "arxiv_id": "2610.38564v1",
+        "title": "Recognition of auditory objects from continuous and ultra-sparse spike streams in neuromorphic devices",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Dezhe Z. Jin": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "q-bio.NC",
+        "rank": 9,
+        "arxiv_id": "2610.38564v1",
+        "title": "Recognition of auditory objects from continuous and ultra-sparse spike streams in neuromorphic devices",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Lucas Bayones": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "q-bio.NC",
+        "rank": 10,
+        "arxiv_id": "2610.36541v1",
+        "title": "The geometry of cognition: from neural populations to neurotechnology",
+        "ai_rating": 6.0
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Devika Narain": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "q-bio.NC",
+        "rank": 10,
+        "arxiv_id": "2610.36541v1",
+        "title": "The geometry of cognition: from neural populations to neurotechnology",
+        "ai_rating": 6.0
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
+  },
+  "Roman Rossi-Pool": {
+    "appearances": [
+      {
+        "week": "2026-W44",
+        "category": "q-bio.NC",
+        "rank": 10,
+        "arxiv_id": "2610.36541v1",
+        "title": "The geometry of cognition: from neural populations to neurotechnology",
+        "ai_rating": 6.0
+      }
+    ],
+    "first_seen": "2026-W44",
+    "last_seen": "2026-W44"
   }
 }

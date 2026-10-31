@@ -26,3 +26,18 @@ Append-only timeline of all ingested sources and wiki updates.
 ## [2026-10-11] ingest | GitSwarm: Decentralized Compounding Inference (arXiv 2610.04862), with Prime Agent's Rust rewrite and the harness design study (arXiv 2609.20804) | paper, blog and paper via X feed and saved reading
 ## [2026-10-11] digest | Daily digest and Media Zone for 2026-10-11 | collection window 2026-10-08 night to 2026-10-11 evening
 ## [2026-10-11] update | Concept pages updated: reinforcement-learning, training-finetuning, models-architectures, decision-models, world-models-reasoning, agent-harness-routing. Started: cognition-decision | concept pages
+## [2026-11-01] ingest | Score Centering Stabilizes Off-Policy Reinforcement Learning (Together AI) | paper images, appendix table and River reproduction via saved reading and X feed
+## [2026-11-01] ingest | Unlearnability in RLVR (Collinear) and Exploration-Distillation (arXiv 2610.10536) | X Article and paper abstract via saved reading
+## [2026-11-01] ingest | Carbon-X: mid-training a 14B model on DNA and text (Hugging Face) | model card via X feed (priority account)
+## [2026-11-01] ingest | Multi-Token Prediction Done Right, Soft-MTP (arXiv 2610.38331) | paper via HuggingFace and X feed, cross-source confirmed via social
+## [2026-11-01] ingest | I Tried Every LLM Architecture Change Since 2020 | X Article via X feed
+## [2026-11-01] ingest | How to Loop Your Transformer (arXiv 2610.40325) and Scaling Laws for Looped MoE (arXiv 2609.40316) | paper abstract via X feed and alphaXiv overview via saved reading
+## [2026-11-01] ingest | Next-Concept Modeling (arXiv 2610.14162) | paper, repository and posts via saved reading
+## [2026-11-01] ingest | Proving and Improving the Platonic Representation Hypothesis with JEPAs (arXiv 2610.39302) | paper via HuggingFace and X feed, cross-source confirmed via social
+## [2026-11-01] ingest | Decision models enter the loop: RightNow System Zero, JevAct (arXiv 2610.38620), DecisionRAG (arXiv 2610.35868), Perplexity Decider explainer | blog, abstracts and X Article via X feed
+## [2026-11-01] ingest | Simulation RL Environments, Part 2: AirOpsEnv | FineEnvs article via X feed (priority accounts)
+## [2026-11-01] ingest | Reinforcement Learning for Design Taste | blog via X feed (priority repost)
+## [2026-11-01] ingest | Harness², RRSI, RSIHub, FlashRSI, and Matched Capabilities, Different Behaviors (arXiv 2610.34298) | overviews, abstracts and project pages via saved reading, HuggingFace and Kurate
+## [2026-11-01] ingest | JetSpec++ (arXiv 2610.19792) | alphaXiv overview and project page via X feed
+## [2026-11-01] digest | Daily digest and Media Zone for 2026-11-01 | collection window 2026-10-11 evening to 2026-11-01 night; Media Zone draft from an earlier interrupted run reviewed and corrected
+## [2026-11-01] update | Concept pages updated: reinforcement-learning, training-finetuning, models-architectures, decision-models, world-models-reasoning, agent-harness-routing, cognition-decision. Started: inference-optimization | concept pages
