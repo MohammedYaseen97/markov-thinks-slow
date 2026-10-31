@@ -39,6 +39,16 @@ if [ "$MISSING" -gt 0 ]; then
 fi
 .venv/bin/python connectors/window/build_window.py --digest-date "$D" --close >> "$LOG" 2>&1
 
+# Podcast: renew the NotebookLM session (no browser needed), then one episode for this write-up.
+# A failure here never blocks publishing the digest.
+export PATH="$REPO/.venv/bin:$PATH"
+nlm auth refresh >> "$LOG" 2>&1 || say "NotebookLM session refresh failed (run: nlm login)"
+if timeout 100m .venv/bin/python connectors/notebooklm/podcast.py "$D" > ".claude/logs/podcast-$D.log" 2>&1; then
+  say "podcast done"
+else
+  say "PODCAST FAILED (see .claude/logs/podcast-$D.log)"
+fi
+
 # Publish, unless something private or secret-looking is about to go out.
 git add -A
 # Private terms live in .private-terms.local (one per line, never committed).
