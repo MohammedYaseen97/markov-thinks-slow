@@ -17,7 +17,7 @@ const SHOW = {
   author:      'markov-thinks-slow',
   owner: {
     name:  'Mohammed Yaseen M',
-    email: '',
+    email: '47.yaseen@gmail.com',
   },
   // Top-level + secondary iTunes categories. Spotify reads <itunes:category>.
   category:    'Technology',
