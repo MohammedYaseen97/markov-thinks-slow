@@ -17,9 +17,10 @@ function fmtDate(iso) {
     <div class="hero-date">listen on your walk</div>
     <h1>Markov Thinks Slow Radio</h1>
     <p class="hero-tagline">
-      A daily ~45 minute podcast on AI research. Generated automatically from the day's digest plus
-      every wiki summary it cross-links plus the social-stream syntheses. Hosts identify 2-4 themes
-      from the day's material and walk through them as one connected story, not a paper-by-paper roundup.
+      A ~40 minute podcast on AI research, published about every two days. Each episode is generated
+      automatically from the latest digest plus the wiki pages and articles it links. Hosts pick 2-4 themes
+      from that material and walk through them as one connected story, not a paper-by-paper roundup.
+      Sunday episodes wrap up the week.
     </p>
     <div class="listen-row">
       <a class="listen-btn listen-btn--spotify" href="https://open.spotify.com/show/0nUvdid2JyppThOSmI73of" target="_blank" rel="noopener">
@@ -35,9 +36,8 @@ function fmtDate(iso) {
     <div class="section-marker" style="color:#fbbf24">episodes</div>
     <h2>{episodes.length} {episodes.length === 1 ? 'episode' : 'episodes'}</h2>
     <p class="lead">
-      Newest first. Each episode generated the morning after the digest it covers, lagged by one
-      day so the full social-stream window is captured. Audio hosted on GitHub Releases. Also available
-      on Spotify (auto-synced from the RSS feed every few hours).
+      Newest first. Each episode is made right after the digest it covers. Audio hosted on GitHub
+      Releases. Also on Spotify, which picks up new episodes from the RSS feed automatically.
     </p>
 
     <div class="episode-list">
@@ -74,7 +74,7 @@ function fmtDate(iso) {
 
     {episodes.length === 0 && (
       <p class="lead" style="color: var(--fg-muted)">
-        No episodes yet. Episodes appear here once the daily cron generates them.
+        No episodes yet. Episodes appear here once the scheduled write-up generates them.
       </p>
     )}
   </section>

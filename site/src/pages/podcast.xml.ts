@@ -12,8 +12,8 @@ import wiki from '../data/wiki.json';
 
 const SHOW = {
   title:       'Markov Thinks Slow Radio',
-  subtitle:    'Daily AI research synthesis',
-  description: 'A daily deep-dive podcast on AI research. Each episode is automatically generated from the day\'s digest plus every wiki summary it cross-links plus the social-stream syntheses. The hosts identify 2–4 themes from the day\'s material and walk through them as one connected story, not a paper-by-paper roundup.',
+  subtitle:    'AI research synthesis, about every two days',
+  description: 'A deep-dive podcast on AI research, published about every two days. Each episode is automatically generated from the latest digest plus the wiki pages and articles it links. The hosts pick 2–4 themes from that material and walk through them as one connected story, not a paper-by-paper roundup. Sunday episodes wrap up the week.',
   author:      'markov-thinks-slow',
   owner: {
     name:  'Mohammed Yaseen M',
