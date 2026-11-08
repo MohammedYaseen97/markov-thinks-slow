@@ -3518,10 +3518,18 @@
         "arxiv_id": "2610.04113v1",
         "title": "Multimodal Physiological Decoding Reveals Individualized Arousal Dynamics in Closed-Loop Neurofeedback",
         "ai_rating": 4.5
+      },
+      {
+        "week": "2026-W45",
+        "category": "q-bio.NC",
+        "rank": 9,
+        "arxiv_id": "2611.06418v1",
+        "title": "Mind Control of LLMs via Closed-Loop Stimulation: Out-of-Distribution Robustness",
+        "ai_rating": 5.5
       }
     ],
     "first_seen": "2026-W41",
-    "last_seen": "2026-W41"
+    "last_seen": "2026-W45"
   },
   "Dung Truong": {
     "appearances": [
@@ -5652,5 +5660,1601 @@
     ],
     "first_seen": "2026-W44",
     "last_seen": "2026-W44"
+  },
+  "Xuliang Huang": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 1,
+        "arxiv_id": "2611.06395v1",
+        "title": "GIST: Gibbs-Targeted Hierarchical Data Selection for Offline RLVR",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Tianxiang Zhao": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 1,
+        "arxiv_id": "2611.06395v1",
+        "title": "GIST: Gibbs-Targeted Hierarchical Data Selection for Offline RLVR",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Chengwei Qin": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 1,
+        "arxiv_id": "2611.06395v1",
+        "title": "GIST: Gibbs-Targeted Hierarchical Data Selection for Offline RLVR",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Yao Shu": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 1,
+        "arxiv_id": "2611.06395v1",
+        "title": "GIST: Gibbs-Targeted Hierarchical Data Selection for Offline RLVR",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Xinhang Zhang": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 2,
+        "arxiv_id": "2611.05906v1",
+        "title": "CHARM+: Cross-Hardware Attention with Re-Merge Multistream Mechanism",
+        "ai_rating": 6.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Boning Zhang": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 2,
+        "arxiv_id": "2611.05906v1",
+        "title": "CHARM+: Cross-Hardware Attention with Re-Merge Multistream Mechanism",
+        "ai_rating": 6.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Chengchun Liu": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 2,
+        "arxiv_id": "2611.05906v1",
+        "title": "CHARM+: Cross-Hardware Attention with Re-Merge Multistream Mechanism",
+        "ai_rating": 6.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Chunpu Li": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 2,
+        "arxiv_id": "2611.05906v1",
+        "title": "CHARM+: Cross-Hardware Attention with Re-Merge Multistream Mechanism",
+        "ai_rating": 6.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Lei Sun": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 2,
+        "arxiv_id": "2611.05906v1",
+        "title": "CHARM+: Cross-Hardware Attention with Re-Merge Multistream Mechanism",
+        "ai_rating": 6.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Weifeng Zhang": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 2,
+        "arxiv_id": "2611.05906v1",
+        "title": "CHARM+: Cross-Hardware Attention with Re-Merge Multistream Mechanism",
+        "ai_rating": 6.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Jichao Li": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 3,
+        "arxiv_id": "2611.07508v1",
+        "title": "DelegateEval: Evaluating Platforms for Personal External Service Agents",
+        "ai_rating": 3.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Jinrong Lu": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 3,
+        "arxiv_id": "2611.07508v1",
+        "title": "DelegateEval: Evaluating Platforms for Personal External Service Agents",
+        "ai_rating": 3.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Manjiang Yu": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 3,
+        "arxiv_id": "2611.07508v1",
+        "title": "DelegateEval: Evaluating Platforms for Personal External Service Agents",
+        "ai_rating": 3.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Zhixuan Liu": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 3,
+        "arxiv_id": "2611.07508v1",
+        "title": "DelegateEval: Evaluating Platforms for Personal External Service Agents",
+        "ai_rating": 3.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Fuqiang Wang": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 4,
+        "arxiv_id": "2611.02536v1",
+        "title": "FORGE: Fault-Oriented Rework Code Generation for Executable Interlocking Assembly",
+        "ai_rating": 4.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Jiahao Fu": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 4,
+        "arxiv_id": "2611.02536v1",
+        "title": "FORGE: Fault-Oriented Rework Code Generation for Executable Interlocking Assembly",
+        "ai_rating": 4.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Ren Hefeng": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 4,
+        "arxiv_id": "2611.02536v1",
+        "title": "FORGE: Fault-Oriented Rework Code Generation for Executable Interlocking Assembly",
+        "ai_rating": 4.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Yining Qian": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 4,
+        "arxiv_id": "2611.02536v1",
+        "title": "FORGE: Fault-Oriented Rework Code Generation for Executable Interlocking Assembly",
+        "ai_rating": 4.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Chuanting Zhang": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 4,
+        "arxiv_id": "2611.02536v1",
+        "title": "FORGE: Fault-Oriented Rework Code Generation for Executable Interlocking Assembly",
+        "ai_rating": 4.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Cheng Tan": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 4,
+        "arxiv_id": "2611.02536v1",
+        "title": "FORGE: Fault-Oriented Rework Code Generation for Executable Interlocking Assembly",
+        "ai_rating": 4.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Peng Tu": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 5,
+        "arxiv_id": "2611.04279v2",
+        "title": "Bidirectional Centered Score Matching for Discrete Diffusion Distillation",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Baoyou Chen": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 5,
+        "arxiv_id": "2611.04279v2",
+        "title": "Bidirectional Centered Score Matching for Discrete Diffusion Distillation",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Haoyuan Xia": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 5,
+        "arxiv_id": "2611.04279v2",
+        "title": "Bidirectional Centered Score Matching for Discrete Diffusion Distillation",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Zilong Dong": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 5,
+        "arxiv_id": "2611.04279v2",
+        "title": "Bidirectional Centered Score Matching for Discrete Diffusion Distillation",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Weihao Yuan": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 5,
+        "arxiv_id": "2611.04279v2",
+        "title": "Bidirectional Centered Score Matching for Discrete Diffusion Distillation",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Siyu Zhu": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 5,
+        "arxiv_id": "2611.04279v2",
+        "title": "Bidirectional Centered Score Matching for Discrete Diffusion Distillation",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Fei Lin": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 6,
+        "arxiv_id": "2611.06911v1",
+        "title": "BEAKER: An Expert-Curated Benchmark for Embodied Brains in Self-Driving Chemical Laboratories",
+        "ai_rating": 6.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Tengchao Zhang": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 6,
+        "arxiv_id": "2611.06911v1",
+        "title": "BEAKER: An Expert-Curated Benchmark for Embodied Brains in Self-Driving Chemical Laboratories",
+        "ai_rating": 6.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Ziyang Gong": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 6,
+        "arxiv_id": "2611.06911v1",
+        "title": "BEAKER: An Expert-Curated Benchmark for Embodied Brains in Self-Driving Chemical Laboratories",
+        "ai_rating": 6.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Xiaotong Yu": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 6,
+        "arxiv_id": "2611.06911v1",
+        "title": "BEAKER: An Expert-Curated Benchmark for Embodied Brains in Self-Driving Chemical Laboratories",
+        "ai_rating": 6.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Bohan Zhang": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 6,
+        "arxiv_id": "2611.06911v1",
+        "title": "BEAKER: An Expert-Curated Benchmark for Embodied Brains in Self-Driving Chemical Laboratories",
+        "ai_rating": 6.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Yifan Zhou": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 6,
+        "arxiv_id": "2611.06911v1",
+        "title": "BEAKER: An Expert-Curated Benchmark for Embodied Brains in Self-Driving Chemical Laboratories",
+        "ai_rating": 6.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Smit Kadvani": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 7,
+        "arxiv_id": "2611.04380v1",
+        "title": "Twice as Fast, Until It Isn't: Quantized Serving of Mid-Size Open LLMs",
+        "ai_rating": 4.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Kriti Faujdar": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 7,
+        "arxiv_id": "2611.04380v1",
+        "title": "Twice as Fast, Until It Isn't: Quantized Serving of Mid-Size Open LLMs",
+        "ai_rating": 4.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Spurthi Tallam": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 7,
+        "arxiv_id": "2611.04380v1",
+        "title": "Twice as Fast, Until It Isn't: Quantized Serving of Mid-Size Open LLMs",
+        "ai_rating": 4.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Eric Benhamou": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 8,
+        "arxiv_id": "2611.03384v1",
+        "title": "Can We Stop the Backtest Yet? Anytime-Valid Promotion Tests for Adaptive Financial Research Agents",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Jean-Jacques Ohana": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 8,
+        "arxiv_id": "2611.03384v1",
+        "title": "Can We Stop the Backtest Yet? Anytime-Valid Promotion Tests for Adaptive Financial Research Agents",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Beatrice Guez": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 8,
+        "arxiv_id": "2611.03384v1",
+        "title": "Can We Stop the Backtest Yet? Anytime-Valid Promotion Tests for Adaptive Financial Research Agents",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Ethan Setrouk": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 8,
+        "arxiv_id": "2611.03384v1",
+        "title": "Can We Stop the Backtest Yet? Anytime-Valid Promotion Tests for Adaptive Financial Research Agents",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Chamyl Saadi": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 8,
+        "arxiv_id": "2611.03384v1",
+        "title": "Can We Stop the Backtest Yet? Anytime-Valid Promotion Tests for Adaptive Financial Research Agents",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Thomas Jacquot": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 8,
+        "arxiv_id": "2611.03384v1",
+        "title": "Can We Stop the Backtest Yet? Anytime-Valid Promotion Tests for Adaptive Financial Research Agents",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Sen Yang": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 9,
+        "arxiv_id": "2611.06049v1",
+        "title": "Reglos: A Self-Evolving Personal Memory Agent with Recursive Self-Improvement",
+        "ai_rating": 6.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Jiaduo Lin": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 9,
+        "arxiv_id": "2611.06049v1",
+        "title": "Reglos: A Self-Evolving Personal Memory Agent with Recursive Self-Improvement",
+        "ai_rating": 6.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Zehong Huang": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 9,
+        "arxiv_id": "2611.06049v1",
+        "title": "Reglos: A Self-Evolving Personal Memory Agent with Recursive Self-Improvement",
+        "ai_rating": 6.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Wen Liu": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 9,
+        "arxiv_id": "2611.06049v1",
+        "title": "Reglos: A Self-Evolving Personal Memory Agent with Recursive Self-Improvement",
+        "ai_rating": 6.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Sungguk Cha": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 10,
+        "arxiv_id": "2611.05798v1",
+        "title": "Consistency Is Not Understanding: Orbit Audits for Neural Field Weight Readers",
+        "ai_rating": 4.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Mintae Kim": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 10,
+        "arxiv_id": "2611.05798v1",
+        "title": "Consistency Is Not Understanding: Orbit Audits for Neural Field Weight Readers",
+        "ai_rating": 4.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Youngsub Han": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 10,
+        "arxiv_id": "2611.05798v1",
+        "title": "Consistency Is Not Understanding: Orbit Audits for Neural Field Weight Readers",
+        "ai_rating": 4.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Byoung-Ki Jeon": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 10,
+        "arxiv_id": "2611.05798v1",
+        "title": "Consistency Is Not Understanding: Orbit Audits for Neural Field Weight Readers",
+        "ai_rating": 4.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Sangyeob Lee": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.AI",
+        "rank": 10,
+        "arxiv_id": "2611.05798v1",
+        "title": "Consistency Is Not Understanding: Orbit Audits for Neural Field Weight Readers",
+        "ai_rating": 4.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Mohammad Salahshour": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.LG",
+        "rank": 1,
+        "arxiv_id": "2611.03020v1",
+        "title": "The Tower of Babel in artificial intelligence: who should speak, and when it pays to listen",
+        "ai_rating": 6.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Alexander Boesgaard Lorup": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.LG",
+        "rank": 2,
+        "arxiv_id": "2611.02278v1",
+        "title": "Concise-9B: Removing the Slack from a Reasoning Model's Thinking",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Manvendra Modgil": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.LG",
+        "rank": 3,
+        "arxiv_id": "2611.05577v1",
+        "title": "Readable Is Not Steerable: Pre-Registered Tests of Physical Structure in Learned Fluid Representations",
+        "ai_rating": 6.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Biswa Sengupta": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.LG",
+        "rank": 4,
+        "arxiv_id": "2611.07155v1",
+        "title": "Depth or Description? When a One-Step Latent Score Replaces Lookahead in Proactive Information Acquisition",
+        "ai_rating": 6.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Rahul Kumar Yadav": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.LG",
+        "rank": 5,
+        "arxiv_id": "2611.07474v1",
+        "title": "Adversarial Robustness of Kernel Machines: A Comprehensive Analysis",
+        "ai_rating": 6.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Tunir Ghosh": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.LG",
+        "rank": 5,
+        "arxiv_id": "2611.07474v1",
+        "title": "Adversarial Robustness of Kernel Machines: A Comprehensive Analysis",
+        "ai_rating": 6.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Sudhendu Ahir": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.LG",
+        "rank": 5,
+        "arxiv_id": "2611.07474v1",
+        "title": "Adversarial Robustness of Kernel Machines: A Comprehensive Analysis",
+        "ai_rating": 6.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Parthe Pandit": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.LG",
+        "rank": 5,
+        "arxiv_id": "2611.07474v1",
+        "title": "Adversarial Robustness of Kernel Machines: A Comprehensive Analysis",
+        "ai_rating": 6.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Arjun Bhagoji": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.LG",
+        "rank": 5,
+        "arxiv_id": "2611.07474v1",
+        "title": "Adversarial Robustness of Kernel Machines: A Comprehensive Analysis",
+        "ai_rating": 6.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Maryam Rahimimovassagh": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.LG",
+        "rank": 6,
+        "arxiv_id": "2611.03968v1",
+        "title": "One Mistake, Three Layers: Persistence Rules Under Depth Correlation",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Michael Brown": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.LG",
+        "rank": 6,
+        "arxiv_id": "2611.03968v1",
+        "title": "One Mistake, Three Layers: Persistence Rules Under Depth Correlation",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Sanjeda Sara Jennifer": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.LG",
+        "rank": 6,
+        "arxiv_id": "2611.03968v1",
+        "title": "One Mistake, Three Layers: Persistence Rules Under Depth Correlation",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Niloofar Yousefi": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.LG",
+        "rank": 6,
+        "arxiv_id": "2611.03968v1",
+        "title": "One Mistake, Three Layers: Persistence Rules Under Depth Correlation",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Hagay Michaeli": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.LG",
+        "rank": 7,
+        "arxiv_id": "2611.05041v1",
+        "title": "Positional Encoding is All You Need for Scalable Equivariance Constraint Relaxation",
+        "ai_rating": 6.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Haggai Maron": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.LG",
+        "rank": 7,
+        "arxiv_id": "2611.05041v1",
+        "title": "Positional Encoding is All You Need for Scalable Equivariance Constraint Relaxation",
+        "ai_rating": 6.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Daniel Soudry": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.LG",
+        "rank": 7,
+        "arxiv_id": "2611.05041v1",
+        "title": "Positional Encoding is All You Need for Scalable Equivariance Constraint Relaxation",
+        "ai_rating": 6.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Jiacheng Cen": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.LG",
+        "rank": 8,
+        "arxiv_id": "2611.07410v1",
+        "title": "Spectral symmetry fingerprints in equivariant representations",
+        "ai_rating": 6.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Anyi Li": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.LG",
+        "rank": 8,
+        "arxiv_id": "2611.07410v1",
+        "title": "Spectral symmetry fingerprints in equivariant representations",
+        "ai_rating": 6.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Ning Lin": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.LG",
+        "rank": 8,
+        "arxiv_id": "2611.07410v1",
+        "title": "Spectral symmetry fingerprints in equivariant representations",
+        "ai_rating": 6.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Zihe Wang": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.LG",
+        "rank": 8,
+        "arxiv_id": "2611.07410v1",
+        "title": "Spectral symmetry fingerprints in equivariant representations",
+        "ai_rating": 6.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Ji-Rong Wen": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.LG",
+        "rank": 8,
+        "arxiv_id": "2611.07410v1",
+        "title": "Spectral symmetry fingerprints in equivariant representations",
+        "ai_rating": 6.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Wenbing Huang": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.LG",
+        "rank": 8,
+        "arxiv_id": "2611.07410v1",
+        "title": "Spectral symmetry fingerprints in equivariant representations",
+        "ai_rating": 6.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Atsushi Koike": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.LG",
+        "rank": 9,
+        "arxiv_id": "2611.05940v1",
+        "title": "BAM: Bivariate Additive Models for Interpretable Tabular Prediction",
+        "ai_rating": 4.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Ioannis Dravilas": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.LG",
+        "rank": 10,
+        "arxiv_id": "2611.08148v1",
+        "title": "Detecting Weather Fronts from Satellite Observations: What Does Reanalysis Add?",
+        "ai_rating": 5.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Miruna Stoicescu": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.LG",
+        "rank": 10,
+        "arxiv_id": "2611.08148v1",
+        "title": "Detecting Weather Fronts from Satellite Observations: What Does Reanalysis Add?",
+        "ai_rating": 5.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Roope Tervo": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.LG",
+        "rank": 10,
+        "arxiv_id": "2611.08148v1",
+        "title": "Detecting Weather Fronts from Satellite Observations: What Does Reanalysis Add?",
+        "ai_rating": 5.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Carlos Horn": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.LG",
+        "rank": 10,
+        "arxiv_id": "2611.08148v1",
+        "title": "Detecting Weather Fronts from Satellite Observations: What Does Reanalysis Add?",
+        "ai_rating": 5.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Oriol Hinojo Comellas": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.LG",
+        "rank": 10,
+        "arxiv_id": "2611.08148v1",
+        "title": "Detecting Weather Fronts from Satellite Observations: What Does Reanalysis Add?",
+        "ai_rating": 5.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Sina Montazeri": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "cs.LG",
+        "rank": 10,
+        "arxiv_id": "2611.08148v1",
+        "title": "Detecting Weather Fronts from Satellite Observations: What Does Reanalysis Add?",
+        "ai_rating": 5.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Christof Fehrman": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "q-bio.NC",
+        "rank": 1,
+        "arxiv_id": "2611.06895v1",
+        "title": "Learning Time-Varying Connectomes for Stable Behavior Across Development",
+        "ai_rating": 4.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Jacob J. Morra": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "q-bio.NC",
+        "rank": 1,
+        "arxiv_id": "2611.06895v1",
+        "title": "Learning Time-Varying Connectomes for Stable Behavior Across Development",
+        "ai_rating": 4.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Eva A. Naumann": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "q-bio.NC",
+        "rank": 1,
+        "arxiv_id": "2611.06895v1",
+        "title": "Learning Time-Varying Connectomes for Stable Behavior Across Development",
+        "ai_rating": 4.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Junhao Zhao": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "q-bio.NC",
+        "rank": 2,
+        "arxiv_id": "2611.04041v1",
+        "title": "When Model Complexity Matters in Cross-Subject Naturalistic fMRI Prediction",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Jacob Kang": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "q-bio.NC",
+        "rank": 2,
+        "arxiv_id": "2611.04041v1",
+        "title": "When Model Complexity Matters in Cross-Subject Naturalistic fMRI Prediction",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Colin Kurniawan": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "q-bio.NC",
+        "rank": 2,
+        "arxiv_id": "2611.04041v1",
+        "title": "When Model Complexity Matters in Cross-Subject Naturalistic fMRI Prediction",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "David Simberg": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "q-bio.NC",
+        "rank": 2,
+        "arxiv_id": "2611.04041v1",
+        "title": "When Model Complexity Matters in Cross-Subject Naturalistic fMRI Prediction",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Nan Xu": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "q-bio.NC",
+        "rank": 2,
+        "arxiv_id": "2611.04041v1",
+        "title": "When Model Complexity Matters in Cross-Subject Naturalistic fMRI Prediction",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Marco Zenari": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "q-bio.NC",
+        "rank": 3,
+        "arxiv_id": "2611.07809v1",
+        "title": "Self-Supervised Learning of Local Predictive Directions as a Neural Computation",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Xuehao Ding": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "q-bio.NC",
+        "rank": 3,
+        "arxiv_id": "2611.07809v1",
+        "title": "Self-Supervised Learning of Local Predictive Directions as a Neural Computation",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Daniel Burnham": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "q-bio.NC",
+        "rank": 3,
+        "arxiv_id": "2611.07809v1",
+        "title": "Self-Supervised Learning of Local Predictive Directions as a Neural Computation",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Austin R. Ellis-Mohr": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "q-bio.NC",
+        "rank": 3,
+        "arxiv_id": "2611.07809v1",
+        "title": "Self-Supervised Learning of Local Predictive Directions as a Neural Computation",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Anirvan M. Sengupta": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "q-bio.NC",
+        "rank": 3,
+        "arxiv_id": "2611.07809v1",
+        "title": "Self-Supervised Learning of Local Predictive Directions as a Neural Computation",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Dmitri B. Chklovskii": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "q-bio.NC",
+        "rank": 3,
+        "arxiv_id": "2611.07809v1",
+        "title": "Self-Supervised Learning of Local Predictive Directions as a Neural Computation",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Thomas Yerxa": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "q-bio.NC",
+        "rank": 4,
+        "arxiv_id": "2611.02245v1",
+        "title": "Modeling Visual Cortex with Layerwise Multiscale Manifold Capacity Maximization",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "SueYeon Chung": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "q-bio.NC",
+        "rank": 4,
+        "arxiv_id": "2611.02245v1",
+        "title": "Modeling Visual Cortex with Layerwise Multiscale Manifold Capacity Maximization",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Eero P. Simoncelli": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "q-bio.NC",
+        "rank": 4,
+        "arxiv_id": "2611.02245v1",
+        "title": "Modeling Visual Cortex with Layerwise Multiscale Manifold Capacity Maximization",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Irene Pellini": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "q-bio.NC",
+        "rank": 5,
+        "arxiv_id": "2611.06618v1",
+        "title": "Synchronized Hearts, Desynchronized Brains: A Nonlinear Dynamics Perspective for Function and Failure",
+        "ai_rating": 5.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Simon Bauer": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "q-bio.NC",
+        "rank": 5,
+        "arxiv_id": "2611.06618v1",
+        "title": "Synchronized Hearts, Desynchronized Brains: A Nonlinear Dynamics Perspective for Function and Failure",
+        "ai_rating": 5.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Seba Contreras": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "q-bio.NC",
+        "rank": 5,
+        "arxiv_id": "2611.06618v1",
+        "title": "Synchronized Hearts, Desynchronized Brains: A Nonlinear Dynamics Perspective for Function and Failure",
+        "ai_rating": 5.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Ruben Fernández Busnadiego": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "q-bio.NC",
+        "rank": 5,
+        "arxiv_id": "2611.06618v1",
+        "title": "Synchronized Hearts, Desynchronized Brains: A Nonlinear Dynamics Perspective for Function and Failure",
+        "ai_rating": 5.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Anushka Deb": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "q-bio.NC",
+        "rank": 5,
+        "arxiv_id": "2611.06618v1",
+        "title": "Synchronized Hearts, Desynchronized Brains: A Nonlinear Dynamics Perspective for Function and Failure",
+        "ai_rating": 5.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Sophia Hartmann": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "q-bio.NC",
+        "rank": 5,
+        "arxiv_id": "2611.06618v1",
+        "title": "Synchronized Hearts, Desynchronized Brains: A Nonlinear Dynamics Perspective for Function and Failure",
+        "ai_rating": 5.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Steven S. Kang": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "q-bio.NC",
+        "rank": 6,
+        "arxiv_id": "2611.03071v1",
+        "title": "Intrinsic network dynamics catalyze switching in functional connectivity states of the brain",
+        "ai_rating": 4.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Dae-Jin Kim": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "q-bio.NC",
+        "rank": 6,
+        "arxiv_id": "2611.03071v1",
+        "title": "Intrinsic network dynamics catalyze switching in functional connectivity states of the brain",
+        "ai_rating": 4.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Ido Haber": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "q-bio.NC",
+        "rank": 7,
+        "arxiv_id": "2611.02216v1",
+        "title": "Do agents need to sleep?",
+        "ai_rating": 5.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Giulio Tononi": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "q-bio.NC",
+        "rank": 7,
+        "arxiv_id": "2611.02216v1",
+        "title": "Do agents need to sleep?",
+        "ai_rating": 5.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Tuba Aksoy": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "q-bio.NC",
+        "rank": 8,
+        "arxiv_id": "2611.03841v1",
+        "title": "Evolved Spiking Neural Networks for EEG Seizure Detection: Calcium Dynamics and Delay Mechanics",
+        "ai_rating": 4.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Kasra Fallah": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "q-bio.NC",
+        "rank": 9,
+        "arxiv_id": "2611.06418v1",
+        "title": "Mind Control of LLMs via Closed-Loop Stimulation: Out-of-Distribution Robustness",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Rudramani Singha": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "q-bio.NC",
+        "rank": 9,
+        "arxiv_id": "2611.06418v1",
+        "title": "Mind Control of LLMs via Closed-Loop Stimulation: Out-of-Distribution Robustness",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Hannah Ghanei": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "q-bio.NC",
+        "rank": 9,
+        "arxiv_id": "2611.06418v1",
+        "title": "Mind Control of LLMs via Closed-Loop Stimulation: Out-of-Distribution Robustness",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "James Anderson": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "q-bio.NC",
+        "rank": 9,
+        "arxiv_id": "2611.06418v1",
+        "title": "Mind Control of LLMs via Closed-Loop Stimulation: Out-of-Distribution Robustness",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Erfan Zabeh": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "q-bio.NC",
+        "rank": 9,
+        "arxiv_id": "2611.06418v1",
+        "title": "Mind Control of LLMs via Closed-Loop Stimulation: Out-of-Distribution Robustness",
+        "ai_rating": 5.5
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Ali Mahzarnia": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "q-bio.NC",
+        "rank": 10,
+        "arxiv_id": "2611.03897v1",
+        "title": "Fly Whiskers Meet LiDAR: Robust Navigation under Sensor Failure",
+        "ai_rating": 4.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
+  },
+  "Homayoun Jamshidi": {
+    "appearances": [
+      {
+        "week": "2026-W45",
+        "category": "q-bio.NC",
+        "rank": 10,
+        "arxiv_id": "2611.03897v1",
+        "title": "Fly Whiskers Meet LiDAR: Robust Navigation under Sensor Failure",
+        "ai_rating": 4.0
+      }
+    ],
+    "first_seen": "2026-W45",
+    "last_seen": "2026-W45"
   }
 }

@@ -6,7 +6,7 @@ Scope: New model releases, transformer variants, non-autoregressive and diffusio
 
 ## Current state of knowledge
 
-*Last updated 2026-11-01. Four digests feed this page: [10-04](../daily-digest/2026-10/2026-10-04.md), [10-09](../daily-digest/2026-10/2026-10-09.md), [10-11](../daily-digest/2026-10/2026-10-11.md) and [11-01](../daily-digest/2026-11/2026-11-01.md). The 11-01 window is the first to test architecture claims at equal serving cost (section 6), which tempers section 1.*
+*Last updated 2026-11-08 (sections 10 and 11 from the [11-08 digest](../daily-digest/2026-11/2026-11-08.md)). Earlier digests feeding this page: [10-04](../daily-digest/2026-10/2026-10-04.md), [10-09](../daily-digest/2026-10/2026-10-09.md), [10-11](../daily-digest/2026-10/2026-10-11.md) and [11-01](../daily-digest/2026-11/2026-11-01.md). The 11-01 window is the first to test architecture claims at equal serving cost (section 6), which tempers section 1.*
 
 ### 1. Looped models (well past a pattern)
 
@@ -63,8 +63,20 @@ Nothing on architectures was read in depth in the [10-11 digest](../daily-digest
 
 Carbon-X (14.8B, Qwen3-14B base with a 6-mer DNA vocabulary; see the [training page](../training-finetuning/training-finetuning.md)), NVIDIA Nemotron 3.5 Super VL (120B total, 12B active, open weights and recipes), Mistral Large 4 (1T total, 52B active, open weights), RWKV-7 G1L (pure RNN). ReplaySSM (caching an SSM's inputs rather than its state) is reported running in production for GLM-5.3-Flash and Kimi-K3 serving.
 
+### 10. How MoEs are trained, written down (11-08)
+
+**[The Ultimate MoE Training Handbook](2026-11-08-moe-training-handbook.md)** (Hugging Face, about 800K GPU hours) answers section 6's implication: if architecture has about 2% of loss left, the gains are in training the winning architectures well. Captured chapters: test all-to-all bandwidth per node count (77.14 GB/s on two nodes, 30.91 on eight), keep a 1-expert upcycled parity run (within 0.00087 of dense), keep the router in fp32 because bf16 ties change winners, and a ten-model router survey (sigmoid dominant, DeepSeek-V4 on sqrt(softplus), no agreement on the routed scaling factor). Beam's report agrees on sigmoid gating, loss-free bias plus a sequence aux loss and z-loss, and adds a cosine-decayed bias update rate that ended at 1.04 times uniform load. SAE Interprets MoE (ByteDance Seed, abstract) finds expert contribution far more concentrated than gating, with fine-grained specialization.
+
+### 11. Releases and attention variants (11-08)
+
+- Beam (501.3B MoE, 5:1 local-global attention, NoPE on global layers, DSRes residual scaling), Inkling 2 Small (594B MoE, images), Kimi K3.1 Pro (2.8T total, 104B active, 1M context), Marin Mochi 535B-A23B (pretraining done). All sparse MoE.
+- Muir (abstract): linear attention with one low-rank gate projection and matched-filter readout; 1.8 to 2.0% lower perplexity than Gated DeltaNet-2 up to 1.34B, extrapolates from 4K training to 10M-token streams.
+- Zyphra Hierarchical Attention: a tree index over the KV cache, subquadratic, retrofitted with about 1B tokens of distillation. See the [inference page](../inference-optimization/inference-optimization.md).
+
 ## Open questions
 
+- What controls router sharpening and flattening during training, and how should bias-update schedules interact with LR decay?
+- Is expert specialization semantic enough to route by concept?
 - Can a learned per-token halting gate be trained in an autoregressive looped model above 1B parameters? The 10-09 digest predicts a release within 90 days.
 - Can the gate be trained on task outcomes instead of likelihood?
 - ALoDLM's latents reset between denoising steps. Can latent state persist across steps?
@@ -76,6 +88,7 @@ Carbon-X (14.8B, Qwen3-14B base with a 6-mer DNA vocabulary; see the [training p
 
 ## Key sources
 
+- [2026-11-08 · The Ultimate MoE Training Handbook](2026-11-08-moe-training-handbook.md)
 - [2026-10-09 · ALoDLM: adaptively looped diffusion language models](2026-10-09-alodlm-adaptively-looped-diffusion-lm.md)
 - [2026-11-01 · I tried every LLM architecture change since 2020](2026-11-01-architecture-ablations-since-gpt3.md)
 - [2026-11-01 · How to loop your transformer, and scaling laws for looped MoE](2026-11-01-how-to-loop-your-transformer.md)

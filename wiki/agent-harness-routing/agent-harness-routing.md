@@ -8,7 +8,7 @@ A harness is the program between the world and the model. It decides what each m
 
 ## Current state of knowledge
 
-*Last updated 2026-11-01. Four digests feed this page: [10-04](../daily-digest/2026-10/2026-10-04.md), [10-09](../daily-digest/2026-10/2026-10-09.md), [10-11](../daily-digest/2026-10/2026-10-11.md) and [11-01](../daily-digest/2026-11/2026-11-01.md).*
+*Last updated 2026-11-08 (sections 16 and 17 from the [11-08 digest](../daily-digest/2026-11/2026-11-08.md)). Earlier digests feeding this page: [10-04](../daily-digest/2026-10/2026-10-04.md), [10-09](../daily-digest/2026-10/2026-10-09.md), [10-11](../daily-digest/2026-10/2026-10-11.md) and [11-01](../daily-digest/2026-11/2026-11-01.md).*
 
 ### 1. The harness is a training variable (established pattern, six results)
 
@@ -77,8 +77,20 @@ Agent Plasticity (Meta, summary read) defines plasticity as held-out gain per do
 
 NVIDIA and Siemens EDA refined a chip-design agent's skills and MCP tool descriptions from NeMo Gym verifier diagnostics: about 55% to 95% composite verification, turns from 155 to 53. Liquid released harness-specific LoRA adapters for LFM2.5-24B (up to 40% fewer tool calls in Pi). Harrison Chase argues the field has converged on one architecture (an LLM in a loop with tools in a sandbox) and that new context-engineering problems arise inside it. Decision models now gate tool calls (JevAct) and route retrieval (DecisionRAG); see the [decision models page](../decision-models/decision-models.md). Agent memory results (memory tax, Routed Continual Learning, ReHarness, TreeFlex) and cache engineering (agent-controlled KV-cache drop and reposition) are in the 11-01 Media Zone.
 
+### 16. The harness question gets a controlled answer, and four levers (11-08)
+
+**[Harness adapters, the Harness Leaderboard, Harness-S and EnvOpt](2026-11-08-harness-adapters-leaderboard-harness-s.md).** Section 4's open tension ("does the choice of harness matter?") now has a controlled answer for open models: with model, provider and effort fixed, nine harnesses span 27.3% to 51.4% solved and an 11.7 times spread in cost per solved task, and the best harness depends on the model. Hugging Face trains one LoRA adapter per harness with RL inside the unmodified harness, builds environments from shared agent sessions (Repo2RLEnvs), and guards every tool call with a rule-based proxy (safeagents) that cost nothing in held-out pass@1 (+0.0 ± 4.1). Harness-S uses sibling harnesses to rescue all-fail RL groups. EnvOpt optimizes the shared workspace instead: Claude Haiku 4.5's AutomationBench cost −72.7% with +14.34% pass rate, transferring to Opus 5. Snowflake Cortex Training plus OpenHands sells "train the model for your harness" as a service.
+
+### 17. Memory and context as representations (11-08)
+
+- **[Coca-Cola](2026-11-08-latent-context-compression-coca-cola.md)** (cross-source HF + Kurate): tool outputs compressed into latent tokens, trained to preserve the next action; 70.01% to 89.24% fewer tokens with better answers.
+- Anthropic's "dreaming" consolidates memory offline; see the [cognition page](../cognition-decision/cognition-decision.md).
+- ARI trains a retriever during search on a reasoning model's rankings (Recall@100 up to 7 times higher). MCPHallu: only 23.2% of runs on unreachable-goal tasks say the task is impossible.
+
 ## Open questions
 
+- Joint optimization of environment (EnvOpt) and weights (adapters): do the gains add?
+- Does a latent observation compressor work where exact strings matter, such as coding?
 - What share of a jointly tuned system's gain comes from data, from training settings and from the harness, measured from one starting point with repeats?
 - Does a structured harness such as an RLM beat a standard coding harness when both get the same RL budget?
 - Do gains from automated harness and model tuning compound across cycles? RSIGym's one self-research run went from 56.66% to 56.26%.
@@ -93,6 +105,8 @@ NVIDIA and Siemens EDA refined a chip-design agent's skills and MCP tool descrip
 
 ## Key sources
 
+- [2026-11-08 · Harness adapters, the Harness Leaderboard, Harness-S and EnvOpt](2026-11-08-harness-adapters-leaderboard-harness-s.md)
+- [2026-11-08 · Tools Need Not Speak in Text (Coca-Cola)](2026-11-08-latent-context-compression-coca-cola.md)
 - [2026-10-09 · Language model harnesses are compositional generalizers (RLM trained with RL)](2026-10-09-harness-as-compositional-generalizer-rlm.md)
 - [2026-10-09 · RSIGym](2026-10-09-rsigym.md)
 - [2026-10-09 · Recursive Game Creator](2026-10-09-recursive-game-creator.md)

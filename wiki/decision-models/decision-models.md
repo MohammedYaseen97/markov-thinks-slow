@@ -8,7 +8,7 @@ A decision model takes a state and typed questions and returns a choice with a p
 
 ## Current state of knowledge
 
-*Last updated 2026-11-01. Four digests feed this page: [10-04](../daily-digest/2026-10/2026-10-04.md), [10-09](../daily-digest/2026-10/2026-10-09.md), [10-11](../daily-digest/2026-10/2026-10-11.md) and [11-01](../daily-digest/2026-11/2026-11-01.md).*
+*Last updated 2026-11-08. Five digests feed this page: [10-04](../daily-digest/2026-10/2026-10-04.md), [10-09](../daily-digest/2026-10/2026-10-09.md), [10-11](../daily-digest/2026-10/2026-10-11.md), [11-01](../daily-digest/2026-11/2026-11-01.md) and [11-08](../daily-digest/2026-11/2026-11-08.md). The 11-08 window ships the first documented decider that gates its own reasoning (section 16).*
 
 ### 1. From one vendor's API to an open stack
 
@@ -80,8 +80,21 @@ Perplexity Decider v1.2, per an X Article endorsed by one of its builders: take 
 
 RightNow's claim that its model "holds back until the evidence is there, then commits" is the drift-diffusion question from decision neuroscience (accumulate noisy evidence to a bound), asked of a machine decider. No streaming decider has published a speed-accuracy or stopping-time curve. See the [cognition page](../cognition-decision/cognition-decision.md).
 
+### 16. A decider that decides when to think (11-08, model card read)
+
+**[THX-02](2026-11-08-thx-02-drex-and-dpdm.md)** (HAL-X, 4.5B plus a 60M LoRA think adapter) turns section 12's "deciders about thinking" into a shipped mechanism. The direct read always runs; the thinker writes a short note only when the top probability is below 0.6 and a learned gate says the question needs steps; the final answer is 0.7·p₀ + 0.3·p₁ so a bad note cannot overturn a confident read. Thoughts were kept for training only if they raised THX-02's own probability on the correct answer (10,129 of 29,990). Every stage uses a strictly proper scoring rule plus a KL anchor. Decision Index 0.3 sample: 65.06 gated, 63.83 direct; thinking added 25.2 points on GSM8K and cost one to three on taste tasks. This is the closest open design yet to a fast System 1 with an uncertainty-triggered System 2.
+
+### 17. More open deciders, and a production benchmark (11-08)
+
+- **Drex** (abstract): four open deciders, 8B to 35B-A3B, SFT plus "RL from adjusted feedback", stable under option reordering.
+- **DPDM** (abstract): decisions as conditional prediction with a frozen tabular predictor over LLM-encoded history; 78.80% to 84.92% mean accuracy across 50 benchmarks, improving with history length.
+- **Airbnb:** a fine-tuned Gemma 4 E2B classifier reached F1 0.902 (from 0.563) at 35 ms and about 1% of frontier cost; Jev was the most accurate off-the-shelf model under 100 ms, but its API offers no cached-input discount.
+- **Calibration** remains claimed rather than measured in these releases (section 4, 8).
+
 ## Open questions
 
+- Train the thinking gate on "my thought will improve the answer" rather than "needs steps", using the self-verification signal.
+- Make the mixing weight depend on both reads' confidence.
 - A success head trained on outcomes and validated separately from the choice distribution. The 10-04 prediction (an open release by 2027-01-02) is still open.
 - Joint scoring versus per-option branches versus shuffled training: which gives the best calibration?
 - "System Switch: When Should a Fast Decision Model Stop and Think?" ([arXiv 2610.09683](https://arxiv.org/abs/2610.09683)) was listed with no abstract and is unread. Read it first when an overview appears.
@@ -96,6 +109,7 @@ RightNow's claim that its model "holds back until the evidence is there, then co
 
 ## Key sources
 
+- [2026-11-08 · THX-02, Drex and DPDM: decision models that decide when to think](2026-11-08-thx-02-drex-and-dpdm.md)
 - [2026-10-09 · Open d1 and "Train your own decision model"](2026-10-09-open-d1-and-train-your-own-decision-model.md)
 - [2026-10-11 · Vega: a decision model that rolls a ball down a hill](2026-10-11-vega-physics-decision-model.md)
 - [2026-11-01 · Decision models enter the loop: RightNow, JevAct, DecisionRAG](2026-11-01-decision-models-enter-the-loop.md)

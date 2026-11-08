@@ -6,7 +6,7 @@ Scope: Pretraining, fine-tuning, post-training and alignment methods, data, opti
 
 ## Current state of knowledge
 
-*Last updated 2026-11-01. Four digests feed this page: [10-04](../daily-digest/2026-10/2026-10-04.md), [10-09](../daily-digest/2026-10/2026-10-09.md), [10-11](../daily-digest/2026-10/2026-10-11.md) and [11-01](../daily-digest/2026-11/2026-11-01.md).*
+*Last updated 2026-11-08. Five digests feed this page: [10-04](../daily-digest/2026-10/2026-10-04.md), [10-09](../daily-digest/2026-10/2026-10-09.md), [10-11](../daily-digest/2026-10/2026-10-11.md), [11-01](../daily-digest/2026-11/2026-11-01.md) and [11-08](../daily-digest/2026-11/2026-11-08.md). The 11-08 window turns section 1's on-policy debate into a split between two frontier labs (section 14).*
 
 ### 1. "On-policy" is losing credit as such (pattern, three papers)
 
@@ -76,8 +76,25 @@ In [RSIGym](../agent-harness-routing/2026-10-09-rsigym.md), research agents tuni
 - The [architecture ablation](../models-architectures/2026-11-01-architecture-ablations-since-gpt3.md) found swapping AdamW for Muon worth about a full round of architecture stacking.
 - River now compiles user-written PyTorch losses for its post-training API; Ultramarine 1 Flash claims frontier-class knowledge work post-trained by five people for about $300k.
 
+### 14. The finishing step splits two labs (11-08)
+
+**[Beam and Inkling 2 Small](2026-11-08-beam-and-inkling-2-recipes.md)** are the first pair of complete open frontier recipes in one window. Beam (501.3B total, 23.4B active) trains an agentic and an alignment expert with RL and merges them by full-vocabulary MOPD with reverse KL. Inkling 2 Small (594B, 17B active) runs one joint RL job over all task families (17M+ rollouts, 9 days) and says this replaces its first generation's separate runs plus multi-teacher distillation. The 10-09 controlled study (MOPD matched SFT at 14.8 to 23.1 times the GPU-hours, section 1) supports neither directly: it says merging is expensive, not that joint RL is better. No same-base comparison exists.
+
+Other recipe details worth keeping: Beam's depth-scaled residual (divide the residual stream by √n sublayers), AdamC with weight decay scheduled to zero, a compute-efficiency acceptance test on a 300M to 6B ladder; Inkling 2's native NVFP4 pretraining (8.4T tokens in 68 hours), four pretraining phases ending in 34B tokens of filtered agent trajectories, and on-policy self-distillation from a conduct-spec teacher for alignment.
+
+### 15. MOPD is a library feature, with a weighting caveat (11-08)
+
+**[TRL now ships MOPD](2026-11-08-mopd-in-trl-and-stepx-opd.md)** (AsyncDistillationTrainer, one teacher server per domain, teacher_id routing). Its write-up shows token imbalance: token-averaged loss lets long maths and code answers swamp instruction following, which fell to a few percent of tokens in a 60-step run. Labs differ on teacher-distribution coverage (one token, top 16, full vocabulary). StepX-OPD carries multi-teacher OPD into diffusion. Base Labs argues a teacher that sees the answer (OPSD) is biased toward an offset target (post only); Cursor reports RL plus targeted self-distillation from per-turn feedback is stable when limited to failing turns (abstract).
+
+### 16. Training dynamics: compression follows generalization (11-08)
+
+**[Lossfunk's grokking paper](2026-11-08-subspace-crystallization-grokking.md)** separates memorization (within 250 steps) from grokking onset (6,500 to 21,000 steps): the steepest rank drop lands about 900 steps after onset, and forcing low rank from the start against a matched factorized control does not speed grokking. Hinted scaling laws (Stanford) forecast downstream accuracy where small models score near zero by fitting over hint levels: median error 21 to 4.3 points on GSM8K, AIME and HLE. Marin's Mochi 535B-A23B finished 18T tokens in the open, below its preregistered loss forecast.
+
 ## Open questions
 
+- Same base, same RL budget: joint RL against expert RL plus MOPD against expert RL plus SFT on filtered traces.
+- Does per-domain KL normalization change the MOPD versus SFT comparison of 10-09?
+- How much does pre-RL trajectory mid-training set RL efficiency?
 - A compute-matched comparison on tasks with zero base pass rate, where the student cannot stumble on the answer and state coverage should finally matter.
 - Does the result hold for strong-to-weak distillation?
 - Five more on-policy distillation papers were listed on HuggingFace in the 10-09 window without readable abstracts (on gains and collapse, negative-policy rollouts, teacher-relative shifts, vision-language-action models, and agent self-distillation collapse). Their claims are unread.
@@ -92,6 +109,10 @@ In [RSIGym](../agent-harness-routing/2026-10-09-rsigym.md), research agents tuni
 
 ## Key sources
 
+- [2026-11-08 · Beam and Inkling 2 Small: two frontier recipes, two endings](2026-11-08-beam-and-inkling-2-recipes.md)
+- [2026-11-08 · MOPD in TRL, token imbalance, and StepX-OPD](2026-11-08-mopd-in-trl-and-stepx-opd.md)
+- [2026-11-08 · Subspace crystallization in grokking (Lossfunk)](2026-11-08-subspace-crystallization-grokking.md)
+- Covered in the 11-08 digest without a summary page: hinted scaling laws, Marin Mochi, Arete-27B, Snowflake Cortex Training.
 - [2026-10-09 · Multi-teacher on-policy distillation versus SFT](2026-10-09-multi-teacher-opd-vs-sft.md)
 - [2026-10-11 · TRL v1.15: the fused LM head](2026-10-11-trl-fused-lm-head.md)
 - [2026-11-01 · Carbon-X: mid-training a 14B model to read DNA](2026-11-01-carbon-x-dna-midtraining.md)

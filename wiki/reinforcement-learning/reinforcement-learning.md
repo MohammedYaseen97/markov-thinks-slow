@@ -6,7 +6,7 @@ Scope: Core RL algorithms, RL for LLMs, and RL environments for LLM training.
 
 ## Current state of knowledge
 
-*Last updated 2026-11-01. Four digests feed this page: [10-04](../daily-digest/2026-10/2026-10-04.md), [10-09](../daily-digest/2026-10/2026-10-09.md), [10-11](../daily-digest/2026-10/2026-10-11.md) and [11-01](../daily-digest/2026-11/2026-11-01.md).*
+*Last updated 2026-11-08. Five digests feed this page: [10-04](../daily-digest/2026-10/2026-10-04.md), [10-09](../daily-digest/2026-10/2026-10-09.md), [10-11](../daily-digest/2026-10/2026-10-11.md), [11-01](../daily-digest/2026-11/2026-11-01.md) and [11-08](../daily-digest/2026-11/2026-11-08.md). The 11-08 window moves score centering from a paper to three production stacks (section 18) and opens group-free RL (section 19).*
 
 ### 1. RL environments are now shared infrastructure
 
@@ -88,8 +88,30 @@ TRL's AsyncGRPO now stores forked multi-turn rollouts as a prefix tree and runs 
 
 **[RL for design taste](2026-11-01-rl-for-design-taste.md)** trains Qwen3.8-27B on MiMo webdev environments with GPT-6 Sol or Claude Sonnet 5.5 as judge. Both runs inflate page length (about 41k to over 140k characters) before a delivery penalty corrects it, both mode-collapse to their judge's style, and both judges prefer the Sonnet-trained model head to head. This is the subjective counterpart of section 2: verifiable rewards leak the solution, judge rewards leak the judge.
 
+### 18. Staleness correction is now plumbing (11-08, pattern: three stacks)
+
+Score centering (subtract the sampler's mean score so mismatch stops pushing the weights; [11-01 summary](2026-11-01-score-centering.md)) now runs inside Inkling 2 Small's RL objective, StableReinforce, at a median staleness of 17 updates and p99 rollouts of 4 hours, and inside the s³ swarm trainer with IcePop at up to four updates of lag and FP8 exploration. River shipped it on 11-01. Beam reports stable numerics with rollouts 107 weight versions old using unnamed corrections, over 100M rollouts with "no sign of a plateau". Three independent stacks make staleness correction a component, not a bet. Still missing: a merged option in TRL, verl or prime-rl. See [Beam and Inkling 2](../training-finetuning/2026-11-08-beam-and-inkling-2-recipes.md).
+
+### 19. Group-free RL: one rollout per task (11-08)
+
+**[GS1](2026-11-08-gs1-group-size-one.md)** (Trajectory Labs) targets production traces, where tasks cannot be replayed. FlashREINFORCE's batch-mean baseline already matched GRPO on Harvey LAB and beat it on PRBench (2.0 points against 0.8) with 32 distinct tasks per step. GS1 replaces the batch mean with a similarity-weighted average of other tasks' rewards ("soft groups"). **Effective batch size**, B·σ²/(σ² + MSE(b)), measures baseline quality offline: 9.3 against 13.0 rollouts' worth on AutomationBench. At a higher learning rate the batch-mean baseline collapsed (21.7% to 7.2%) while GS1 and GRPO stayed stable. This sits beside score centering as the second "which part of the gradient is information" fix: centering removes the score's mean under mismatch, GS1 shrinks the baseline's error without replay.
+
+### 20. Cooperative multi-agent RL with a shared reward (11-08)
+
+**[s³](2026-11-08-s3-swarms-and-swarmevolve.md)** trains swarms of identical small models with one team reward (success if any agent solves it, minus token cost) and compares eight teams per problem GRPO-style, so per-agent credit is never estimated. Individual rewards collapse into a public-goods failure where nobody shares. Four agents solve 93% of a held-out aggregation task (13% with individual rewards), and the protocol carries to eight agents. SwarmEvolve (cross-source HF + Kurate) shares KV caches between agents instead of text.
+
+### 21. Credit inside a rollout, and rescuing empty groups (11-08)
+
+- A span-level agentic judge (Chinmay Karkar's blog) added little benchmark gain on Qwen3.5-4B, but a forced-answer probe showed judge scores track real progress (0.105 per point, 95% CI 0.078 to 0.134), including in all-pass and all-fail groups where outcome GRPO has no signal.
+- **Harness-S** (abstract) rescues all-fail GRPO groups by retrying under sibling harnesses and swapping in the successes, a partial resolution of the 11-01 "stuck prompts" prediction. See the [harness summary](../agent-harness-routing/2026-11-08-harness-adapters-leaderboard-harness-s.md).
+- **safeagents** blocks reward-hacking tool calls per call and scores them 0, the fourth reward-hacking defence in five digests (sections 2, 3, 9).
+
 ## Open questions
 
+- Can the GS1 kernel be learned online as a value model over prompts, and where does that land between GS1 and PPO?
+- Does effective batch size predict which runs collapse at a given learning rate, across RL methods?
+- Are rescued (Harness-S) trajectories off-policy enough to need a correction like score centering?
+- Can learned swarm protocols learn when to trust a teammate's unchecked claim?
 - How much of the reward in a training run is attributable to information the task did not intend to provide? No measure exists.
 - Can a training-time detector separate "the solution was found" from "the solution was derived"?
 - How much of MiMo's benchmark score comes from the leak habit? The audit could not rerun training on cleaned environments.
@@ -108,6 +130,9 @@ TRL's AsyncGRPO now stores forked multi-turn rollouts as a prefix tree and runs 
 
 ## Key sources
 
+- [2026-11-08 · GS1: RL from one rollout per task](2026-11-08-gs1-group-size-one.md)
+- [2026-11-08 · s³ and SwarmEvolve: swarms that learn to communicate](2026-11-08-s3-swarms-and-swarmevolve.md)
+- Covered in the 11-08 digest without a summary page: Chinmay Karkar's judge credit-assignment blog, Cursor's targeted guidance report, Base Labs on hinted-teacher bias.
 - [2026-10-09 · Two-thirds of MiMo v2.6's coding tasks leak the answer (Vals audit, with Karotte)](2026-10-09-mimo-rl-environments-reward-hacking-audit.md)
 - [2026-10-09 · Simulation RL environments, part 1: PortSimEnv](2026-10-09-portsimenv-simulation-rl-environments.md)
 - [2026-10-11 · Bias, variance, and throughput in LLM reinforcement learning](2026-10-11-bias-variance-throughput-llm-rl.md)

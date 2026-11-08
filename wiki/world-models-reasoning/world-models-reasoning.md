@@ -8,7 +8,7 @@ A world model predicts what actions will do, so a planner can test futures befor
 
 ## Current state of knowledge
 
-*Last updated 2026-11-01. Three digests feed this page: [10-09](../daily-digest/2026-10/2026-10-09.md), [10-11](../daily-digest/2026-10/2026-10-11.md) and [11-01](../daily-digest/2026-11/2026-11-01.md).*
+*Last updated 2026-11-08 (light additions, section 12, from the [11-08 digest](../daily-digest/2026-11/2026-11-08.md)). Earlier digests feeding this page: [10-09](../daily-digest/2026-10/2026-10-09.md), [10-11](../daily-digest/2026-10/2026-10-11.md) and [11-01](../daily-digest/2026-11/2026-11-01.md).*
 
 ### 1. Abstraction can come from the prediction horizon
 
@@ -66,8 +66,16 @@ MC-PhysBench times how long video world models stay physically valid on simple s
 - **DiscoveryRSI** treats a hypothesis as a claim plus investigation plan, decision criteria and alternatives, assigns credit to research steps by blinded TrueSkill, and fine-tunes only on the steps that helped. Falsifiability rises from 4.00 to 6.20 while importance and novelty dip slightly: the model learns to test better, not to ask bolder questions.
 - **Hybrid Reasoning Agents** (Stanford): RL learns when to think in latent vectors and when to emit text for a tool call; 10.4% better with 35.5 to 54.7% fewer tokens. The first item in the wiki where a policy learns when to leave latent space.
 
+### 12. A quiet window, with two adjacent results (11-08, abstracts)
+
+- **DreamFree** (HuggingFace): a world action model that distils a frozen video diffusion model's representations into an encoder of the current frame, so a robot acts without generating future video; 11Hz closed-loop control on a 14B backbone, learns new tasks from action-free videos including other embodiments. Bears on section 4's caution about video world models: the predictive knowledge is used without the expensive, error-prone rollout.
+- **SwarmEvolve** and **Coca-Cola** both pass information between or into agents as vectors (KV caches, latent tokens) rather than words, a step toward reasoning that is communicated in latent state (section 5). See the [RL page](../reinforcement-learning/reinforcement-learning.md) and [harness page](../agent-harness-routing/agent-harness-routing.md).
+- **Weight-space programming** suggests concepts are legible in weights; see the [interpretability page](../interpretability-safety/interpretability-safety.md).
+- OpenFrontiers (abstract): 12,151 open problems and a 200-problem Lean rediscovery benchmark; closed-book rediscovery at most 7 of 40 resolved problems.
+
 ## Open questions
 
+- Can distilled "imagination-free" representations (DreamFree) support planning, or only reactive control?
 - Hierarchy depth and strides are set by hand. Learning when to add a level is unsolved.
 - Subgoals are points in a continuous latent space, not discrete concepts. There is nothing yet that a fast decider could choose among.
 - Do separate latent spaces per level help outside AntMaze?

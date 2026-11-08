@@ -41,3 +41,16 @@ Append-only timeline of all ingested sources and wiki updates.
 ## [2026-11-01] ingest | JetSpec++ (arXiv 2610.19792) | alphaXiv overview and project page via X feed
 ## [2026-11-01] digest | Daily digest and Media Zone for 2026-11-01 | collection window 2026-10-11 evening to 2026-11-01 night; Media Zone draft from an earlier interrupted run reviewed and corrected
 ## [2026-11-01] update | Concept pages updated: reinforcement-learning, training-finetuning, models-architectures, decision-models, world-models-reasoning, agent-harness-routing, cognition-decision. Started: inference-optimization | concept pages
+## [2026-11-08] ingest | Beam technical report (Reflection) and Inkling 2 Small (Thinking Machines) | report first 60,000 characters, blogs and author posts via X feed
+## [2026-11-08] ingest | MOPD in TRL (Hugging Face X Article) and StepX-OPD (arXiv 2611.04386) | X Article via X feed (priority account repost) and abstract via HuggingFace
+## [2026-11-08] ingest | You Only Rollout Once: GS1 (Trajectory Labs) | field report via X feed
+## [2026-11-08] ingest | s³: Simple Scaling of Swarms (UW, Ai2) and SwarmEvolve (arXiv 2611.08483) | project page via X feed; abstract via HuggingFace and Kurate, cross-source confirmed (HF + Kurate)
+## [2026-11-08] ingest | THX-02 (HAL-X), Drex (arXiv 2611.07854) and DPDM (arXiv 2611.02075) | model card and API docs via X feed; abstracts via HuggingFace
+## [2026-11-08] ingest | The Ultimate MoE Training Handbook (Hugging Face) | handbook chapters 1 to 3.1 via X feed (priority account repost)
+## [2026-11-08] ingest | Subspace Crystallization in Grokking (Lossfunk, arXiv 2610.35112) | abstract, alphaXiv overview, thread and repository via X feed (priority accounts)
+## [2026-11-08] ingest | Sparks of Weight-Space Programming (MIT CSAIL) | blog via X feed (priority repost) and Two Minute Papers video, cross-source confirmed via social
+## [2026-11-08] ingest | The components of agent memory (Anthropic) and Do agents need to sleep? (Haber and Tononi, arXiv 2611.02216) | engineering post via X feed; abstract via Kurate q-bio.NC; Nature commentary via The Decoder RSS
+## [2026-11-08] ingest | Harness adapters (Hugging Face), Harness Leaderboard, Harness-S (arXiv 2611.04277) and EnvOpt (arXiv 2611.07372) | blog and leaderboard via X feed (priority account repost); abstracts via HuggingFace and X feed
+## [2026-11-08] ingest | Tools Need Not Speak in Text: Coca-Cola (arXiv 2611.06500) | abstract via HuggingFace and Kurate, cross-source confirmed (HF + Kurate)
+## [2026-11-08] digest | Daily digest and Media Zone for 2026-11-08 | collection window 2026-11-01 to 2026-11-08 evening; HuggingFace papers arrived as titles, abstracts fetched for the papers written up; alphaXiv returned empty for this window's HuggingFace papers; Kurate tournament still at default scores
+## [2026-11-08] update | Concept pages updated: reinforcement-learning, training-finetuning, models-architectures, decision-models, cognition-decision, agent-harness-routing, world-models-reasoning, inference-optimization. Started: interpretability-safety | concept pages
